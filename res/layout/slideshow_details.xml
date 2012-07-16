@@ -4,55 +4,99 @@
     android:layout_height="fill_parent"
     android:background="@android:color/white" >
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ViewFlipper
+        android:id="@+id/details"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:fillViewport="true" >
+        android:layout_height="fill_parent" >
 
-        <RelativeLayout
+        <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/relativeLayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@android:color/white" >
+            android:fillViewport="true" >
 
-            <TextView
-                android:id="@+id/slideshow_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:textColor="#8DC73F"
-                android:textSize="40px"
-                android:textStyle="bold" />
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/relativeLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@android:color/white" >
 
-            <ImageView
-                android:id="@+id/slideshowImage"
-                android:layout_width="200px"
-                android:layout_height="200px"
-                android:layout_below="@+id/slideshow_title"
-                android:layout_centerHorizontal="true" />
+                <TextView
+                    android:id="@+id/slideshow_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textColor="#8DC73F"
+                    android:textSize="40px"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/slideshow_article"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/slideshowImage"
-                android:textColor="#007FB2"
-                android:textSize="30px" />
-        </RelativeLayout>
-    </ScrollView>
+                <ImageView
+                    android:id="@+id/slideshowImage1"
+                    android:layout_width="200px"
+                    android:layout_height="200px"
+                    android:layout_below="@+id/slideshow_title1"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/slideshow_article1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/slideshowImage1"
+                    android:textColor="#007FB2"
+                    android:textSize="30px" />
+            </RelativeLayout>
+        </ScrollView>
+
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fillViewport="true" >
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@android:color/white" >
+
+                <TextView
+                    android:id="@+id/slideshow_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textColor="#8DC73F"
+                    android:textSize="40px"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/slideshowImage2"
+                    android:layout_width="200px"
+                    android:layout_height="200px"
+                    android:layout_below="@+id/slideshow_title2"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/slideshow_article2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/slideshowImage2"
+                    android:textColor="#007FB2"
+                    android:textSize="30px" />
+            </RelativeLayout>
+        </ScrollView>
+    </ViewFlipper>
 
     <TextView
         android:id="@+id/slideshow_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="10px"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:gravity="center"
-        android:text="1/2"
+        android:paddingRight="10px"
         android:textColor="#8DC73F"
         android:textSize="30px"
         android:textStyle="bold" />

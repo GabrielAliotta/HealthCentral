@@ -23,22 +23,31 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.MotionEvent;
 import android.view.Window;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 public class SlideshowDetails extends Activity implements SimpleGestureListener {
 
-	private ImageView imageView;
-	private TextView textTitle;
-	private TextView textContent;
+	private ImageView imageView1;
+	private TextView textTitle1;
+	private TextView textContent1;
+
+	private ImageView imageView2;
+	private TextView textTitle2;
+	private TextView textContent2;
+
+	boolean isSlide1;
+
 	private TextView slidePage;
 	DatabaseController databaseController;
 	Site site = new Site();
 	Integer imageIndex;
 
-	List <String> titles = new ArrayList<String>();
-	List <String> contents = new ArrayList<String>();
-	
+	List<String> titles = new ArrayList<String>();
+	List<String> contents = new ArrayList<String>();
+
 	List<SlideshowImage> slideshowImages;
 
 	private SimpleGestureFilter detector;
@@ -48,14 +57,19 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.slideshow_details);
-		
-		detector = new SimpleGestureFilter(this, this);		
 
-		imageView = (ImageView) this.findViewById(R.id.slideshowImage);
-		textTitle = (TextView) this.findViewById(R.id.slideshow_title);
-		textContent = (TextView) this.findViewById(R.id.slideshow_article);
+		detector = new SimpleGestureFilter(this, this);
+
+		imageView1 = (ImageView) this.findViewById(R.id.slideshowImage1);
+		textTitle1 = (TextView) this.findViewById(R.id.slideshow_title1);
+		textContent1 = (TextView) this.findViewById(R.id.slideshow_article1);
+
+		imageView2 = (ImageView) this.findViewById(R.id.slideshowImage2);
+		textTitle2 = (TextView) this.findViewById(R.id.slideshow_title2);
+		textContent2 = (TextView) this.findViewById(R.id.slideshow_article2);
+
 		slidePage = (TextView) this.findViewById(R.id.slideshow_page);
-		
+
 		databaseController = new DatabaseController(getApplicationContext());
 		try {
 			databaseController.initDatabase();
@@ -65,43 +79,45 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 
 		String slideId = getIntent().getExtras().getString("SlideshowId");
 		site = databaseController.getSiteById(slideId);
-		
+
 		new GetSlideshowImagesTask(this, databaseController, site).execute();
 	}
-	
-	public void updateList(){
+
+	public void updateList() {
 		slideshowImages = databaseController.getSlideshowImagesById(site.id);
-		
+
 		Pattern titlePattern = Pattern.compile("<b>(.*?)</b>");
 		Matcher titleMatcher = titlePattern.matcher(site.getContents());
-		
+
 		while (titleMatcher.find()) {
 			titles.add(titleMatcher.group(1));
 		}
-		
+
 		Pattern p = Pattern.compile("<p><p>(.*?)</p></p>", Pattern.DOTALL);
 		Matcher m = p.matcher(site.getContents());
-		
+
 		while (m.find()) {
 			contents.add(m.group(1));
 		}
-		
+
 		imageIndex = 1;
-		
-		textContent.setText(Html.fromHtml(contents.get(0)));
-		textTitle.setText(titles.get(0));
-		textContent.setMovementMethod(LinkMovementMethod.getInstance());
-		
-		slidePage.setText(String.valueOf(imageIndex)+ "/" + String.valueOf(contents.size()));
+
+		textContent1.setText(Html.fromHtml(contents.get(0)));
+		textTitle1.setText(titles.get(0));
+		textContent1.setMovementMethod(LinkMovementMethod.getInstance());
+
+		slidePage.setText(String.valueOf(imageIndex) + "/" + String.valueOf(contents.size()));
 
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(1).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
-		imageView.setImageBitmap(theImage);
+		imageView1.setImageBitmap(theImage);
+
+		isSlide1 = true;
 	}
 
-	//Interface Methods
-	
+	// Interface Methods
+
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent me) {
 		this.detector.onTouchEvent(me);
@@ -115,31 +131,77 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 		case SimpleGestureFilter.SWIPE_RIGHT:
 			if (imageIndex > 1) {
 				imageIndex--;
-				
-				slidePage.setText(String.valueOf(imageIndex)+ "/" + String.valueOf(contents.size()));
-				
-				textContent.setText(Html.fromHtml(contents.get(imageIndex - 1)));
-				textTitle.setText(titles.get(imageIndex - 1));
 
-				ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
-				Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+				// Get the ViewFlipper from the layout
+				ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
 
-				imageView.setImageBitmap(theImage);
+				// Set an animation from res/anim: I pick push left in
+				vf.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_in));
+				vf.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_out));
+				vf.showNext();
+
+				slidePage.setText(String.valueOf(imageIndex) + "/" + String.valueOf(contents.size()));
+
+				if (!isSlide1) {
+					textContent1.setText(Html.fromHtml(contents.get(imageIndex - 1)));
+					textTitle1.setText(titles.get(imageIndex - 1));
+
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
+					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+
+					imageView1.setImageBitmap(theImage);
+					
+					isSlide1 = true;
+				} else {
+					textContent2.setText(Html.fromHtml(contents.get(imageIndex - 1)));
+					textTitle2.setText(titles.get(imageIndex - 1));
+
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
+					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+
+					imageView2.setImageBitmap(theImage);
+					
+					isSlide1 = false;
+				}
+
 			}
 			break;
 		case SimpleGestureFilter.SWIPE_LEFT:
 			if (imageIndex < slideshowImages.size() - 2) {
 				imageIndex++;
-				
-				slidePage.setText(String.valueOf(imageIndex)+ "/" + String.valueOf(contents.size()));
 
-				textContent.setText(Html.fromHtml(contents.get(imageIndex - 1)));
-				textTitle.setText(titles.get(imageIndex - 1));
-				
+				// Get the ViewFlipper from the layout
+				ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
+
+				// Set an animation from res/anim: I pick push left in
+				vf.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_left_in));
+				vf.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_left_out));
+				vf.showNext();
+
+				slidePage.setText(String.valueOf(imageIndex) + "/"	+ String.valueOf(contents.size()));
+
+				if (!isSlide1) {
+				textContent1.setText(Html.fromHtml(contents.get(imageIndex - 1)));
+				textTitle1.setText(titles.get(imageIndex - 1));
+
 				ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
 				Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
-				imageView.setImageBitmap(theImage);
+				imageView1.setImageBitmap(theImage);
+				
+				isSlide1 = true;				
+				} else {
+					
+					textContent2.setText(Html.fromHtml(contents.get(imageIndex - 1)));
+					textTitle2.setText(titles.get(imageIndex - 1));
+
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
+					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+
+					imageView2.setImageBitmap(theImage);
+					isSlide1 = false;
+				}
+
 			}
 			break;
 		}
@@ -147,7 +209,7 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 
 	public void onDoubleTap() {
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();

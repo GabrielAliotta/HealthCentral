@@ -12,7 +12,7 @@
         android:icon="@drawable/hc_logo"
         android:label="@string/app_name" >
         <activity
-            android:name=".HealthCentralActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         
+        <activity android:name="com.healthcentral.activity.HealthCentralActivity" android:label="@string/app_name"/>
         <activity android:name="com.healthcentral.activity.SiteTitleActivity" android:label="@string/app_name"/>
         <activity android:name="com.healthcentral.activity.SlideshowDetails" android:label="@string/app_name"/>
     </application>
