@@ -6,18 +6,18 @@
 
     <ImageView
         android:id="@+id/slideshowImage"
-        android:layout_width="70px"
-        android:layout_height="70px" />
+        android:layout_width="100px"
+        android:layout_height="100px" />
 
     <TextView
         android:id="@+id/Title"
         android:layout_width="wrap_content"
         android:layout_height="80px"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/slideshowImage"
         android:layout_marginLeft="10px"
         android:text="test"
         android:textColor="#007FB2"
-        android:textSize="30px" />
+        android:textSize="35px" />
 
 </RelativeLayout>

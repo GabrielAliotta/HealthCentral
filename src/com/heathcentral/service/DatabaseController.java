@@ -1,5 +1,6 @@
 package com.heathcentral.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.kroz.activerecord.ActiveRecordBase;
@@ -52,7 +53,8 @@ public class DatabaseController {
 				getDatabase().open();
 			siteToSave = getDatabase().newEntity(Site.class);
 			siteToSave.setType(site.getType());
-			siteToSave.setFriendlyTitle(site.getVertical().replace("-", " "));
+			
+			siteToSave.setFriendlyTitle(capitalize(site.getVertical().replace("-", " ")));
 			siteToSave.setTitle(site.getTitle());
 			siteToSave.setBlurb(site.getBlurb());
 			siteToSave.setUrl(site.getUrl());
@@ -83,6 +85,24 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 		return sites;
+	}
+	
+	public List<String> getSitesIds(){
+		List <Site> sites = null;
+		List <String> ids = new ArrayList<String>();
+		
+		try {
+			if(getDatabase().isOpen() != true)
+				getDatabase().open();
+			sites = getDatabase().find(Site.class, true, null, null, "vertical", null, null, null);
+			for (Site site : sites){
+				ids.add(site.getId());
+			}
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return ids;
 	}
 		
 	public List<Site> getSlideshows(String site){
@@ -184,4 +204,14 @@ public class DatabaseController {
 	public void closeConnection(){
 		conn.close();
 	}	
+	
+	public String capitalize(String str) {
+		int strLen;
+		if (str == null || (strLen = str.length()) == 0) {
+			return str;
+		}
+		return new StringBuffer(strLen)
+				.append(Character.toTitleCase(str.charAt(0)))
+				.append(str.substring(1)).toString();
+	}
 }

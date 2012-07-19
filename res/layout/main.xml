@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="Health"
             android:textColor="#8DC73F"
-            android:textSize="40px"
+            android:textSize="50px"
             android:textStyle="bold" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_toRightOf="@+id/title"
             android:gravity="center"
             android:textColor="#007FB2"
-            android:textSize="40px"
+            android:textSize="50px"
             android:textStyle="bold" />
     </LinearLayout>
 
