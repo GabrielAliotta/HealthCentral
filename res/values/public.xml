@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="hc_logo" id="0x7f020000" />
+    <public type="drawable" name="ic_launcher" id="0x7f020001" />
+    <public type="layout" name="list_item" id="0x7f030000" />
+    <public type="layout" name="list_slideshow_item" id="0x7f030001" />
+    <public type="layout" name="main" id="0x7f030002" />
+    <public type="layout" name="slideshow_details" id="0x7f030003" />
+    <public type="layout" name="splash_screen" id="0x7f030004" />
+    <public type="anim" name="push_left_in" id="0x7f040000" />
+    <public type="anim" name="push_left_out" id="0x7f040001" />
+    <public type="anim" name="push_right_in" id="0x7f040002" />
+    <public type="anim" name="push_right_out" id="0x7f040003" />
+    <public type="string" name="hello" id="0x7f050000" />
+    <public type="string" name="app_name" id="0x7f050001" />
+    <public type="id" name="slideshowImage" id="0x7f060000" />
+    <public type="id" name="Title" id="0x7f060001" />
+    <public type="id" name="linearLayout" id="0x7f060002" />
+    <public type="id" name="title" id="0x7f060003" />
+    <public type="id" name="titleTwo" id="0x7f060004" />
+    <public type="id" name="list_sites" id="0x7f060005" />
+    <public type="id" name="details" id="0x7f060006" />
+    <public type="id" name="relativeLayout" id="0x7f060007" />
+    <public type="id" name="slideshow_title1" id="0x7f060008" />
+    <public type="id" name="slideshowImage1" id="0x7f060009" />
+    <public type="id" name="slideshow_article1" id="0x7f06000a" />
+    <public type="id" name="slideshow_title2" id="0x7f06000b" />
+    <public type="id" name="slideshowImage2" id="0x7f06000c" />
+    <public type="id" name="slideshow_article2" id="0x7f06000d" />
+    <public type="id" name="slideshow_page" id="0x7f06000e" />
+    <public type="id" name="appName" id="0x7f06000f" />
+    <public type="id" name="logo" id="0x7f060010" />
+</resources>

@@ -23,60 +23,55 @@ import android.widget.ListView;
 public class HealthCentralActivity extends Activity implements
 		OnItemClickListener {
 
-	DatabaseController databaseController;
-	
-	private ListView mySitesListView;
-
 	CustomAdapter customAdapter;
-	List<Site> sites = new ArrayList<Site>();
+	DatabaseController databaseController;
+	private ListView mySitesListView;
+	List<Site> sites = new ArrayList();
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+	public void onCreate(Bundle paramBundle) {
+		super.onCreate(paramBundle);
+		requestWindowFeature(1);
 		setContentView(R.layout.main);
-		
 		mySitesListView = (ListView) this.findViewById(R.id.list_sites);
-		mySitesListView.setOnItemClickListener(this);
-		
-		TextView title2 = (TextView) this.findViewById(R.id.titleTwo);
-		title2.setText("Central");
-
-		databaseController = new DatabaseController(getApplicationContext());
+		this.mySitesListView.setOnItemClickListener(this);
+		((TextView) findViewById(R.id.titleTwo)).setText("Central");
+		this.databaseController = new DatabaseController(
+				getApplicationContext());
 		try {
-			databaseController.initDatabase();
-		} catch (ActiveRecordException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			DatabaseController.initDatabase();
+			new GetSitesTask(this, this.databaseController)
+					.execute(new String[0]);
+			return;
+		} catch (ActiveRecordException localActiveRecordException) {
+			while (true)
+				localActiveRecordException.printStackTrace();
 		}
-		
-		new GetSitesTask(this, databaseController).execute();
-		
-	}
-	
-	public void updateList(){
-		sites = databaseController.getSites();
-
-		CustomAdapter customAdapter = new CustomAdapter(this, sites, "vertical");
-		mySitesListView.setAdapter(customAdapter);
 	}
 
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		 Intent intent= new Intent(HealthCentralActivity.this, SiteTitleActivity.class);
-		 intent.putExtra("site", sites.get(arg2).vertical);
-		 startActivity(intent);
-	}
-	
-	@Override
 	protected void onDestroy() {
-	    super.onDestroy();
-	    try {
-			if (databaseController.getIsOpenDatabase() != false) {
-				databaseController.closeConnection();
-			}
-		} catch (ActiveRecordException e) {
-			e.printStackTrace();
+		super.onDestroy();
+		try {
+			if (this.databaseController.getIsOpenDatabase())
+				this.databaseController.closeConnection();
+			return;
+		} catch (ActiveRecordException localActiveRecordException) {
+			while (true)
+				localActiveRecordException.printStackTrace();
 		}
 	}
-	
+
+	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
+			int paramInt, long paramLong) {
+		Intent localIntent = new Intent(this, SiteTitleActivity.class);
+		localIntent
+				.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
+		startActivity(localIntent);
+	}
+
+	public void updateList() {
+		this.sites = this.databaseController.getSites();
+		CustomAdapter localCustomAdapter = new CustomAdapter(this, this.sites,
+				"vertical");
+		this.mySitesListView.setAdapter(localCustomAdapter);
+	}
 }

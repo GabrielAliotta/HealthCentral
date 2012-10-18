@@ -5,19 +5,19 @@
     android:background="@android:color/white" >
 
     <ImageView
-        android:id="@+id/slideshowImage"
-        android:layout_width="100px"
-        android:layout_height="100px" />
+        android:id="@id/slideshowImage"
+        android:layout_width="100.0px"
+        android:layout_height="100.0px" />
 
     <TextView
-        android:id="@+id/Title"
+        android:id="@id/Title"
         android:layout_width="wrap_content"
-        android:layout_height="80px"
+        android:layout_height="80.0px"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/slideshowImage"
-        android:layout_marginLeft="10px"
+        android:layout_marginLeft="10.0px"
+        android:layout_toRightOf="@id/slideshowImage"
         android:text="test"
-        android:textColor="#007FB2"
-        android:textSize="35px" />
+        android:textColor="#ff007fb2"
+        android:textSize="35.0px" />
 
 </RelativeLayout>

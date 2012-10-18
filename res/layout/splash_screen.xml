@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:gravity="center" >
+
+    <ViewFlipper
+        android:id="@id/appName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+
+        <LinearLayout
+            android:id="@id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" >
+
+            <TextView
+                android:id="@id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Health"
+                android:textColor="#ff8dc73f"
+                android:textSize="70.0px"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@id/titleTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/title"
+                android:gravity="center"
+                android:text="Central"
+                android:textColor="#ff007fb2"
+                android:textSize="70.0px"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ViewFlipper>
+
+    <ViewFlipper
+        android:id="@id/logo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appName"
+        android:layout_centerHorizontal="true" >
+
+        <ImageView
+            android:id="@id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/hc_logo" />
+    </ViewFlipper>
+
+</RelativeLayout>

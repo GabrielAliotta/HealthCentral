@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="slideshowImage">false</item>
+    <item type="id" name="Title">false</item>
+    <item type="id" name="linearLayout">false</item>
+    <item type="id" name="title">false</item>
+    <item type="id" name="titleTwo">false</item>
+    <item type="id" name="list_sites">false</item>
+    <item type="id" name="details">false</item>
+    <item type="id" name="relativeLayout">false</item>
+    <item type="id" name="slideshow_title1">false</item>
+    <item type="id" name="slideshowImage1">false</item>
+    <item type="id" name="slideshow_article1">false</item>
+    <item type="id" name="slideshow_title2">false</item>
+    <item type="id" name="slideshowImage2">false</item>
+    <item type="id" name="slideshow_article2">false</item>
+    <item type="id" name="slideshow_page">false</item>
+    <item type="id" name="appName">false</item>
+    <item type="id" name="logo">false</item>
+</resources>

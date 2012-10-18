@@ -106,9 +106,11 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 		textTitle1.setText(titles.get(0));
 		textContent1.setMovementMethod(LinkMovementMethod.getInstance());
 
-		slidePage.setText(String.valueOf(imageIndex) + "/" + String.valueOf(contents.size()));
+		slidePage.setText(String.valueOf(imageIndex) + "/"
+				+ String.valueOf(contents.size()));
 
-		ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(1).getImage());
+		ByteArrayInputStream imageStream = new ByteArrayInputStream(
+				slideshowImages.get(1).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 		imageView1.setImageBitmap(theImage);
@@ -136,31 +138,38 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 				ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
 
 				// Set an animation from res/anim: I pick push left in
-				vf.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_in));
-				vf.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_right_out));
+				vf.setInAnimation(AnimationUtils.loadAnimation(this,
+						R.anim.push_right_in));
+				vf.setOutAnimation(AnimationUtils.loadAnimation(this,
+						R.anim.push_right_out));
 				vf.showNext();
 
-				slidePage.setText(String.valueOf(imageIndex) + "/" + String.valueOf(contents.size()));
+				slidePage.setText(String.valueOf(imageIndex) + "/"
+						+ String.valueOf(contents.size()));
 
 				if (!isSlide1) {
-					textContent1.setText(Html.fromHtml(contents.get(imageIndex - 1)));
+					textContent1.setText(Html.fromHtml(contents
+							.get(imageIndex - 1)));
 					textTitle1.setText(titles.get(imageIndex - 1));
 
-					ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(
+							slideshowImages.get(imageIndex).getImage());
 					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView1.setImageBitmap(theImage);
-					
+
 					isSlide1 = true;
 				} else {
-					textContent2.setText(Html.fromHtml(contents.get(imageIndex - 1)));
+					textContent2.setText(Html.fromHtml(contents
+							.get(imageIndex - 1)));
 					textTitle2.setText(titles.get(imageIndex - 1));
 
-					ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(
+							slideshowImages.get(imageIndex).getImage());
 					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView2.setImageBitmap(theImage);
-					
+
 					isSlide1 = false;
 				}
 
@@ -174,28 +183,35 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 				ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
 
 				// Set an animation from res/anim: I pick push left in
-				vf.setInAnimation(AnimationUtils.loadAnimation(this,R.anim.push_left_in));
-				vf.setOutAnimation(AnimationUtils.loadAnimation(this,R.anim.push_left_out));
+				vf.setInAnimation(AnimationUtils.loadAnimation(this,
+						R.anim.push_left_in));
+				vf.setOutAnimation(AnimationUtils.loadAnimation(this,
+						R.anim.push_left_out));
 				vf.showNext();
 
-				slidePage.setText(String.valueOf(imageIndex) + "/"	+ String.valueOf(contents.size()));
+				slidePage.setText(String.valueOf(imageIndex) + "/"
+						+ String.valueOf(contents.size()));
 
 				if (!isSlide1) {
-				textContent1.setText(Html.fromHtml(contents.get(imageIndex - 1)));
-				textTitle1.setText(titles.get(imageIndex - 1));
+					textContent1.setText(Html.fromHtml(contents
+							.get(imageIndex - 1)));
+					textTitle1.setText(titles.get(imageIndex - 1));
 
-				ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
-				Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(
+							slideshowImages.get(imageIndex).getImage());
+					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
-				imageView1.setImageBitmap(theImage);
-				
-				isSlide1 = true;				
+					imageView1.setImageBitmap(theImage);
+
+					isSlide1 = true;
 				} else {
-					
-					textContent2.setText(Html.fromHtml(contents.get(imageIndex - 1)));
+
+					textContent2.setText(Html.fromHtml(contents
+							.get(imageIndex - 1)));
 					textTitle2.setText(titles.get(imageIndex - 1));
 
-					ByteArrayInputStream imageStream = new ByteArrayInputStream(slideshowImages.get(imageIndex).getImage());
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(
+							slideshowImages.get(imageIndex).getImage());
 					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView2.setImageBitmap(theImage);

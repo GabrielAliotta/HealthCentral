@@ -3,25 +3,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@android:color/white"
-    android:paddingBottom="20px" >
+    android:paddingBottom="20.0px" >
 
     <ImageView
-        android:id="@+id/slideshowImage"
-        android:layout_width="300px"
-        android:layout_height="300px" 
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/Title"/>
+        android:id="@id/slideshowImage"
+        android:layout_width="300.0px"
+        android:layout_height="300.0px"
+        android:layout_below="@id/Title"
+        android:layout_centerHorizontal="true" />
 
     <TextView
-        android:id="@+id/Title"
+        android:id="@id/Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:textStyle="bold"
         android:text="test"
-        android:textColor="#007FB2"
-        android:textSize="30px" />
+        android:textColor="#ff007fb2"
+        android:textSize="30.0px"
+        android:textStyle="bold" />
 
 </RelativeLayout>

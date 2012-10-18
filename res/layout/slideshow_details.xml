@@ -5,7 +5,7 @@
     android:background="@android:color/white" >
 
     <ViewFlipper
-        android:id="@+id/details"
+        android:id="@id/details"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
 
@@ -17,35 +17,35 @@
 
             <RelativeLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/relativeLayout"
+                android:id="@id/relativeLayout"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@android:color/white" >
 
                 <TextView
-                    android:id="@+id/slideshow_title1"
+                    android:id="@id/slideshow_title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:textColor="#8DC73F"
-                    android:textSize="40px"
+                    android:textColor="#ff8dc73f"
+                    android:textSize="40.0px"
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/slideshowImage1"
-                    android:layout_width="200px"
-                    android:layout_height="200px"
-                    android:layout_below="@+id/slideshow_title1"
+                    android:id="@id/slideshowImage1"
+                    android:layout_width="200.0px"
+                    android:layout_height="200.0px"
+                    android:layout_below="@id/slideshow_title1"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
-                    android:id="@+id/slideshow_article1"
+                    android:id="@id/slideshow_article1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/slideshowImage1"
-                    android:textColor="#007FB2"
-                    android:textSize="30px" />
+                    android:layout_below="@id/slideshowImage1"
+                    android:textColor="#ff007fb2"
+                    android:textSize="30.0px" />
             </RelativeLayout>
         </ScrollView>
 
@@ -62,43 +62,43 @@
                 android:background="@android:color/white" >
 
                 <TextView
-                    android:id="@+id/slideshow_title2"
+                    android:id="@id/slideshow_title2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:textColor="#8DC73F"
-                    android:textSize="40px"
+                    android:textColor="#ff8dc73f"
+                    android:textSize="40.0px"
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/slideshowImage2"
-                    android:layout_width="200px"
-                    android:layout_height="200px"
-                    android:layout_below="@+id/slideshow_title2"
+                    android:id="@id/slideshowImage2"
+                    android:layout_width="200.0px"
+                    android:layout_height="200.0px"
+                    android:layout_below="@id/slideshow_title2"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
-                    android:id="@+id/slideshow_article2"
+                    android:id="@id/slideshow_article2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/slideshowImage2"
-                    android:textColor="#007FB2"
-                    android:textSize="30px" />
+                    android:layout_below="@id/slideshowImage2"
+                    android:textColor="#ff007fb2"
+                    android:textSize="30.0px" />
             </RelativeLayout>
         </ScrollView>
     </ViewFlipper>
 
     <TextView
-        android:id="@+id/slideshow_page"
+        android:id="@id/slideshow_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:gravity="center"
-        android:paddingRight="10px"
-        android:textColor="#8DC73F"
-        android:textSize="30px"
+        android:paddingRight="10.0px"
+        android:textColor="#ff8dc73f"
+        android:textSize="30.0px"
         android:textStyle="bold" />
 
 </RelativeLayout>
