@@ -8,14 +8,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.healthcenter.common.CustomSlideshowAdapter;
+
+import com.healthcentral.common.CustomSlideshowAdapter;
 import com.heathcentral.model.Site;
 import com.heathcentral.service.DatabaseController;
 import java.util.ArrayList;
 import java.util.List;
 import org.kroz.activerecord.ActiveRecordException;
 
-public class SiteTitleActivity extends Activity implements
+public class SiteSlideshowsActivity extends Activity implements
 		AdapterView.OnItemClickListener {
 	CustomSlideshowAdapter customAdapter;
 	DatabaseController databaseController;

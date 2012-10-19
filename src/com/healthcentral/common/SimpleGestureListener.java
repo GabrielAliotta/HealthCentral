@@ -1,4 +1,4 @@
-package com.healthcenter.common;
+package com.healthcentral.common;
 
 public interface SimpleGestureListener {
 	void onSwipe(int direction);

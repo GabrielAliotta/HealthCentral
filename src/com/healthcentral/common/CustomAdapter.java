@@ -1,4 +1,4 @@
-package com.healthcenter.common;
+package com.healthcentral.common;
 
 
 import java.io.ByteArrayInputStream;

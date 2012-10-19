@@ -8,12 +8,12 @@ import java.util.regex.Pattern;
 
 import org.kroz.activerecord.ActiveRecordException;
 
-import com.healthcenter.common.SimpleGestureFilter;
 import com.heathcentral.model.Site;
 import com.heathcentral.model.SlideshowImage;
 import com.heathcentral.service.DatabaseController;
 import com.heathcentral.service.GetSlideshowImagesTask;
-import com.healthcenter.common.SimpleGestureListener;
+import com.healthcentral.common.SimpleGestureFilter;
+import com.healthcentral.common.SimpleGestureListener;
 
 import android.app.Activity;
 import android.graphics.Bitmap;

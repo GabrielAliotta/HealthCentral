@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.kroz.activerecord.ActiveRecordException;
 
-import com.healthcenter.common.CustomAdapter;
+import com.healthcentral.common.CustomAdapter;
 import com.heathcentral.model.Site;
 import com.heathcentral.service.DatabaseController;
 import com.heathcentral.service.GetSitesTask;
@@ -62,7 +62,7 @@ public class HealthCentralActivity extends Activity implements
 
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
-		Intent localIntent = new Intent(this, SiteTitleActivity.class);
+		Intent localIntent = new Intent(this, SiteSlideshowsActivity.class);
 		localIntent
 				.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
 		startActivity(localIntent);
