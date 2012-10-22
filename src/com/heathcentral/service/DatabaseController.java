@@ -8,6 +8,7 @@ import org.kroz.activerecord.ActiveRecordException;
 import org.kroz.activerecord.Database;
 import org.kroz.activerecord.DatabaseBuilder;
 
+import com.heathcentral.model.Quiz;
 import com.heathcentral.model.Site;
 import com.heathcentral.model.SlideshowImage;
 
@@ -39,22 +40,25 @@ public class DatabaseController {
 
 	public ActiveRecordBase getDatabase() throws ActiveRecordException {
 		return conn;
-	}	
-	
+	}
+
 	public boolean getIsOpenDatabase() throws ActiveRecordException {
 		return conn.isOpen();
 	}
+
+	// Sites Methods
 	
-	public void saveSite(Site site){
+	public void saveSite(Site site) {
 		Site siteToSave = null;
-		
-		try {			
-			if(getDatabase().isOpen() != true)
+
+		try {
+			if (getDatabase().isOpen() != true)
 				getDatabase().open();
 			siteToSave = getDatabase().newEntity(Site.class);
 			siteToSave.setType(site.getType());
-			
-			siteToSave.setFriendlyTitle(capitalize(site.getVertical().replace("-", " ")));
+
+			siteToSave.setFriendlyTitle(capitalize(site.getVertical().replace(
+					"-", " ")));
 			siteToSave.setTitle(site.getTitle());
 			siteToSave.setBlurb(site.getBlurb());
 			siteToSave.setUrl(site.getUrl());
@@ -66,36 +70,39 @@ public class DatabaseController {
 			siteToSave.setId(site.getId());
 			siteToSave.setContents(site.getContents());
 			siteToSave.save();
-			
+
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public List<Site> getSites(){
-		List <Site> sites = null;
-		
+
+	public List<Site> getSites() {
+		List<Site> sites = null;
+
 		try {
-			if(getDatabase().isOpen() != true)
+			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			sites = getDatabase().find(Site.class, true, null, null, "vertical", null, null, null);
+			sites = getDatabase().find(Site.class, true, null, null,
+					"vertical", null, null, null);
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 		return sites;
 	}
-	
-	public List<String> getSitesIds(){
-		List <Site> sites = null;
-		List <String> ids = new ArrayList<String>();
-		
+
+	public List<String> getSitesIds() {
+
+		List<Site> sites = null;
+		List<String> ids = new ArrayList<String>();
+
 		try {
-			if(getDatabase().isOpen() != true)
+			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			sites = getDatabase().find(Site.class, true, null, null, "vertical", null, null, null);
-			for (Site site : sites){
+			sites = getDatabase().find(Site.class, true, null, null,
+					"vertical", null, null, null);
+			for (Site site : sites) {
 				ids.add(site.getId());
 			}
 			getDatabase().close();
@@ -104,26 +111,12 @@ public class DatabaseController {
 		}
 		return ids;
 	}
-		
-	public List<Site> getSlideshows(String site){
-		List <Site> sites = null;
-		
+
+	public Site getSiteById(String id) {
+		List<Site> sites = null;
+
 		try {
-			if(getDatabase().isOpen() != true)
-				getDatabase().open();
-			sites = getDatabase().findByColumn(Site.class, "vertical", site);
-			getDatabase().close();
-		} catch (ActiveRecordException e) {
-			e.printStackTrace();
-		}
-		return sites;
-	}
-	
-	public Site getSiteById(String id){
-		List <Site> sites = null;
-		
-		try {
-			if(getDatabase().isOpen() != true)
+			if (getDatabase().isOpen() != true)
 				getDatabase().open();
 			sites = getDatabase().findByColumn(Site.class, "id", id);
 			getDatabase().close();
@@ -132,68 +125,87 @@ public class DatabaseController {
 		}
 		return sites.get(0);
 	}
-	
-	public boolean sitesLoaded(){
+
+	public boolean sitesLoaded() {
 		boolean sitesLoaded = false;
-		
-		List <Site> sites = null;
-		
+
+		List<Site> sites = null;
+
 		try {
-			if(getDatabase().isOpen() != true)
+			if (getDatabase().isOpen() != true)
 				getDatabase().open();
 			sites = getDatabase().findAll(Site.class);
 			getDatabase().close();
-			if(sites.size() > 0)
+			if (sites.size() > 0)
 				sitesLoaded = true;
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 		return sitesLoaded;
 	}
+
+	// Slideshows Methods
 	
-	public void saveSlideshowImage(SlideshowImage slideshowImage){
-		SlideshowImage slideshowImageToSave = null;
-		
+	public List<Site> getSlideshows(String site) {
+		List<Site> sites = null;
+
 		try {
-			if(getDatabase().isOpen() != true)
+			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			slideshowImageToSave = getDatabase().newEntity(SlideshowImage.class);
+			sites = getDatabase().findByColumn(Site.class, "vertical", site);
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return sites;
+	}
+
+	public void saveSlideshowImage(SlideshowImage slideshowImage) {
+		SlideshowImage slideshowImageToSave = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			slideshowImageToSave = getDatabase()
+					.newEntity(SlideshowImage.class);
 			slideshowImageToSave.slideshowId = slideshowImage.slideshowId;
 			slideshowImageToSave.slideshowOrder = slideshowImage.slideshowOrder;
 			slideshowImageToSave.image = slideshowImage.image;
 			slideshowImageToSave.save();
 			getDatabase().close();
-			
+
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public List <SlideshowImage> getSlideshowImagesById(String id){
-		List <SlideshowImage> slideshowImage = null;
-		
+
+	public List<SlideshowImage> getSlideshowImagesById(String id) {
+		List<SlideshowImage> slideshowImage = null;
+
 		try {
-			if(getDatabase().isOpen() != true)
+			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			slideshowImage = getDatabase().findByColumn(SlideshowImage.class, "slideshow_id", id);
+			slideshowImage = getDatabase().findByColumn(SlideshowImage.class,
+					"slideshow_id", id);
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 		return slideshowImage;
 	}
-	
-	public boolean SlideshowImagesLoaded(String id){
+
+	public boolean SlideshowImagesLoaded(String id) {
 		boolean slideshowImagesLoaded = false;
-		
-		List <SlideshowImage> slideshowImages = null;
-		
+
+		List<SlideshowImage> slideshowImages = null;
+
 		try {
-			if(getDatabase().isOpen() != true)
+			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			slideshowImages = getDatabase().findByColumn(SlideshowImage.class, "slideshow_id", id);
+			slideshowImages = getDatabase().findByColumn(SlideshowImage.class,
+					"slideshow_id", id);
 			getDatabase().close();
-			if(slideshowImages.size() > 0)
+			if (slideshowImages.size() > 0)
 				slideshowImagesLoaded = true;
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
@@ -201,10 +213,33 @@ public class DatabaseController {
 		return slideshowImagesLoaded;
 	}
 	
-	public void closeConnection(){
-		conn.close();
-	}	
+	// Quiz Methods
 	
+	public void saveQuiz(Quiz quiz) {
+		Quiz quizToSave = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			quizToSave = getDatabase().newEntity(Quiz.class);
+			quizToSave.setVertical(quiz.getVertical());
+			quizToSave.setQuizId(quiz.getQuizId());
+			quizToSave.setTitle(quiz.getTitle());
+			quizToSave.setText(quiz.getText());
+			quizToSave.setImageUrl(quiz.getImageUrl());
+			quizToSave.setNextQuizId(quiz.getNextQuizId());
+			quizToSave.save();
+
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void closeConnection() {
+		conn.close();
+	}
+
 	public String capitalize(String str) {
 		int strLen;
 		if (str == null || (strLen = str.length()) == 0) {

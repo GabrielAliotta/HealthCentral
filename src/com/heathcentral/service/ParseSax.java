@@ -9,6 +9,7 @@ import java.util.List;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import com.heathcentral.model.Quiz;
 import com.heathcentral.model.Site;
 
 
@@ -28,7 +29,7 @@ public class ParseSax {
         }
     }
  
-    public List<Site> parse()
+    public List<Site> parseSites()
     {
         SAXParserFactory factory = SAXParserFactory.newInstance();
  
@@ -38,6 +39,23 @@ public class ParseSax {
             SiteHandler handler = new SiteHandler();
             parser.parse(this.getInputStream(), handler);
             return handler.getSites();
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<Quiz> parseQuizzes()
+    {
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+ 
+        try
+        {
+            SAXParser parser = factory.newSAXParser();
+            QuizHandler handler = new QuizHandler();
+            parser.parse(this.getInputStream(), handler);
+            return handler.getQuizzes();
         }
         catch (Exception e)
         {

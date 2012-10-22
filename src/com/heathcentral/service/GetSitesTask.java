@@ -56,7 +56,7 @@ public class GetSitesTask extends AsyncTask<String, Void, Boolean> {
 			while (i != 5) {
 				ParseSax saxparser = new ParseSax("http://c5admin.hcaws.net/index.php/tools/hke?pageSize=100&pageNum="
 								+ i + "&contentType=slideshow");
-				List<Site> recivedSites = saxparser.parse();
+				List<Site> recivedSites = saxparser.parseSites();
 				for (Site site : recivedSites) {
 					
 					

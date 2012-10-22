@@ -43,6 +43,7 @@ public final class R {
         public static final int list_item=0x7f030000;
         public static final int list_slideshow_item=0x7f030001;
         public static final int main=0x7f030002;
+        public static final int site_resources=0x7f030005;
         public static final int slideshow_details=0x7f030003;
         public static final int splash_screen=0x7f030004;
     }
