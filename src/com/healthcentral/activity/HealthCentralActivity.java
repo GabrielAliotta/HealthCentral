@@ -5,19 +5,19 @@ import java.util.List;
 
 import org.kroz.activerecord.ActiveRecordException;
 
-import com.healthcentral.common.CustomAdapter;
-import com.heathcentral.model.Site;
-import com.heathcentral.service.DatabaseController;
-import com.heathcentral.service.GetSitesTask;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.healthcentral.common.CustomAdapter;
+import com.heathcentral.model.Site;
+import com.heathcentral.service.DatabaseController;
+import com.heathcentral.service.GetSitesTask;
 
 public class HealthCentralActivity extends Activity implements
 		OnItemClickListener {
@@ -25,7 +25,7 @@ public class HealthCentralActivity extends Activity implements
 	CustomAdapter customAdapter;
 	DatabaseController databaseController;
 	private ListView mySitesListView;
-	List<Site> sites = new ArrayList();
+	List<Site> sites = new ArrayList<Site>();
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
