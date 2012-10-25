@@ -22,7 +22,7 @@ public class SiteResourcesActivity extends Activity implements
 
 	DatabaseController databaseController;
 	private ListView mySitesListView;
-	List<Site> sites = new ArrayList();
+	List<Site> sites = new ArrayList<Site>();
 	List<String> resourcesList = new ArrayList<String>();
 	private TextView titleTextView;
 	CustomResourcesAdapter customAdapter;

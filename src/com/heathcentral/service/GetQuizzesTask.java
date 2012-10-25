@@ -13,9 +13,11 @@ import android.os.Message;
 
 import com.healthcentral.activity.SiteQuizzesActivity;
 import com.healthcentral.utils.JSONParser;
+import com.heathcentral.model.QuizLearnMoreLink;
 import com.heathcentral.model.QuizQuestionAnswer;
 import com.heathcentral.model.Quiz;
 import com.heathcentral.model.QuizQuestion;
+import com.heathcentral.model.QuizResult;
 
 public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 	DatabaseController databaseController;
@@ -48,11 +50,9 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 	}
 
 	protected Boolean doInBackground(final String... args) {
-
-		JSONArray quizzes = null;
-		JSONArray questions = null;
-		JSONArray answers = null;
-
+ 
+		JSONArray quizzes, questions, answers, textResults, learnMoreLinks = null;
+		
 		// url to make request
 		String url = "http://thcn-db01.bar.tpg.corp/index.php/tools/hke?contentType=quiz&vertical="
 				+ vertical + "&json=true";
@@ -106,10 +106,29 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 							QuizQuestionAnswer questionAnswer = new QuizQuestionAnswer(questionId, answer, answerValid);
 
 							databaseController.saveQuestionAnswer(questionAnswer);
-
 						}
 					}
 
+					textResults = quizJsonObject.getJSONObject("textResults").getJSONArray("textResult");
+					
+					for(int iTextResult = 0; iTextResult < textResults.length(); iTextResult++) {
+						JSONObject textResultJsonObject = textResults.getJSONObject(iTextResult);
+						String range = textResultJsonObject.getString("range");
+						String value = textResultJsonObject.getString("value");
+						
+						QuizResult quizResult = new QuizResult(quizId, range, value);
+						databaseController.saveQuizTextResult(quizResult);
+					}
+					
+					learnMoreLinks = quizJsonObject.getJSONObject("learnMoreLinks").getJSONArray("learnMoreLink");
+					
+					for(int iLearnMoreLink = 0; iLearnMoreLink < learnMoreLinks.length(); iLearnMoreLink++){
+						JSONObject learnMoreLinkJsonObject = textResults.getJSONObject(iLearnMoreLink);
+						String lTitle = learnMoreLinkJsonObject.getString("title");
+						String link = learnMoreLinkJsonObject.getString("link");
+						QuizLearnMoreLink quizLearnMoreLink = new QuizLearnMoreLink(quizId, lTitle, link);
+						databaseController.saveQuizLearnMoreLink(quizLearnMoreLink);
+					}
 				}
 			}
 		} catch (JSONException e) {

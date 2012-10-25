@@ -8,15 +8,15 @@ import org.kroz.activerecord.ActiveRecordException;
 import org.kroz.activerecord.Database;
 import org.kroz.activerecord.DatabaseBuilder;
 
-import com.heathcentral.model.QuizLearnMoreLink;
-import com.heathcentral.model.QuizQuestionAnswer;
+import android.content.Context;
+
 import com.heathcentral.model.Quiz;
+import com.heathcentral.model.QuizLearnMoreLink;
 import com.heathcentral.model.QuizQuestion;
+import com.heathcentral.model.QuizQuestionAnswer;
 import com.heathcentral.model.QuizResult;
 import com.heathcentral.model.Site;
 import com.heathcentral.model.SlideshowImage;
-
-import android.content.Context;
 
 public class DatabaseController {
 
@@ -314,6 +314,40 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void saveQuizTextResult(QuizResult quizResult) {
+		QuizResult quizResultToSave = null;
+		
+		try{
+			if(!getIsOpenDatabase()) getDatabase().open();
+			
+			quizResultToSave = getDatabase().newEntity(QuizResult.class);
+			quizResultToSave.setQuizId(quizResult.getQuizId());
+			quizResultToSave.setRange(quizResult.getRange());
+			quizResultToSave.setValue(quizResult.getValue());
+			quizResultToSave.save();
+			
+			getDatabase().close();
+		}catch(ActiveRecordException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void saveQuizLearnMoreLink(QuizLearnMoreLink quizLearnMoreLink) {
+		QuizLearnMoreLink quizLearnMoreLinkToSave = null;
+		try{
+			if(!getIsOpenDatabase()) getDatabase().open();
+			
+			quizLearnMoreLinkToSave = getDatabase().newEntity(QuizLearnMoreLink.class);
+			quizLearnMoreLinkToSave.setQuizId(quizLearnMoreLink.getQuizId());
+			quizLearnMoreLinkToSave.setTitle(quizLearnMoreLink.getTitle());
+			quizLearnMoreLinkToSave.setLink(quizLearnMoreLink.getLink());
+			quizLearnMoreLinkToSave.save();
+			getDatabase().close();
+		}catch(ActiveRecordException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public boolean QuizLoaded(String quizId) {

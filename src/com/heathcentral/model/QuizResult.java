@@ -3,17 +3,20 @@ package com.heathcentral.model;
 import org.kroz.activerecord.ActiveRecordBase;
 import org.kroz.activerecord.Database;
 
-public class QuizResult extends ActiveRecordBase{
+public class QuizResult extends ActiveRecordBase {
 
 	public String quizId;
 	public String range;
 	public String value;
 	
-	public QuizResult(Database db){
+	public QuizResult() {
+	}
+
+	public QuizResult(Database db) {
 		super(db);
 	}
-	
-	public QuizResult(String quizId, String range, String value){
+
+	public QuizResult(String quizId, String range, String value) {
 		this.quizId = quizId;
 		this.range = range;
 		this.value = value;
@@ -42,5 +45,5 @@ public class QuizResult extends ActiveRecordBase{
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
+
 }

@@ -20,7 +20,7 @@ public class SiteSlideshowsActivity extends Activity implements
 	CustomSlideshowAdapter customAdapter;
 	DatabaseController databaseController;
 	private ListView mySitesListView;
-	List<Site> sites = new ArrayList();
+	List<Site> sites = new ArrayList<Site>();
 	private TextView titleTextView;
 
 	public void onCreate(Bundle paramBundle) {
