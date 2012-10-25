@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -35,6 +34,7 @@ public class HealthCentralActivity extends Activity implements
 		mySitesListView = (ListView) this.findViewById(R.id.list_sites);
 		this.mySitesListView.setOnItemClickListener(this);
 		((TextView) findViewById(R.id.titleTwo)).setText("Central");
+		((TextView) findViewById(R.id.title)).setText("Health");
 		this.databaseController = new DatabaseController(getApplicationContext());
 		try {
 			DatabaseController.initDatabase();

@@ -64,9 +64,8 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 		try {
 			quizzes = json.getJSONArray("items");
 
-			for (int i = 0; i < quizzes.length(); i++) {
-				JSONObject quizJsonObject = quizzes.getJSONObject(i)
-						.getJSONObject("item");
+			for (int iQuiz = 0; iQuiz < quizzes.length(); iQuiz++) {
+				JSONObject quizJsonObject = quizzes.getJSONObject(iQuiz).getJSONObject("item");
 
 				String quizId = quizJsonObject.getString("id");
 
@@ -78,48 +77,35 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 					String verticalId = quizJsonObject.getString("vertical-id");
 					String nextQuizId = quizJsonObject.getString("nextQuiz");
 
-					Quiz quizToSave = new Quiz(verticalId, quizId, title,
-							description, imageUrl, nextQuizId);
+					Quiz quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, nextQuizId);
 
 					databaseController.saveQuiz(quizToSave);
 
-					questions = quizJsonObject.getJSONObject("questions")
-							.getJSONArray("question");
+					questions = quizJsonObject.getJSONObject("questions").getJSONArray("question");
 
-					for (int e = 0; e < questions.length(); e++) {
-						JSONObject questionJsonObject = questions
-								.getJSONObject(e);
+					for (int iQuestion = 0; iQuestion < questions.length(); iQuestion++) {
+						JSONObject questionJsonObject = questions.getJSONObject(iQuestion);
 
-						String questionTitle = questionJsonObject
-								.getString("title");
+						String questionTitle = questionJsonObject.getString("title");
 						String question = questionJsonObject.getString("text");
-						String questionImageUrl = questionJsonObject
-								.getString("image");
-						answers = questionJsonObject.getJSONObject("answers")
-								.getJSONArray("answer");
+						String questionImageUrl = questionJsonObject.getString("image");
+						answers = questionJsonObject.getJSONObject("answers").getJSONArray("answer");
 
 						byte[] questionImage = new byte[] { 127, -128, 0 };
 
-						QuizQuestion questionToSave = new QuizQuestion(quizId,
-								questionTitle, question, questionImageUrl,
-								questionImage);
+						QuizQuestion questionToSave = new QuizQuestion(quizId, questionTitle, question, questionImageUrl, questionImage);
 
-						String questionId = databaseController
-								.saveQuizQuestion(questionToSave);
+						String questionId = databaseController.saveQuizQuestion(questionToSave);
 
-						for (int a = 0; a < answers.length(); a++) {
-							JSONObject answerJsonObject = answers
-									.getJSONObject(e);
+						for (int iAnswer = 0; iAnswer < answers.length(); iAnswer++) {
+							JSONObject answerJsonObject = answers.getJSONObject(iQuestion);
 
 							String answer = answerJsonObject.getString("title");
-							String answerValid = answerJsonObject
-									.getString("valid");
+							String answerValid = answerJsonObject.getString("valid");
 
-							QuizQuestionAnswer questionAnswer = new QuizQuestionAnswer(
-									questionId, answer, answerValid);
+							QuizQuestionAnswer questionAnswer = new QuizQuestionAnswer(questionId, answer, answerValid);
 
-							databaseController
-									.saveQuestionAnswer(questionAnswer);
+							databaseController.saveQuestionAnswer(questionAnswer);
 
 						}
 					}

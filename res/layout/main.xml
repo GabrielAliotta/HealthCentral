@@ -15,7 +15,6 @@
             android:id="@id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Health"
             android:textColor="#ff8dc73f"
             android:textSize="50.0px"
             android:textStyle="bold" />

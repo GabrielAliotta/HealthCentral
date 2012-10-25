@@ -6,26 +6,36 @@ import org.kroz.activerecord.Database;
 public class Quiz extends ActiveRecordBase{
 	
 	public String vertical;
+	public String friendlyTitle;
 	public String quizId;
 	public String title;
 	public String text;
 	public String imageUrl;
 	public String nextQuizId;
 	
-	public Quiz(){		
+	public Quiz(){
 	}
 	
 	public Quiz(Database db){
 		super(db);		
 	}
 	
-	public Quiz(String vertical, String quizId, String title, String text, String imageUrl, String nextQuizId){
+	public Quiz(String vertical, String friendlyTitle, String quizId, String title, String text, String imageUrl, String nextQuizId){
 		this.vertical = vertical;
+		this.friendlyTitle = friendlyTitle;
 		this.quizId = quizId;
 		this.title = title;
 		this.text = text;
 		this.imageUrl = imageUrl;
 		this.nextQuizId = nextQuizId;
+	}
+
+	public String getFriendlyTitle() {
+		return friendlyTitle;
+	}
+
+	public void setFriendlyTitle(String friendlyTitle) {
+		this.friendlyTitle = friendlyTitle;
 	}
 
 	public String getVertical() {

@@ -18,8 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class SiteResourcesActivity extends Activity implements
-AdapterView.OnItemClickListener {
-	
+		AdapterView.OnItemClickListener {
+
 	DatabaseController databaseController;
 	private ListView mySitesListView;
 	List<Site> sites = new ArrayList();
@@ -34,15 +34,17 @@ AdapterView.OnItemClickListener {
 		String str = getIntent().getExtras().getString("site");
 		this.mySitesListView = ((ListView) findViewById(R.id.list_sites));
 		this.titleTextView = ((TextView) findViewById(R.id.title));
-		this.databaseController = new DatabaseController(getApplicationContext());
-		
+		this.databaseController = new DatabaseController(
+				getApplicationContext());
+
 		resourcesList.add("Slideshows");
 		resourcesList.add("Quizzes");
-		
+
 		try {
 			DatabaseController.initDatabase();
 			this.sites = this.databaseController.getSlideshows(str);
-			this.titleTextView.setText(((Site) this.sites.get(0)).getFriendlyTitle());
+			this.titleTextView.setText(((Site) this.sites.get(0))
+					.getFriendlyTitle());
 			this.customAdapter = new CustomResourcesAdapter(this, resourcesList);
 			this.mySitesListView.setOnItemClickListener(this);
 			this.mySitesListView.setAdapter(this.customAdapter);
@@ -52,7 +54,7 @@ AdapterView.OnItemClickListener {
 				localActiveRecordException.printStackTrace();
 		}
 	}
-	
+
 	protected void onDestroy() {
 		super.onDestroy();
 		try {
@@ -67,11 +69,8 @@ AdapterView.OnItemClickListener {
 
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
-		//Intent localIntent = new Intent(this, SiteSlideshowsActivity.class);
-		//localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
-		//startActivity(localIntent);
-		
-		if (paramInt == 0){
+
+		if (paramInt == 0) {
 			Intent localIntent = new Intent(this, SiteSlideshowsActivity.class);
 			localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
 			startActivity(localIntent);

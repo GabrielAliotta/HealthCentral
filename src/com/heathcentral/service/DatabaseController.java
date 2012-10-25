@@ -20,7 +20,7 @@ import android.content.Context;
 public class DatabaseController {
 
 	private final static String dbName = "healthcentral.db";
-	private final static int dbVersion = 14;
+	private final static int dbVersion = 15;
 	private static Context ctx = null;
 	private static DatabaseBuilder builder = null;
 	private static ActiveRecordBase conn = null;
@@ -64,8 +64,7 @@ public class DatabaseController {
 			siteToSave = getDatabase().newEntity(Site.class);
 			siteToSave.setType(site.getType());
 
-			siteToSave.setFriendlyTitle(capitalize(site.getVertical().replace(
-					"-", " ")));
+			siteToSave.setFriendlyTitle(capitalize(site.getVertical().replace("-", " ")));
 			siteToSave.setTitle(site.getTitle());
 			siteToSave.setBlurb(site.getBlurb());
 			siteToSave.setUrl(site.getUrl());
@@ -230,6 +229,7 @@ public class DatabaseController {
 				getDatabase().open();
 			quizToSave = getDatabase().newEntity(Quiz.class);
 			quizToSave.setVertical(quiz.getVertical());
+			quizToSave.setFriendlyTitle(capitalize(quiz.getVertical().replace("-", " ")));
 			quizToSave.setQuizId(quiz.getQuizId());
 			quizToSave.setTitle(quiz.getTitle());
 			quizToSave.setText(quiz.getText());
@@ -250,6 +250,20 @@ public class DatabaseController {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
 			quizzes = getDatabase().find(Quiz.class, true, null, null, "vertical", null, null, null);
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return quizzes;
+	}
+	
+	public List<Quiz> getQuizzesByVertical(String vertical) {
+		List<Quiz> quizzes = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			quizzes = getDatabase().findByColumn(Quiz.class, "vertical", vertical);
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();

@@ -1,5 +1,10 @@
 package com.healthcentral.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.kroz.activerecord.ActiveRecordException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,36 +13,32 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.healthcentral.common.CustomSlideshowAdapter;
+import com.healthcentral.common.CustomQuizAdapter;
+import com.heathcentral.model.Quiz;
 import com.heathcentral.model.Site;
 import com.heathcentral.service.DatabaseController;
-import java.util.ArrayList;
-import java.util.List;
-import org.kroz.activerecord.ActiveRecordException;
+import com.heathcentral.service.GetQuizzesTask;
 
-public class SiteSlideshowsActivity extends Activity implements
+public class SiteQuizzesActivity extends Activity implements
 		AdapterView.OnItemClickListener {
-	CustomSlideshowAdapter customAdapter;
+	CustomQuizAdapter customAdapter;
 	DatabaseController databaseController;
 	private ListView mySitesListView;
-	List<Site> sites = new ArrayList();
+	List<Quiz> quizzes = new ArrayList();
 	private TextView titleTextView;
+	String str = null;
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
-		String str = getIntent().getExtras().getString("site");
+		str = getIntent().getExtras().getString("site");
 		this.mySitesListView = ((ListView) findViewById(R.id.list_sites));
 		this.titleTextView = ((TextView) findViewById(R.id.title));
 		this.databaseController = new DatabaseController(getApplicationContext());
 		try {
 			DatabaseController.initDatabase();
-			this.sites = this.databaseController.getSlideshows(str);
-			this.titleTextView.setText(((Site) this.sites.get(0)).getFriendlyTitle());
-			this.customAdapter = new CustomSlideshowAdapter(this, this.sites, "titles");
-			this.mySitesListView.setOnItemClickListener(this);
-			this.mySitesListView.setAdapter(this.customAdapter);
+			new GetQuizzesTask(this, this.databaseController, str).execute(new String[0]);
 			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)
@@ -60,8 +61,15 @@ public class SiteSlideshowsActivity extends Activity implements
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
 		Intent localIntent = new Intent(this, SlideshowDetails.class);
-		localIntent.putExtra("SlideshowId",
-				((Site) this.sites.get(paramInt)).id);
+		//localIntent.putExtra("SlideshowId",	((Site) this.quizzes.get(paramInt)).id);
 		startActivity(localIntent);
+	}
+	
+	public void updateList(){
+		this.quizzes = this.databaseController.getQuizzesByVertical(str);
+		this.titleTextView.setText(((Quiz) this.quizzes.get(0)).getFriendlyTitle());
+		this.customAdapter = new CustomQuizAdapter(this, this.quizzes);
+		this.mySitesListView.setOnItemClickListener(this);
+		this.mySitesListView.setAdapter(this.customAdapter);
 	}
 }
