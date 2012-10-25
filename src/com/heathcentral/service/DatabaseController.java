@@ -8,7 +8,10 @@ import org.kroz.activerecord.ActiveRecordException;
 import org.kroz.activerecord.Database;
 import org.kroz.activerecord.DatabaseBuilder;
 
+import com.heathcentral.model.QuizQuestionAnswer;
 import com.heathcentral.model.Quiz;
+import com.heathcentral.model.QuizQuestion;
+import com.heathcentral.model.QuizResult;
 import com.heathcentral.model.Site;
 import com.heathcentral.model.SlideshowImage;
 
@@ -17,7 +20,7 @@ import android.content.Context;
 public class DatabaseController {
 
 	private final static String dbName = "healthcentral.db";
-	private final static int dbVersion = 10;
+	private final static int dbVersion = 14;
 	private static Context ctx = null;
 	private static DatabaseBuilder builder = null;
 	private static ActiveRecordBase conn = null;
@@ -31,6 +34,10 @@ public class DatabaseController {
 		builder = new DatabaseBuilder(dbName);
 		builder.addClass(Site.class);
 		builder.addClass(SlideshowImage.class);
+		builder.addClass(Quiz.class);
+		builder.addClass(QuizQuestion.class);
+		builder.addClass(QuizResult.class);
+		builder.addClass(QuizQuestionAnswer.class);
 
 		// Setup the builder
 
@@ -47,7 +54,7 @@ public class DatabaseController {
 	}
 
 	// Sites Methods
-	
+
 	public void saveSite(Site site) {
 		Site siteToSave = null;
 
@@ -145,7 +152,7 @@ public class DatabaseController {
 	}
 
 	// Slideshows Methods
-	
+
 	public List<Site> getSlideshows(String site) {
 		List<Site> sites = null;
 
@@ -212,9 +219,9 @@ public class DatabaseController {
 		}
 		return slideshowImagesLoaded;
 	}
-	
+
 	// Quiz Methods
-	
+
 	public void saveQuiz(Quiz quiz) {
 		Quiz quizToSave = null;
 
@@ -234,6 +241,63 @@ public class DatabaseController {
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<Quiz> getQuizzes() {
+		List<Quiz> quizzes = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			quizzes = getDatabase().find(Quiz.class, true, null, null, "vertical", null, null, null);
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return quizzes;
+	}
+	
+	public String saveQuizQuestion(QuizQuestion quizQuestion) {
+		QuizQuestion quizQuestionToSave = null;
+
+		long questionId = 0;
+		
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			quizQuestionToSave = getDatabase().newEntity(QuizQuestion.class);
+			quizQuestionToSave.setQuizId(quizQuestion.getQuizId());
+			quizQuestionToSave.setTitle(quizQuestion.getTitle());
+			quizQuestionToSave.setQuestion(quizQuestion.getQuestion());
+			quizQuestionToSave.setImageUrl(quizQuestion.getImageUrl());
+			quizQuestionToSave.setImage(quizQuestionToSave.getImage());
+			questionId = quizQuestionToSave.save();
+
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		
+		return String.valueOf(questionId);
+	}
+	
+	public void saveQuestionAnswer(QuizQuestionAnswer questionAnswer) {
+		QuizQuestionAnswer QuestionAnswerToSave = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			QuestionAnswerToSave = getDatabase().newEntity(QuizQuestionAnswer.class);
+			QuestionAnswerToSave.setQuestionId(questionAnswer.getQuestionId());
+			QuestionAnswerToSave.setTitle(questionAnswer.getTitle());
+			QuestionAnswerToSave.setValid(questionAnswer.getValid());
+			QuestionAnswerToSave.save();
+
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void closeConnection() {

@@ -6,7 +6,6 @@ import java.util.List;
 import org.kroz.activerecord.ActiveRecordException;
 
 import com.healthcentral.common.CustomResourcesAdapter;
-import com.healthcentral.common.CustomSlideshowAdapter;
 import com.heathcentral.model.Site;
 import com.heathcentral.service.DatabaseController;
 
@@ -68,8 +67,18 @@ AdapterView.OnItemClickListener {
 
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
-		Intent localIntent = new Intent(this, SiteSlideshowsActivity.class);
-		localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
-		startActivity(localIntent);
+		//Intent localIntent = new Intent(this, SiteSlideshowsActivity.class);
+		//localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
+		//startActivity(localIntent);
+		
+		if (paramInt == 0){
+			Intent localIntent = new Intent(this, SiteSlideshowsActivity.class);
+			localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
+			startActivity(localIntent);
+		} else {
+			Intent localIntent = new Intent(this, SiteQuizzesActivity.class);
+			localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
+			startActivity(localIntent);
+		}
 	}
 }

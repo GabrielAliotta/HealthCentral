@@ -21,6 +21,7 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
+        public static final int Description=0x7f060011;
         public static final int Title=0x7f060001;
         public static final int appName=0x7f06000f;
         public static final int details=0x7f060006;
@@ -41,9 +42,10 @@ public final class R {
     }
     public static final class layout {
         public static final int list_item=0x7f030000;
+        public static final int list_quiz_item=0x7f030005;
         public static final int list_slideshow_item=0x7f030001;
         public static final int main=0x7f030002;
-        public static final int site_resources=0x7f030005;
+        public static final int site_resources=0x7f030006;
         public static final int slideshow_details=0x7f030003;
         public static final int splash_screen=0x7f030004;
     }

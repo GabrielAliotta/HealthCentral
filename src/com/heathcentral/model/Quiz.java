@@ -25,7 +25,7 @@ public class Quiz extends ActiveRecordBase{
 		this.title = title;
 		this.text = text;
 		this.imageUrl = imageUrl;
-		this.nextQuizId = nextQuizId;		
+		this.nextQuizId = nextQuizId;
 	}
 
 	public String getVertical() {

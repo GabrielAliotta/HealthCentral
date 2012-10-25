@@ -19,6 +19,7 @@ import android.os.AsyncTask;
 import android.os.Message;
 
 import com.healthcentral.activity.HealthCentralActivity;
+import com.healthcentral.utils.ParseSax;
 import com.heathcentral.model.Site;
 
 public class GetSitesTask extends AsyncTask<String, Void, Boolean> {

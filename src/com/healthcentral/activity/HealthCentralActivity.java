@@ -35,12 +35,10 @@ public class HealthCentralActivity extends Activity implements
 		mySitesListView = (ListView) this.findViewById(R.id.list_sites);
 		this.mySitesListView.setOnItemClickListener(this);
 		((TextView) findViewById(R.id.titleTwo)).setText("Central");
-		this.databaseController = new DatabaseController(
-				getApplicationContext());
+		this.databaseController = new DatabaseController(getApplicationContext());
 		try {
 			DatabaseController.initDatabase();
-			new GetSitesTask(this, this.databaseController)
-					.execute(new String[0]);
+			new GetSitesTask(this, this.databaseController).execute(new String[0]);						
 			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)
@@ -69,8 +67,7 @@ public class HealthCentralActivity extends Activity implements
 
 	public void updateList() {
 		this.sites = this.databaseController.getSites();
-		CustomAdapter localCustomAdapter = new CustomAdapter(this, this.sites,
-				"vertical");
+		CustomAdapter localCustomAdapter = new CustomAdapter(this, this.sites, "vertical");
 		this.mySitesListView.setAdapter(localCustomAdapter);
 	}
 }
