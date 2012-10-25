@@ -299,6 +299,24 @@ public class DatabaseController {
 		}
 		
 	}
+	
+	public boolean QuizLoaded(String quizId) {
+		boolean quizzesLoaded = false;
+
+		List<Quiz> quizOnDb = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			quizOnDb = getDatabase().findByColumn(Quiz.class, "quiz_Id", quizId);
+			getDatabase().close();
+			if (quizOnDb.size() > 0)
+				quizzesLoaded = true;
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return quizzesLoaded;
+	}
 
 	public void closeConnection() {
 		conn.close();
