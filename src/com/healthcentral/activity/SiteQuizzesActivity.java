@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.healthcentral.common.CustomQuizAdapter;
 import com.heathcentral.model.Quiz;
-import com.heathcentral.model.Site;
 import com.heathcentral.service.DatabaseController;
 import com.heathcentral.service.GetQuizzesTask;
 
@@ -24,7 +23,7 @@ public class SiteQuizzesActivity extends Activity implements
 	CustomQuizAdapter customAdapter;
 	DatabaseController databaseController;
 	private ListView mySitesListView;
-	List<Quiz> quizzes = new ArrayList();
+	List<Quiz> quizzes = new ArrayList<Quiz>();
 	private TextView titleTextView;
 	String str = null;
 

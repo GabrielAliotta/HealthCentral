@@ -8,6 +8,7 @@ import org.kroz.activerecord.ActiveRecordException;
 import org.kroz.activerecord.Database;
 import org.kroz.activerecord.DatabaseBuilder;
 
+import com.heathcentral.model.QuizLearnMoreLink;
 import com.heathcentral.model.QuizQuestionAnswer;
 import com.heathcentral.model.Quiz;
 import com.heathcentral.model.QuizQuestion;
@@ -20,7 +21,7 @@ import android.content.Context;
 public class DatabaseController {
 
 	private final static String dbName = "healthcentral.db";
-	private final static int dbVersion = 15;
+	private final static int dbVersion = 16;
 	private static Context ctx = null;
 	private static DatabaseBuilder builder = null;
 	private static ActiveRecordBase conn = null;
@@ -38,6 +39,7 @@ public class DatabaseController {
 		builder.addClass(QuizQuestion.class);
 		builder.addClass(QuizResult.class);
 		builder.addClass(QuizQuestionAnswer.class);
+		builder.addClass(QuizLearnMoreLink.class);
 
 		// Setup the builder
 
