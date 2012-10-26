@@ -1,7 +1,13 @@
 package com.heathcentral.service;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
+import org.apache.http.util.ByteArrayBuffer;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,8 +82,32 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 					String imageUrl = quizJsonObject.getString("image");
 					String verticalId = quizJsonObject.getString("vertical-id");
 					String nextQuizId = quizJsonObject.getString("nextQuiz");
+					
+					//Get image For question
+					
+					
+					InputStream isForQuiz = null;
+					ByteArrayBuffer bafForQuiz = null;
+					if (imageUrl != null) {
+						try {
+							URL url1 = new URL(imageUrl);
+							isForQuiz = url1.openConnection().getInputStream();
+							BufferedInputStream bis = new BufferedInputStream(isForQuiz, 128);
+							bafForQuiz = new ByteArrayBuffer(128);
+							int current = 0;
+							while ((current = bis.read()) != -1) {
+								bafForQuiz.append((byte) current);
+							}
+						} catch (MalformedURLException e) {
+							e.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
+					
+					//
 
-					Quiz quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, nextQuizId);
+					Quiz quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, bafForQuiz.toByteArray(), nextQuizId);
 
 					databaseController.saveQuiz(quizToSave);
 

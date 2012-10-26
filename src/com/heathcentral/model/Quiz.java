@@ -11,6 +11,7 @@ public class Quiz extends ActiveRecordBase{
 	public String title;
 	public String text;
 	public String imageUrl;
+	public byte[] image;
 	public String nextQuizId;
 	
 	public Quiz(){
@@ -20,14 +21,23 @@ public class Quiz extends ActiveRecordBase{
 		super(db);		
 	}
 	
-	public Quiz(String vertical, String friendlyTitle, String quizId, String title, String text, String imageUrl, String nextQuizId){
+	public Quiz(String vertical, String friendlyTitle, String quizId, String title, String text, String imageUrl,byte[] image, String nextQuizId){
 		this.vertical = vertical;
 		this.friendlyTitle = friendlyTitle;
 		this.quizId = quizId;
 		this.title = title;
 		this.text = text;
 		this.imageUrl = imageUrl;
+		this.image = image;
 		this.nextQuizId = nextQuizId;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	public String getFriendlyTitle() {
