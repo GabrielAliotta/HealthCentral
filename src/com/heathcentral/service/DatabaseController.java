@@ -236,6 +236,7 @@ public class DatabaseController {
 			quizToSave.setTitle(quiz.getTitle());
 			quizToSave.setText(quiz.getText());
 			quizToSave.setImageUrl(quiz.getImageUrl());
+			quizToSave.setImage(quiz.getImage());
 			quizToSave.setNextQuizId(quiz.getNextQuizId());
 			quizToSave.save();
 
