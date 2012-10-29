@@ -82,10 +82,11 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 					String imageUrl = quizJsonObject.getString("image");
 					String verticalId = quizJsonObject.getString("vertical-id");
 					String nextQuizId = quizJsonObject.getString("nextQuiz");
+
+					//TODO IMAGE URL HARCODE
+					imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 					
 					//Get image For question
-					
-					
 					InputStream isForQuiz = null;
 					ByteArrayBuffer bafForQuiz = null;
 					if (imageUrl != null) {
@@ -120,10 +121,31 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 						String question = questionJsonObject.getString("text");
 						String questionImageUrl = questionJsonObject.getString("image");
 						answers = questionJsonObject.getJSONObject("answers").getJSONArray("answer");
+						
+						//TODO IMAGE URL HARCODE
+						questionImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+						
+						//Get Image for question
+						InputStream isForQuestion = null;
+						ByteArrayBuffer bafForQuestion = null;
+						if (imageUrl != null) {
+							try {
+								URL url1 = new URL(imageUrl);
+								isForQuestion = url1.openConnection().getInputStream();
+								BufferedInputStream bis = new BufferedInputStream(isForQuestion, 128);
+								bafForQuestion = new ByteArrayBuffer(128);
+								int current = 0;
+								while ((current = bis.read()) != -1) {
+									bafForQuestion.append((byte) current);
+								}
+							} catch (MalformedURLException e) {
+								e.printStackTrace();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
 
-						byte[] questionImage = new byte[] { 127, -128, 0 };
-
-						QuizQuestion questionToSave = new QuizQuestion(quizId, questionTitle, question, questionImageUrl, questionImage);
+						QuizQuestion questionToSave = new QuizQuestion(quizId, questionTitle, question, questionImageUrl, bafForQuestion.toByteArray());
 
 						String questionId = databaseController.saveQuizQuestion(questionToSave);
 

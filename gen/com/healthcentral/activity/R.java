@@ -21,7 +21,8 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int Description=0x7f060011;
+        public static final int Description=0x7f060012;
+        public static final int QuizImage=0x7f060011;
         public static final int Title=0x7f060001;
         public static final int appName=0x7f06000f;
         public static final int details=0x7f060006;
