@@ -14,16 +14,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.healthcentral.activity.R;
-import com.heathcentral.model.Site;
+import com.heathcentral.model.Slideshow;
 
-public class CustomSlideshowAdapter extends ArrayAdapter<Site>{
+public class CustomSlideshowAdapter extends ArrayAdapter<Slideshow>{
 
 	private final Context context;
-	private final List<Site> values;
+	private final List<Slideshow> values;
 	private final String valueWanted;
 	int pos;
 
-	public CustomSlideshowAdapter(Context context, List<Site> values, String valueWanted) {
+	public CustomSlideshowAdapter(Context context, List<Slideshow> values, String valueWanted) {
 		super(context, R.layout.list_slideshow_item, values);
 		this.context = context;
 		this.values = values;

@@ -5,10 +5,6 @@ import java.util.List;
 
 import org.kroz.activerecord.ActiveRecordException;
 
-import com.healthcentral.common.CustomResourcesAdapter;
-import com.heathcentral.model.Site;
-import com.heathcentral.service.DatabaseController;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,22 +13,26 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.healthcentral.common.CustomResourcesAdapter;
+import com.heathcentral.model.Vertical;
+import com.heathcentral.service.DatabaseController;
+
 public class SiteResourcesActivity extends Activity implements
 		AdapterView.OnItemClickListener {
 
-	DatabaseController databaseController;
+	private DatabaseController databaseController;
 	private ListView mySitesListView;
-	List<Site> sites = new ArrayList<Site>();
-	List<String> resourcesList = new ArrayList<String>();
+	private List<String> resourcesList = new ArrayList<String>();
 	private TextView titleTextView;
-	CustomResourcesAdapter customAdapter;
+	private Vertical vertical;
+	private CustomResourcesAdapter customAdapter;
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
-		String str = getIntent().getExtras().getString("site");
-		this.mySitesListView = ((ListView) findViewById(R.id.list_sites));
+		String str = getIntent().getExtras().getString("vertical");
+		this.mySitesListView = ((ListView) findViewById(R.id.list_verticals));
 		this.titleTextView = ((TextView) findViewById(R.id.title));
 		this.databaseController = new DatabaseController(
 				getApplicationContext());
@@ -42,9 +42,8 @@ public class SiteResourcesActivity extends Activity implements
 
 		try {
 			DatabaseController.initDatabase();
-			this.sites = this.databaseController.getSlideshows(str);
-			this.titleTextView.setText(((Site) this.sites.get(0))
-					.getFriendlyTitle());
+			vertical = this.databaseController.getVerticalById(str);
+			this.titleTextView.setText(vertical.getVerticalName());
 			this.customAdapter = new CustomResourcesAdapter(this, resourcesList);
 			this.mySitesListView.setOnItemClickListener(this);
 			this.mySitesListView.setAdapter(this.customAdapter);
@@ -69,14 +68,13 @@ public class SiteResourcesActivity extends Activity implements
 
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
-
 		if (paramInt == 0) {
 			Intent localIntent = new Intent(this, SiteSlideshowsActivity.class);
-			localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
+			localIntent.putExtra("vertical", vertical.getVerticalId());
 			startActivity(localIntent);
 		} else {
 			Intent localIntent = new Intent(this, SiteQuizzesActivity.class);
-			localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
+			localIntent.putExtra("vertical", vertical.getVerticalId());
 			startActivity(localIntent);
 		}
 	}

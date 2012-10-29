@@ -31,7 +31,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@id/list_sites"
+        android:id="@+id/list_verticals"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"

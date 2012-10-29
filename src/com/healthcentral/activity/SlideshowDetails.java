@@ -8,13 +8,6 @@ import java.util.regex.Pattern;
 
 import org.kroz.activerecord.ActiveRecordException;
 
-import com.heathcentral.model.Site;
-import com.heathcentral.model.SlideshowImage;
-import com.heathcentral.service.DatabaseController;
-import com.heathcentral.service.GetSlideshowImagesTask;
-import com.healthcentral.common.SimpleGestureFilter;
-import com.healthcentral.common.SimpleGestureListener;
-
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -28,6 +21,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.healthcentral.common.SimpleGestureFilter;
+import com.healthcentral.common.SimpleGestureListener;
+import com.heathcentral.model.Slideshow;
+import com.heathcentral.model.SlideshowImage;
+import com.heathcentral.service.DatabaseController;
+import com.heathcentral.service.GetSlideshowImagesTask;
+
 public class SlideshowDetails extends Activity implements SimpleGestureListener {
 
 	private ImageView imageView1;
@@ -38,17 +38,16 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 	private TextView textTitle2;
 	private TextView textContent2;
 
-	boolean isSlide1;
+	private boolean isSlide1;
 
 	private TextView slidePage;
-	DatabaseController databaseController;
-	Site site = new Site();
-	Integer imageIndex;
+	private DatabaseController databaseController;
+	private Slideshow slideshow = new Slideshow();
+	private Integer imageIndex;
 
-	List<String> titles = new ArrayList<String>();
-	List<String> contents = new ArrayList<String>();
-
-	List<SlideshowImage> slideshowImages;
+	private List<String> titles = new ArrayList<String>();
+	private List<String> contents = new ArrayList<String>();
+	private List<SlideshowImage> slideshowImages;
 
 	private SimpleGestureFilter detector;
 
@@ -78,23 +77,23 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 		}
 
 		String slideId = getIntent().getExtras().getString("SlideshowId");
-		site = databaseController.getSiteById(slideId);
+		slideshow = databaseController.getSiteById(slideId);
 
-		new GetSlideshowImagesTask(this, databaseController, site).execute();
+		new GetSlideshowImagesTask(this, databaseController, slideshow).execute();
 	}
 
 	public void updateList() {
-		slideshowImages = databaseController.getSlideshowImagesById(site.id);
+		slideshowImages = databaseController.getSlideshowImagesById(slideshow.id);
 
 		Pattern titlePattern = Pattern.compile("<b>(.*?)</b>");
-		Matcher titleMatcher = titlePattern.matcher(site.getContents());
+		Matcher titleMatcher = titlePattern.matcher(slideshow.getContents());
 
 		while (titleMatcher.find()) {
 			titles.add(titleMatcher.group(1));
 		}
 
 		Pattern p = Pattern.compile("<p><p>(.*?)</p></p>", Pattern.DOTALL);
-		Matcher m = p.matcher(site.getContents());
+		Matcher m = p.matcher(slideshow.getContents());
 
 		while (m.find()) {
 			contents.add(m.group(1));

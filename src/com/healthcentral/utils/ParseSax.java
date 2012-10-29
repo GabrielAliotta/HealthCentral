@@ -10,8 +10,8 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import com.heathcentral.model.Quiz;
-import com.heathcentral.model.Site;
-import com.heathcentral.service.SiteHandler;
+import com.heathcentral.model.Slideshow;
+import com.heathcentral.service.SlideshowHandler;
 
 
 public class ParseSax {
@@ -30,16 +30,16 @@ public class ParseSax {
         }
     }
  
-    public List<Site> parseSites()
+    public List<Slideshow> parseSites()
     {
         SAXParserFactory factory = SAXParserFactory.newInstance();
  
         try
         {
             SAXParser parser = factory.newSAXParser();
-            SiteHandler handler = new SiteHandler();
+            SlideshowHandler handler = new SlideshowHandler();
             parser.parse(this.getInputStream(), handler);
-            return handler.getSites();
+            return handler.getSlideshows();
         }
         catch (Exception e)
         {

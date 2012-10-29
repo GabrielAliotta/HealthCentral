@@ -1,12 +1,7 @@
 package com.healthcentral.common;
 
-
 import java.io.ByteArrayInputStream;
 import java.util.List;
-
-import com.healthcentral.activity.R;
-import com.heathcentral.model.Site;
-
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,15 +13,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.healthcentral.activity.R;
+import com.heathcentral.model.Slideshow;
 
-public class CustomAdapter extends ArrayAdapter<Site> {
+
+public class CustomAdapter extends ArrayAdapter<Slideshow> {
 
 	private final Context context;
-	private final List<Site> values;
+	private final List<Slideshow> values;
 	private final String valueWanted;
 	int pos;
 
-	public CustomAdapter(Context context, List<Site> values, String valueWanted) {
+	public CustomAdapter(Context context, List<Slideshow> values, String valueWanted) {
 		super(context, R.layout.list_item, values);
 		this.context = context;
 		this.values = values;

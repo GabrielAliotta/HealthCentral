@@ -15,13 +15,14 @@ import com.heathcentral.model.QuizLearnMoreLink;
 import com.heathcentral.model.QuizQuestion;
 import com.heathcentral.model.QuizQuestionAnswer;
 import com.heathcentral.model.QuizResult;
-import com.heathcentral.model.Site;
+import com.heathcentral.model.Slideshow;
 import com.heathcentral.model.SlideshowImage;
+import com.heathcentral.model.Vertical;
 
 public class DatabaseController {
 
 	private final static String dbName = "healthcentral.db";
-	private final static int dbVersion = 16;
+	private final static int dbVersion = 17;
 	private static Context ctx = null;
 	private static DatabaseBuilder builder = null;
 	private static ActiveRecordBase conn = null;
@@ -33,14 +34,15 @@ public class DatabaseController {
 
 	public static void initDatabase() throws ActiveRecordException {
 		builder = new DatabaseBuilder(dbName);
-		builder.addClass(Site.class);
+		builder.addClass(Slideshow.class);
 		builder.addClass(SlideshowImage.class);
 		builder.addClass(Quiz.class);
 		builder.addClass(QuizQuestion.class);
 		builder.addClass(QuizResult.class);
 		builder.addClass(QuizQuestionAnswer.class);
 		builder.addClass(QuizLearnMoreLink.class);
-
+		builder.addClass(Vertical.class);
+		
 		// Setup the builder
 
 		Database.setBuilder(builder);
@@ -55,18 +57,88 @@ public class DatabaseController {
 		return conn.isOpen();
 	}
 
-	// Sites Methods
+	// Vertical Methods
 
-	public void saveSite(Site site) {
-		Site siteToSave = null;
+	public void saveVertical(Vertical vertical) {
+		Vertical verticalToSave = null;
+
+		try {
+			if (!getIsOpenDatabase())
+				getDatabase().open();
+
+			verticalToSave = getDatabase().newEntity(Vertical.class);
+			verticalToSave.setVerticalId(vertical.getVerticalId());
+			verticalToSave.setVerticalName(vertical.getVerticalName());
+			verticalToSave.setVerticalImageURL(vertical.getVerticalImageURL());
+			verticalToSave.setVerticalImage(vertical.getVerticalImage());
+			verticalToSave.setHasSlideshows(vertical.getHasSlideshows());
+			verticalToSave.setHasQuizzes(vertical.getHasQuizzes());
+
+			verticalToSave.save();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean VerticalLoaded(String verticalId) {
+		boolean verticalLoaded = false;
+
+		List<Vertical> verticalOnDb = null;
 
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			siteToSave = getDatabase().newEntity(Site.class);
+			verticalOnDb = getDatabase()
+					.findByColumn(Vertical.class, "vertical_id", verticalId);
+			getDatabase().close();
+			if (verticalOnDb.size() > 0)
+				verticalLoaded = true;
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return verticalLoaded;
+	}
+	
+	public Vertical getVerticalById(String verticalId) {
+		Vertical vertical = null;
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			vertical = getDatabase().findByColumn(Vertical.class, "vertical_id", verticalId).get(0);
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return vertical;
+	}
+	
+	public List<Vertical> getVerticals() {
+		List<Vertical> verticals = new ArrayList<Vertical>();
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			verticals = getDatabase().find(Vertical.class, true, null, null,
+					null, null, null, null);
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return verticals;
+	}
+	
+	// Sites Methods
+
+	public void saveSite(Slideshow site) {
+		Slideshow siteToSave = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			siteToSave = getDatabase().newEntity(Slideshow.class);
 			siteToSave.setType(site.getType());
 
-			siteToSave.setFriendlyTitle(capitalize(site.getVertical().replace("-", " ")));
+			siteToSave.setFriendlyTitle(capitalize(site.getVertical().replace(
+					"-", " ")));
 			siteToSave.setTitle(site.getTitle());
 			siteToSave.setBlurb(site.getBlurb());
 			siteToSave.setUrl(site.getUrl());
@@ -85,13 +157,13 @@ public class DatabaseController {
 		}
 	}
 
-	public List<Site> getSites() {
-		List<Site> sites = null;
+	public List<Slideshow> getSites() {
+		List<Slideshow> sites = null;
 
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			sites = getDatabase().find(Site.class, true, null, null,
+			sites = getDatabase().find(Slideshow.class, true, null, null,
 					"vertical", null, null, null);
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
@@ -102,15 +174,15 @@ public class DatabaseController {
 
 	public List<String> getSitesIds() {
 
-		List<Site> sites = null;
+		List<Slideshow> sites = null;
 		List<String> ids = new ArrayList<String>();
 
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			sites = getDatabase().find(Site.class, true, null, null,
+			sites = getDatabase().find(Slideshow.class, true, null, null,
 					"vertical", null, null, null);
-			for (Site site : sites) {
+			for (Slideshow site : sites) {
 				ids.add(site.getId());
 			}
 			getDatabase().close();
@@ -120,13 +192,13 @@ public class DatabaseController {
 		return ids;
 	}
 
-	public Site getSiteById(String id) {
-		List<Site> sites = null;
+	public Slideshow getSiteById(String id) {
+		List<Slideshow> sites = null;
 
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			sites = getDatabase().findByColumn(Site.class, "id", id);
+			sites = getDatabase().findByColumn(Slideshow.class, "id", id);
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
@@ -137,12 +209,12 @@ public class DatabaseController {
 	public boolean sitesLoaded() {
 		boolean sitesLoaded = false;
 
-		List<Site> sites = null;
+		List<Slideshow> sites = null;
 
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			sites = getDatabase().findAll(Site.class);
+			sites = getDatabase().findAll(Slideshow.class);
 			getDatabase().close();
 			if (sites.size() > 0)
 				sitesLoaded = true;
@@ -154,13 +226,13 @@ public class DatabaseController {
 
 	// Slideshows Methods
 
-	public List<Site> getSlideshows(String site) {
-		List<Site> sites = null;
+	public List<Slideshow> getSlideshows(String site) {
+		List<Slideshow> sites = null;
 
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			sites = getDatabase().findByColumn(Site.class, "vertical", site);
+			sites = getDatabase().findByColumn(Slideshow.class, "vertical", site);
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
@@ -231,7 +303,8 @@ public class DatabaseController {
 				getDatabase().open();
 			quizToSave = getDatabase().newEntity(Quiz.class);
 			quizToSave.setVertical(quiz.getVertical());
-			quizToSave.setFriendlyTitle(capitalize(quiz.getVertical().replace("-", " ")));
+			quizToSave.setFriendlyTitle(capitalize(quiz.getVertical().replace(
+					"-", " ")));
 			quizToSave.setQuizId(quiz.getQuizId());
 			quizToSave.setTitle(quiz.getTitle());
 			quizToSave.setText(quiz.getText());
@@ -251,33 +324,35 @@ public class DatabaseController {
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			quizzes = getDatabase().find(Quiz.class, true, null, null, "vertical", null, null, null);
+			quizzes = getDatabase().find(Quiz.class, true, null, null,
+					"vertical", null, null, null);
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 		return quizzes;
 	}
-	
+
 	public List<Quiz> getQuizzesByVertical(String vertical) {
 		List<Quiz> quizzes = null;
 
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			quizzes = getDatabase().findByColumn(Quiz.class, "vertical", vertical);
+			quizzes = getDatabase().findByColumn(Quiz.class, "vertical",
+					vertical);
 			getDatabase().close();
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 		return quizzes;
 	}
-	
+
 	public String saveQuizQuestion(QuizQuestion quizQuestion) {
 		QuizQuestion quizQuestionToSave = null;
 
 		long questionId = 0;
-		
+
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
@@ -293,17 +368,18 @@ public class DatabaseController {
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
-		
+
 		return String.valueOf(questionId);
 	}
-	
+
 	public void saveQuestionAnswer(QuizQuestionAnswer questionAnswer) {
 		QuizQuestionAnswer QuestionAnswerToSave = null;
 
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			QuestionAnswerToSave = getDatabase().newEntity(QuizQuestionAnswer.class);
+			QuestionAnswerToSave = getDatabase().newEntity(
+					QuizQuestionAnswer.class);
 			QuestionAnswerToSave.setQuestionId(questionAnswer.getQuestionId());
 			QuestionAnswerToSave.setTitle(questionAnswer.getTitle());
 			QuestionAnswerToSave.setValid(questionAnswer.getValid());
@@ -313,43 +389,46 @@ public class DatabaseController {
 		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public void saveQuizTextResult(QuizResult quizResult) {
 		QuizResult quizResultToSave = null;
-		
-		try{
-			if(!getIsOpenDatabase()) getDatabase().open();
-			
+
+		try {
+			if (!getIsOpenDatabase())
+				getDatabase().open();
+
 			quizResultToSave = getDatabase().newEntity(QuizResult.class);
 			quizResultToSave.setQuizId(quizResult.getQuizId());
 			quizResultToSave.setRange(quizResult.getRange());
 			quizResultToSave.setValue(quizResult.getValue());
 			quizResultToSave.save();
-			
+
 			getDatabase().close();
-		}catch(ActiveRecordException e) {
+		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void saveQuizLearnMoreLink(QuizLearnMoreLink quizLearnMoreLink) {
 		QuizLearnMoreLink quizLearnMoreLinkToSave = null;
-		try{
-			if(!getIsOpenDatabase()) getDatabase().open();
-			
-			quizLearnMoreLinkToSave = getDatabase().newEntity(QuizLearnMoreLink.class);
+		try {
+			if (!getIsOpenDatabase())
+				getDatabase().open();
+
+			quizLearnMoreLinkToSave = getDatabase().newEntity(
+					QuizLearnMoreLink.class);
 			quizLearnMoreLinkToSave.setQuizId(quizLearnMoreLink.getQuizId());
 			quizLearnMoreLinkToSave.setTitle(quizLearnMoreLink.getTitle());
 			quizLearnMoreLinkToSave.setLink(quizLearnMoreLink.getLink());
 			quizLearnMoreLinkToSave.save();
 			getDatabase().close();
-		}catch(ActiveRecordException e) {
+		} catch (ActiveRecordException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public boolean QuizLoaded(String quizId) {
 		boolean quizzesLoaded = false;
 
@@ -358,7 +437,8 @@ public class DatabaseController {
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			quizOnDb = getDatabase().findByColumn(Quiz.class, "quiz_Id", quizId);
+			quizOnDb = getDatabase()
+					.findByColumn(Quiz.class, "quiz_Id", quizId);
 			getDatabase().close();
 			if (quizOnDb.size() > 0)
 				quizzesLoaded = true;

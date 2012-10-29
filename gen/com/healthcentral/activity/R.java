@@ -27,6 +27,7 @@ public final class R {
         public static final int details=0x7f060006;
         public static final int linearLayout=0x7f060002;
         public static final int list_sites=0x7f060005;
+        public static final int list_verticals=0x7f060012;
         public static final int logo=0x7f060010;
         public static final int relativeLayout=0x7f060007;
         public static final int slideshowImage=0x7f060000;

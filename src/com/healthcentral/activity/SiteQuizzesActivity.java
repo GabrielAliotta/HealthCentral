@@ -20,24 +20,24 @@ import com.heathcentral.service.GetQuizzesTask;
 
 public class SiteQuizzesActivity extends Activity implements
 		AdapterView.OnItemClickListener {
-	CustomQuizAdapter customAdapter;
-	DatabaseController databaseController;
-	private ListView mySitesListView;
-	List<Quiz> quizzes = new ArrayList<Quiz>();
 	private TextView titleTextView;
-	String str = null;
+	private String verticalId = null;
+	private CustomQuizAdapter customAdapter;
+	private DatabaseController databaseController;
+	private ListView mySitesListView;
+	private List<Quiz> quizzes = new ArrayList<Quiz>();
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
-		str = getIntent().getExtras().getString("site");
-		this.mySitesListView = ((ListView) findViewById(R.id.list_sites));
+		verticalId = getIntent().getExtras().getString("vertical");
+		this.mySitesListView = ((ListView) findViewById(R.id.list_verticals));
 		this.titleTextView = ((TextView) findViewById(R.id.title));
 		this.databaseController = new DatabaseController(getApplicationContext());
 		try {
 			DatabaseController.initDatabase();
-			new GetQuizzesTask(this, this.databaseController, str).execute(new String[0]);
+			new GetQuizzesTask(this, this.databaseController, verticalId).execute(new String[0]);
 			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)
@@ -60,12 +60,11 @@ public class SiteQuizzesActivity extends Activity implements
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
 		Intent localIntent = new Intent(this, SlideshowDetails.class);
-		//localIntent.putExtra("SlideshowId",	((Site) this.quizzes.get(paramInt)).id);
 		startActivity(localIntent);
 	}
 	
 	public void updateList(){
-		this.quizzes = this.databaseController.getQuizzesByVertical(str);
+		this.quizzes = this.databaseController.getQuizzesByVertical(verticalId);
 		this.titleTextView.setText(((Quiz) this.quizzes.get(0)).getFriendlyTitle());
 		this.customAdapter = new CustomQuizAdapter(this, this.quizzes);
 		this.mySitesListView.setOnItemClickListener(this);

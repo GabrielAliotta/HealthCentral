@@ -14,31 +14,32 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.healthcentral.common.CustomAdapter;
-import com.heathcentral.model.Site;
+import com.healthcentral.common.CustomVerticalAdapter;
+import com.heathcentral.model.Vertical;
 import com.heathcentral.service.DatabaseController;
-import com.heathcentral.service.GetSitesTask;
+import com.heathcentral.service.GetVerticalsTask;
 
 public class HealthCentralActivity extends Activity implements
 		OnItemClickListener {
 
-	CustomAdapter customAdapter;
-	DatabaseController databaseController;
-	private ListView mySitesListView;
-	List<Site> sites = new ArrayList<Site>();
+	private DatabaseController databaseController;
+	private ListView verticalsListView;
+	private List<Vertical> verticals = new ArrayList<Vertical>();
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
-		mySitesListView = (ListView) this.findViewById(R.id.list_sites);
-		this.mySitesListView.setOnItemClickListener(this);
+		verticalsListView = (ListView) this.findViewById(R.id.list_verticals);
+		this.verticalsListView.setOnItemClickListener(this);
 		((TextView) findViewById(R.id.titleTwo)).setText("Central");
 		((TextView) findViewById(R.id.title)).setText("Health");
-		this.databaseController = new DatabaseController(getApplicationContext());
+		this.databaseController = new DatabaseController(
+				getApplicationContext());
 		try {
 			DatabaseController.initDatabase();
-			new GetSitesTask(this, this.databaseController).execute(new String[0]);						
+			new GetVerticalsTask(this, this.databaseController)
+					.execute(new String[0]);
 			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)
@@ -61,13 +62,15 @@ public class HealthCentralActivity extends Activity implements
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
 		Intent localIntent = new Intent(this, SiteResourcesActivity.class);
-		localIntent.putExtra("site", ((Site) this.sites.get(paramInt)).vertical);
+		localIntent.putExtra("vertical",
+				((Vertical) this.verticals.get(paramInt)).verticalId);
 		startActivity(localIntent);
 	}
 
 	public void updateList() {
-		this.sites = this.databaseController.getSites();
-		CustomAdapter localCustomAdapter = new CustomAdapter(this, this.sites, "vertical");
-		this.mySitesListView.setAdapter(localCustomAdapter);
+		this.verticals = this.databaseController.getVerticals();
+		CustomVerticalAdapter localCustomAdapter = new CustomVerticalAdapter(
+				this, this.verticals);
+		this.verticalsListView.setAdapter(localCustomAdapter);
 	}
 }

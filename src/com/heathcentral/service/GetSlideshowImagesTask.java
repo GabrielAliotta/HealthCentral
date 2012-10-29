@@ -25,17 +25,17 @@ import android.os.AsyncTask;
 import android.os.Message;
 
 import com.healthcentral.activity.SlideshowDetails;
-import com.heathcentral.model.Site;
+import com.heathcentral.model.Slideshow;
 import com.heathcentral.model.SlideshowImage;
 
 public class GetSlideshowImagesTask extends AsyncTask<String, Void, Boolean> {
 	DatabaseController databaseController;
 	private ProgressDialog dialog;
-	Site site;
+	Slideshow site;
 	List<Message> titles;
 	private Context context;
 
-	public GetSlideshowImagesTask(Context context, DatabaseController databaseController, Site site) {
+	public GetSlideshowImagesTask(Context context, DatabaseController databaseController, Slideshow site) {
 		this.databaseController = databaseController;
 		this.context = context;
 		this.site = site;
