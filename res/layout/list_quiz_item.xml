@@ -4,13 +4,19 @@
     android:layout_height="fill_parent"
     android:background="@android:color/white"
     android:paddingBottom="20.0px" >
+    
+    <ImageView
+        android:id="@+id/QuizImage"
+        android:layout_width="100.0px"
+        android:layout_height="100.0px" />    
 
     <TextView
         android:id="@id/Title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="wrap_content"        
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/QuizImage"
         android:gravity="center"
         android:text="test"
         android:textColor="#ff007fb2"
@@ -23,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Title"
         android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/QuizImage"
         android:gravity="center"
         android:text="description"
         android:textColor="#ff007fb2"

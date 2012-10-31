@@ -22,7 +22,7 @@ import com.heathcentral.model.Vertical;
 public class DatabaseController {
 
 	private final static String dbName = "healthcentral.db";
-	private final static int dbVersion = 17;
+	private final static int dbVersion = 18;
 	private static Context ctx = null;
 	private static DatabaseBuilder builder = null;
 	private static ActiveRecordBase conn = null;
@@ -303,12 +303,12 @@ public class DatabaseController {
 				getDatabase().open();
 			quizToSave = getDatabase().newEntity(Quiz.class);
 			quizToSave.setVertical(quiz.getVertical());
-			quizToSave.setFriendlyTitle(capitalize(quiz.getVertical().replace(
-					"-", " ")));
+			quizToSave.setFriendlyTitle(capitalize(quiz.getVertical().replace("-", " ")));
 			quizToSave.setQuizId(quiz.getQuizId());
 			quizToSave.setTitle(quiz.getTitle());
 			quizToSave.setText(quiz.getText());
 			quizToSave.setImageUrl(quiz.getImageUrl());
+			quizToSave.setImage(quiz.getImage());
 			quizToSave.setNextQuizId(quiz.getNextQuizId());
 			quizToSave.save();
 
