@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, HealthCentralActivity!</string>
     <string name="app_name">HealthCentral</string>
+    <string name="app_local_env">true</string>
 </resources>

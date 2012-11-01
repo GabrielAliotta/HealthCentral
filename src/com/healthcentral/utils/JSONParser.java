@@ -15,6 +15,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.healthcentral.activity.R;
+
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
@@ -25,12 +27,27 @@ public class JSONParser {
 	static JSONObject jObj = null;
 	static String json = "";
 
-	// constructor
-	public JSONParser() {
+	private String url;
+	private Context context;
+	private String file;
 
+	public JSONParser() {
 	}
 
-	public JSONObject getJSONFromUrl(String url) {
+	public JSONParser(String url, Context context, String file) {
+		this.url = url;
+		this.context = context;
+		this.file = file;
+	}
+
+	public JSONObject getJSON() {
+		Boolean isLocalEnv = Boolean.parseBoolean(this.context
+				.getString(R.string.app_local_env));
+		return (isLocalEnv) ? this.getJSONFromTxt(this.context, this.file)
+				: this.getJSONFromUrl(this.url);
+	}
+
+	private JSONObject getJSONFromUrl(String url) {
 
 		// Making HTTP request
 		try {
@@ -76,9 +93,9 @@ public class JSONParser {
 
 	}
 
-	public JSONObject getJSONFromTxt(Context context, String assetsTxt) {
-		
-		AssetManager am =  context.getAssets();
+	private JSONObject getJSONFromTxt(Context context, String assetsTxt) {
+
+		AssetManager am = context.getAssets();
 		InputStream is = null;
 		try {
 			is = am.open(assetsTxt);

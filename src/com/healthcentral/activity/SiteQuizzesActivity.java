@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.healthcentral.common.CustomQuizAdapter;
 import com.heathcentral.model.Quiz;
-import com.heathcentral.model.Slideshow;
 import com.heathcentral.service.DatabaseController;
 import com.heathcentral.service.GetQuizzesTask;
 

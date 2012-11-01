@@ -25,9 +25,9 @@ import com.heathcentral.model.Slideshow;
 public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 
 	private static final String C5_HKE_TOOL_URL = "http://thcn-db01.bar.tpg.corp/index.php/tools/hke";
-	DatabaseController databaseController;
+	private DatabaseController databaseController;
 	private ProgressDialog dialog;
-	List<Message> titles;
+	private List<Message> titles;
 	private Context context;
 	private String verticalId;
 

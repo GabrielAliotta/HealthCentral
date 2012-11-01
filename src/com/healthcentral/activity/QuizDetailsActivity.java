@@ -5,10 +5,6 @@ import java.util.List;
 
 import org.kroz.activerecord.ActiveRecordException;
 
-import com.heathcentral.model.QuizQuestion;
-import com.heathcentral.model.QuizQuestionAnswer;
-import com.heathcentral.service.DatabaseController;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
@@ -16,6 +12,10 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.heathcentral.model.QuizQuestion;
+import com.heathcentral.model.QuizQuestionAnswer;
+import com.heathcentral.service.DatabaseController;
 
 
 public class QuizDetailsActivity extends Activity{

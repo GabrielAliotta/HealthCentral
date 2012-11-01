@@ -59,6 +59,7 @@ public final class R {
         public static final int splash_screen=0x7f030004;
     }
     public static final class string {
+        public static final int app_local_env=0x7f050002;
         public static final int app_name=0x7f050001;
         public static final int hello=0x7f050000;
     }
