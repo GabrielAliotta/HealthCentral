@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/quiz_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="TITLE"
+        android:textColor="#ff8dc73f"
+        android:textSize="40.0px"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/quiz_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quiz_title"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff007fb2"
+        android:textSize="40.0px" 
+        android:textStyle="bold"/>
+
+    <ListView
+        android:id="@+id/list_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quiz_question"
+        android:layout_above="@+id/quiz_submit_btn"
+        android:layout_marginTop="20px"
+        android:divider="#00000000"
+        android:choiceMode="singleChoice" />
+
+    <!-- <ImageView -->
+    <!-- android:id="@id/quizImage" -->
+    <!-- android:layout_width="200.0px" -->
+    <!-- android:layout_height="200.0px" -->
+    <!-- android:layout_below="@id/slideshow_title1" -->
+    <!-- android:layout_centerHorizontal="true" /> -->
+
+    <Button
+        android:id="@+id/quiz_submit_btn"
+        android:layout_width="180px"
+        android:layout_height="70px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20px"
+        android:layout_marginLeft="40px"
+        android:background="#f99846"
+        android:text="Submit"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+</RelativeLayout>

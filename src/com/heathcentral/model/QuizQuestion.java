@@ -6,7 +6,8 @@ import org.kroz.activerecord.Database;
 public class QuizQuestion extends ActiveRecordBase{
 
 	public String quizId;
-	public String title;
+	public String quizTitle;
+	public String answerText;
 	public String question;
 	public String imageUrl;
 	public byte[] image;
@@ -18,12 +19,29 @@ public class QuizQuestion extends ActiveRecordBase{
 		super(db);		
 	}
 	
-	public QuizQuestion(String quizId, String title, String question, String imageUrl, byte[] image){
+	public QuizQuestion(String quizId, String quizTitle, String answerText, String question, String imageUrl, byte[] image){
 		this.quizId = quizId;
-		this.title = title;
+		this.quizTitle = quizTitle;
+		this.answerText = answerText;
 		this.question = question;
 		this.imageUrl = imageUrl;
 		this.image = image;
+	}
+
+	public String getQuizTitle() {
+		return quizTitle;
+	}
+
+	public void setQuizTitle(String quizTitle) {
+		this.quizTitle = quizTitle;
+	}
+
+	public String getAnswerText() {
+		return answerText;
+	}
+
+	public void setAnswerText(String answerText) {
+		this.answerText = answerText;
 	}
 
 	public String getQuizId() {
@@ -35,11 +53,11 @@ public class QuizQuestion extends ActiveRecordBase{
 	}
 
 	public String getTitle() {
-		return title;
+		return answerText;
 	}
 
 	public void setTitle(String title) {
-		this.title = title;
+		this.answerText = title;
 	}
 
 	public String getQuestion() {

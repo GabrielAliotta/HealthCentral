@@ -79,11 +79,14 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 
 					String description = quizJsonObject.getString("text");
 					String title = quizJsonObject.getString("title");
-//					String imageUrl = quizJsonObject.getString("image");
-					String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+					String imageUrl = quizJsonObject.getString("image");
+					//String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 					String verticalId = quizJsonObject.getString("vertical-id");
 					String nextQuizId = quizJsonObject.getString("nextQuiz");
 
+					Quiz quizToSave;
+					
+					if(!imageUrl.equals("")){
 					//Get image For Quiz
 					InputStream isForQuiz = null;
 					ByteArrayBuffer bafForQuiz = null;
@@ -103,11 +106,11 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 							e.printStackTrace();
 						}
 					}
-
-					//
-
-					Quiz quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, bafForQuiz.toByteArray(), nextQuizId);
-
+					quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, bafForQuiz.toByteArray(), nextQuizId);
+					}else {
+					quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, new byte[0], nextQuizId);
+					}
+					
 					databaseController.saveQuiz(quizToSave);
 
 					questions = quizJsonObject.getJSONObject("questions").getJSONArray("question");
@@ -115,10 +118,10 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 					for (int iQuestion = 0; iQuestion < questions.length(); iQuestion++) {
 						JSONObject questionJsonObject = questions.getJSONObject(iQuestion);
 
-						String questionTitle = questionJsonObject.getString("title");
-						String question = questionJsonObject.getString("text");
-//						String questionImageUrl = questionJsonObject.getString("image");
-						String questionImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+						String question = questionJsonObject.getString("title");
+						String answerText = questionJsonObject.getString("text");
+						String questionImageUrl = questionJsonObject.getString("image");
+						//String questionImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 						answers = questionJsonObject.getJSONObject("answers").getJSONArray("answer");
 
 						//Get Image for question
@@ -141,13 +144,13 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 							}
 						}
 
-						QuizQuestion questionToSave = new QuizQuestion(quizId, questionTitle, question, questionImageUrl, bafForQuestion.toByteArray());
+						QuizQuestion questionToSave = new QuizQuestion(quizId, title, answerText, question, questionImageUrl, bafForQuestion.toByteArray());
 
 						String questionId = databaseController.saveQuizQuestion(questionToSave);
 
 						for (int iAnswer = 0; iAnswer < answers.length(); iAnswer++) {
-							JSONObject answerJsonObject = answers.getJSONObject(iQuestion);
-
+							JSONObject answerJsonObject = answers.getJSONObject(iAnswer);
+							
 							String answer = answerJsonObject.getString("title");
 							String answerValid = answerJsonObject.getString("valid");
 

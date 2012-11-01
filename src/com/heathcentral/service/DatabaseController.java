@@ -22,7 +22,7 @@ import com.heathcentral.model.Vertical;
 public class DatabaseController {
 
 	private final static String dbName = "healthcentral.db";
-	private final static int dbVersion = 18;
+	private final static int dbVersion = 19;
 	private static Context ctx = null;
 	private static DatabaseBuilder builder = null;
 	private static ActiveRecordBase conn = null;
@@ -347,6 +347,20 @@ public class DatabaseController {
 		}
 		return quizzes;
 	}
+	
+	public List<QuizQuestion> getQuestionsByVertical(String quizId) {
+		List<QuizQuestion> questions = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			questions = getDatabase().findByColumn(QuizQuestion.class, "quiz_Id", quizId);
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return questions;
+	}
 
 	public String saveQuizQuestion(QuizQuestion quizQuestion) {
 		QuizQuestion quizQuestionToSave = null;
@@ -358,7 +372,8 @@ public class DatabaseController {
 				getDatabase().open();
 			quizQuestionToSave = getDatabase().newEntity(QuizQuestion.class);
 			quizQuestionToSave.setQuizId(quizQuestion.getQuizId());
-			quizQuestionToSave.setTitle(quizQuestion.getTitle());
+			quizQuestionToSave.setQuizTitle(quizQuestion.getQuizTitle());
+			quizQuestionToSave.setAnswerText(quizQuestion.getAnswerText());
 			quizQuestionToSave.setQuestion(quizQuestion.getQuestion());
 			quizQuestionToSave.setImageUrl(quizQuestion.getImageUrl());
 			quizQuestionToSave.setImage(quizQuestionToSave.getImage());
@@ -446,6 +461,20 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 		return quizzesLoaded;
+	}
+	
+	public List<QuizQuestionAnswer> getAnswersByQuestionId(String questionId) {
+		List<QuizQuestionAnswer> answers = null;
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			answers = getDatabase().findByColumn(QuizQuestionAnswer.class, "question_Id", questionId);
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		return answers;
 	}
 
 	public void closeConnection() {

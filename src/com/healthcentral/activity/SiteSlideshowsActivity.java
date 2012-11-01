@@ -60,8 +60,7 @@ public class SiteSlideshowsActivity extends Activity implements
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
 		Intent localIntent = new Intent(this, SlideshowDetails.class);
-		localIntent.putExtra("SlideshowId",
-				((Slideshow) this.sites.get(paramInt)).id);
+		localIntent.putExtra("SlideshowId",	((Slideshow) this.sites.get(paramInt)).id);
 		startActivity(localIntent);
 	}
 	

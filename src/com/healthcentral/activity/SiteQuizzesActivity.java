@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.healthcentral.common.CustomQuizAdapter;
 import com.heathcentral.model.Quiz;
+import com.heathcentral.model.Slideshow;
 import com.heathcentral.service.DatabaseController;
 import com.heathcentral.service.GetQuizzesTask;
 
@@ -59,7 +60,8 @@ public class SiteQuizzesActivity extends Activity implements
 
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
-		Intent localIntent = new Intent(this, SlideshowDetails.class);
+		Intent localIntent = new Intent(this, QuizDetailsActivity.class);
+		localIntent.putExtra("QuizId",	((Quiz) this.quizzes.get(paramInt)).getQuizId());
 		startActivity(localIntent);
 	}
 	
