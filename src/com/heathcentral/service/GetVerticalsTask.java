@@ -11,8 +11,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.AsyncTask;
 
 import com.healthcentral.activity.HealthCentralActivity;
@@ -47,7 +49,9 @@ public class GetVerticalsTask extends AsyncTask<String, Void, Boolean> {
 	protected Boolean doInBackground(final String... args) {
 		JSONArray verticals = null;
 		JSONParser parser = new JSONParser();
-		JSONObject json = parser.getJSONFromUrl(VERTICAL_URL);
+		//JSONObject json = parser.getJSONFromUrl(VERTICAL_URL);
+
+		JSONObject json = parser.getJSONFromTxt(this.context, "verticals.txt");
 		
 		try{
 			verticals = json.getJSONArray("verticals");

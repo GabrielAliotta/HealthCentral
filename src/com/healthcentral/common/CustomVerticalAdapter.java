@@ -33,10 +33,13 @@ public class CustomVerticalAdapter extends ArrayAdapter<Vertical> {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+		Bitmap theImage = null;
+		if(values.get(position).getVerticalImage() != null){
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(values.get(
 				position).getVerticalImage());
-		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-
+		theImage = BitmapFactory.decodeStream(imageStream);
+		}
+		
 		View rowView = inflater.inflate(R.layout.list_item, parent, false);
 		TextView nameTextView = (TextView) rowView.findViewById(R.id.Title);
 		nameTextView.setText(values.get(position).getVerticalName());
