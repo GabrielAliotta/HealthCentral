@@ -15,11 +15,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.healthcentral.activity.R;
-
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
+
+import com.healthcentral.activity.R;
 
 public class JSONParser {
 

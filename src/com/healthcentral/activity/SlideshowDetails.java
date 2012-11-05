@@ -3,12 +3,11 @@ package com.healthcentral.activity;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -23,10 +22,9 @@ import android.widget.ViewFlipper;
 
 import com.healthcentral.common.SimpleGestureFilter;
 import com.healthcentral.common.SimpleGestureListener;
+import com.heathcentral.model.Slide;
 import com.heathcentral.model.Slideshow;
-import com.heathcentral.model.SlideshowImage;
 import com.heathcentral.service.DatabaseController;
-import com.heathcentral.service.GetSlideshowImagesTask;
 
 public class SlideshowDetails extends Activity implements SimpleGestureListener {
 
@@ -43,14 +41,16 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 	private TextView slidePage;
 	private DatabaseController databaseController;
 	private Slideshow slideshow = new Slideshow();
-	private Integer imageIndex;
+	private Integer slideIndex;
 
-	private List<String> titles = new ArrayList<String>();
-	private List<String> contents = new ArrayList<String>();
-	private List<SlideshowImage> slideshowImages;
-
+	private List<Slide> slides = new ArrayList<Slide>();
+	private int[] slideshowIds = null;
 	private SimpleGestureFilter detector;
 
+	private String slideshowId;
+	private Integer slideshowIndex;
+
+	@SuppressWarnings({ "static-access" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -76,42 +76,27 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 			e.printStackTrace();
 		}
 
-		String slideId = getIntent().getExtras().getString("SlideshowId");
-		slideshow = databaseController.getSiteById(slideId);
+		slideshowId = getIntent().getExtras().getString("slideshowId");
+		slideshowIndex = getIntent().getExtras().getInt("slideshowIndex");
+		slideshowIds = getIntent().getExtras().getIntArray("slideshowsIds");
+		slideshow = databaseController.getSlideshowById(slideshowId);
 
-		new GetSlideshowImagesTask(this, databaseController, slideshow).execute();
+		this.updateList();
 	}
 
 	public void updateList() {
-		slideshowImages = databaseController.getSlideshowImagesById(slideshow.id);
+		slides = databaseController.getSlides(slideshow.getId());
+		slideIndex = 1;
 
-		Pattern titlePattern = Pattern.compile("<b>(.*?)</b>");
-		Matcher titleMatcher = titlePattern.matcher(slideshow.getContents());
-
-		while (titleMatcher.find()) {
-			titles.add(titleMatcher.group(1));
-		}
-
-		Pattern p = Pattern.compile("<p><p>(.*?)</p></p>", Pattern.DOTALL);
-		Matcher m = p.matcher(slideshow.getContents());
-
-		while (m.find()) {
-			contents.add(m.group(1));
-		}
-
-		imageIndex = 1;
-
-		textContent1.setText(Html.fromHtml(contents.get(0)));
-		textTitle1.setText(titles.get(0));
+		textTitle1.setText(slides.get(0).getTitle());
+		textContent1.setText(Html.fromHtml(slides.get(0).getText()));
 		textContent1.setMovementMethod(LinkMovementMethod.getInstance());
 
-		slidePage.setText(String.valueOf(imageIndex) + "/"
-				+ String.valueOf(contents.size()));
+		slidePage.setText(slideIndex + "/" + slides.size());
 
-		ByteArrayInputStream imageStream = new ByteArrayInputStream(
-				slideshowImages.get(1).getImage());
+		ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(
+				0).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-
 		imageView1.setImageBitmap(theImage);
 
 		isSlide1 = true;
@@ -130,8 +115,8 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 		switch (direction) {
 
 		case SimpleGestureFilter.SWIPE_RIGHT:
-			if (imageIndex > 1) {
-				imageIndex--;
+			if (slideIndex > 1) {
+				slideIndex--;
 
 				// Get the ViewFlipper from the layout
 				ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
@@ -143,28 +128,28 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 						R.anim.push_right_out));
 				vf.showNext();
 
-				slidePage.setText(String.valueOf(imageIndex) + "/"
-						+ String.valueOf(contents.size()));
+				slidePage.setText(String.valueOf(slideIndex) + "/"
+						+ String.valueOf(slides.size()));
 
 				if (!isSlide1) {
-					textContent1.setText(Html.fromHtml(contents
-							.get(imageIndex - 1)));
-					textTitle1.setText(titles.get(imageIndex - 1));
+					textContent1.setText(Html.fromHtml(slides.get(
+							slideIndex - 1).getText()));
+					textTitle1.setText(slides.get(slideIndex - 1).getTitle());
 
 					ByteArrayInputStream imageStream = new ByteArrayInputStream(
-							slideshowImages.get(imageIndex).getImage());
+							slides.get(slideIndex - 1).getImage());
 					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView1.setImageBitmap(theImage);
 
 					isSlide1 = true;
 				} else {
-					textContent2.setText(Html.fromHtml(contents
-							.get(imageIndex - 1)));
-					textTitle2.setText(titles.get(imageIndex - 1));
+					textContent2.setText(Html.fromHtml(slides.get(
+							slideIndex - 1).getText()));
+					textTitle2.setText(slides.get(slideIndex - 1).getTitle());
 
 					ByteArrayInputStream imageStream = new ByteArrayInputStream(
-							slideshowImages.get(imageIndex).getImage());
+							slides.get(slideIndex - 1).getImage());
 					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView2.setImageBitmap(theImage);
@@ -175,8 +160,8 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 			}
 			break;
 		case SimpleGestureFilter.SWIPE_LEFT:
-			if (imageIndex < slideshowImages.size() - 2) {
-				imageIndex++;
+			if (slideIndex < slides.size()) {
+				slideIndex++;
 
 				// Get the ViewFlipper from the layout
 				ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
@@ -188,35 +173,43 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 						R.anim.push_left_out));
 				vf.showNext();
 
-				slidePage.setText(String.valueOf(imageIndex) + "/"
-						+ String.valueOf(contents.size()));
+				slidePage.setText(String.valueOf(slideIndex) + "/"
+						+ String.valueOf(slides.size()));
 
 				if (!isSlide1) {
-					textContent1.setText(Html.fromHtml(contents
-							.get(imageIndex - 1)));
-					textTitle1.setText(titles.get(imageIndex - 1));
+					textContent1.setText(Html.fromHtml(slides.get(
+							slideIndex - 1).getText()));
+					textTitle1.setText(slides.get(slideIndex - 1).getTitle());
 
 					ByteArrayInputStream imageStream = new ByteArrayInputStream(
-							slideshowImages.get(imageIndex).getImage());
+							slides.get(slideIndex - 1).getImage());
 					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView1.setImageBitmap(theImage);
 
 					isSlide1 = true;
 				} else {
-
-					textContent2.setText(Html.fromHtml(contents
-							.get(imageIndex - 1)));
-					textTitle2.setText(titles.get(imageIndex - 1));
+					textContent2.setText(Html.fromHtml(slides.get(
+							slideIndex - 1).getText()));
+					textTitle2.setText(slides.get(slideIndex - 1).getTitle());
 
 					ByteArrayInputStream imageStream = new ByteArrayInputStream(
-							slideshowImages.get(imageIndex).getImage());
+							slides.get(slideIndex - 1).getImage());
 					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView2.setImageBitmap(theImage);
 					isSlide1 = false;
 				}
-
+			} else if (slideIndex == slides.size()) {
+				if (slideshowIndex < slideshowIds.length) {
+					Intent localIntent = new Intent(this,
+							SlideshowDetails.class);
+					localIntent.putExtra("slideshowId",
+							String.valueOf(slideshowIds[++slideshowIndex]));
+					localIntent.putExtra("slideshowIndex", slideshowIndex);
+					localIntent.putExtra("slideshowsIds", slideshowIds);
+					startActivity(localIntent);
+				}
 			}
 			break;
 		}
