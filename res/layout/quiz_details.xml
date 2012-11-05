@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white" >
 
     <TextView
         android:id="@+id/quiz_title"
@@ -19,21 +19,69 @@
         android:id="@+id/quiz_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/quiz_title"
+        android:layout_below="@id/quiz_title"
         android:layout_centerHorizontal="true"
         android:textColor="#ff007fb2"
-        android:textSize="40.0px" 
-        android:textStyle="bold"/>
+        android:textSize="40.0px"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/list_answers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/quiz_question"
         android:layout_above="@+id/quiz_submit_btn"
+        android:layout_below="@id/quiz_question"
         android:layout_marginTop="20px"
-        android:divider="#00000000"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:divider="#00000000" />
+
+    <TextView
+        android:id="@+id/quizScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quiz_question"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff007fb2"
+        android:textSize="40.0px"
+        android:textStyle="bold"
+        android:text="test"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/youAnswered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quizScore"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff007fb2"
+        android:textSize="40.0px"
+        android:textStyle="bold"
+        android:text="test"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/correctAnswer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/youAnswered"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff007fb2"
+        android:textSize="40.0px"
+        android:textStyle="bold" 
+        android:text="test"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/quizText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/correctAnswer"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff007fb2"
+        android:textSize="40.0px"
+        android:textStyle="bold" 
+        android:text="test"
+        android:visibility="gone"/>
 
     <!-- <ImageView -->
     <!-- android:id="@id/quizImage" -->
@@ -51,6 +99,7 @@
         android:layout_marginBottom="20px"
         android:layout_marginLeft="40px"
         android:background="#f99846"
+        android:onClick="buttonPressed"
         android:text="Submit"
         android:textColor="@android:color/white"
         android:textStyle="bold" />

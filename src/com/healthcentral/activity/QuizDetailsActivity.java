@@ -8,8 +8,10 @@ import org.kroz.activerecord.ActiveRecordException;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +28,11 @@ public class QuizDetailsActivity extends Activity{
 	private TextView quizTitle;
 	private TextView quizQuestion;
 	private ListView questionAnswers;
+	private TextView quizScore;
+	private TextView youAnswered;
+	private TextView correctAnswer;
+	private TextView quizText;
+	private Button submitBtn;
 	
 	
 	@Override
@@ -36,7 +43,12 @@ public class QuizDetailsActivity extends Activity{
 		
 		quizTitle = (TextView) findViewById(R.id.quiz_title);
 		quizQuestion = (TextView) findViewById(R.id.quiz_question);
-		questionAnswers = (ListView) findViewById(R.id.list_answers);	
+		questionAnswers = (ListView) findViewById(R.id.list_answers);
+		quizScore = (TextView) findViewById(R.id.quizScore);
+		youAnswered = (TextView) findViewById(R.id.youAnswered);
+		correctAnswer = (TextView) findViewById(R.id.correctAnswer);
+		quizText = (TextView) findViewById(R.id.quizText);
+		submitBtn = (Button) findViewById(R.id.quiz_submit_btn);
 		
 		
 		
@@ -62,5 +74,9 @@ public class QuizDetailsActivity extends Activity{
 		 
 		questionAnswers.setAdapter(adapter);
 		
+	}
+	
+	public void buttonPressed (View view){
+		int answered = questionAnswers.getCheckedItemPosition();
 	}
 }
