@@ -1,13 +1,7 @@
 package com.heathcentral.service;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
-import org.apache.http.util.ByteArrayBuffer;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,11 +12,12 @@ import android.os.AsyncTask;
 import android.os.Message;
 
 import com.healthcentral.activity.SiteQuizzesActivity;
+import com.healthcentral.utils.Image;
 import com.healthcentral.utils.JSONParser;
-import com.heathcentral.model.QuizLearnMoreLink;
-import com.heathcentral.model.QuizQuestionAnswer;
 import com.heathcentral.model.Quiz;
+import com.heathcentral.model.QuizLearnMoreLink;
 import com.heathcentral.model.QuizQuestion;
+import com.heathcentral.model.QuizQuestionAnswer;
 import com.heathcentral.model.QuizResult;
 
 public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
@@ -86,28 +81,10 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 					Quiz quizToSave;
 					
 					if(!imageUrl.equals("")){
-					//Get image For Quiz
-					InputStream isForQuiz = null;
-					ByteArrayBuffer bafForQuiz = null;
-					if (imageUrl != null) {
-						try {
-							URL url1 = new URL(imageUrl);
-							isForQuiz = url1.openConnection().getInputStream();
-							BufferedInputStream bis = new BufferedInputStream(isForQuiz, 128);
-							bafForQuiz = new ByteArrayBuffer(128);
-							int current = 0;
-							while ((current = bis.read()) != -1) {
-								bafForQuiz.append((byte) current);
-							}
-						} catch (MalformedURLException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-					quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, bafForQuiz.toByteArray(), nextQuizId);
+						//Get image For Quiz
+						quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, Image.getImageFromURL(imageUrl), nextQuizId);
 					}else {
-					quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, new byte[0], nextQuizId);
+						quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, new byte[0], nextQuizId);
 					}
 					
 					databaseController.saveQuiz(quizToSave);
@@ -123,27 +100,7 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 						String questionImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 						answers = questionJsonObject.getJSONObject("answers").getJSONArray("answer");
 
-						//Get Image for question
-						InputStream isForQuestion = null;
-						ByteArrayBuffer bafForQuestion = null;
-						if (questionImageUrl != null && !questionImageUrl.equals("")) {
-							try {
-								URL url1 = new URL(questionImageUrl);
-								isForQuestion = url1.openConnection().getInputStream();
-								BufferedInputStream bis = new BufferedInputStream(isForQuestion, 128);
-								bafForQuestion = new ByteArrayBuffer(128);
-								int current = 0;
-								while ((current = bis.read()) != -1) {
-									bafForQuestion.append((byte) current);
-								}
-							} catch (MalformedURLException e) {
-								e.printStackTrace();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
-						}
-
-						QuizQuestion questionToSave = new QuizQuestion(quizId, title, answerText, question, questionImageUrl, bafForQuestion.toByteArray());
+						QuizQuestion questionToSave = new QuizQuestion(quizId, title, answerText, question, questionImageUrl, Image.getImageFromURL(questionImageUrl));
 
 						String questionId = databaseController.saveQuizQuestion(questionToSave);
 

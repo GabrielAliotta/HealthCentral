@@ -1,12 +1,5 @@
 package com.heathcentral.service;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import org.apache.http.util.ByteArrayBuffer;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +9,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.healthcentral.activity.HealthCentralActivity;
+import com.healthcentral.utils.Image;
 import com.healthcentral.utils.JSONParser;
 import com.heathcentral.model.Vertical;
 
@@ -51,6 +45,8 @@ public class GetVerticalsTask extends AsyncTask<String, Void, Boolean> {
 		
 		try{
 			verticals = json.getJSONArray("verticals");
+			String verticalImageURL = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+			byte[] verticalImage = Image.getImageFromURL(verticalImageURL);
 			
 			for(int iVertical = 0; iVertical < verticals.length(); iVertical++) {
 				JSONObject jsonVerticalObject = verticals.getJSONObject(iVertical).getJSONObject("vertical");
@@ -59,9 +55,6 @@ public class GetVerticalsTask extends AsyncTask<String, Void, Boolean> {
 				
 				if(! databaseController.VerticalLoaded(verticalId)) {
 					String verticalName = jsonVerticalObject.getString("name");
-					//String verticalImageURL = jsonVerticalObject.getString("image");
-					String verticalImageURL = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-					byte[] verticalImage = this.getImage(verticalImageURL);
 					String hasSlideshows = jsonVerticalObject.getString("hasSlideshows");
 					String hasQuizzes = jsonVerticalObject.getString("hasQuizzes");
 					
@@ -74,30 +67,5 @@ public class GetVerticalsTask extends AsyncTask<String, Void, Boolean> {
 		}
 		
 		return true;
-	}
-	
-	private byte[] getImage(String verticalImageURL) {		
-		InputStream is = null;
-		ByteArrayBuffer baf = null;
-		byte[] image = null;
-		if (verticalImageURL != null) {
-			try {
-				URL url = new URL(verticalImageURL);
-				is = url.openConnection().getInputStream();
-				BufferedInputStream bis = new BufferedInputStream(is,
-						128);
-				baf = new ByteArrayBuffer(128);
-				int current = 0;
-				while ((current = bis.read()) != -1) {
-					baf.append((byte) current);
-				}
-				image = baf.toByteArray();
-			} catch (MalformedURLException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return image;
 	}
 }

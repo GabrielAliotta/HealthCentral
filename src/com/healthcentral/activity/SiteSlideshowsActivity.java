@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.healthcentral.common.CustomSlideshowAdapter;
 import com.heathcentral.model.Slideshow;
+import com.heathcentral.model.Vertical;
 import com.heathcentral.service.DatabaseController;
 import com.heathcentral.service.GetSlideshowsTask;
 
@@ -24,20 +25,21 @@ public class SiteSlideshowsActivity extends Activity implements
 	private CustomSlideshowAdapter customAdapter;
 	private DatabaseController databaseController;
 	private ListView mySitesListView;
-	private List<Slideshow> sites = new ArrayList<Slideshow>();
+	private List<Slideshow> slideshows = new ArrayList<Slideshow>();
 	private TextView titleTextView;
-
+	private String verticalId;
+	
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
-		String str = getIntent().getExtras().getString("vertical");
+		this.verticalId = getIntent().getExtras().getString("vertical");
 		this.mySitesListView = ((ListView) findViewById(R.id.list_verticals));
 		this.titleTextView = ((TextView) findViewById(R.id.title));
 		this.databaseController = new DatabaseController(getApplicationContext());
 		try {
 			DatabaseController.initDatabase();
-			new GetSlideshowsTask(this, this.databaseController, str).execute(new String[0]);
+			new GetSlideshowsTask(this, this.databaseController, this.verticalId).execute(new String[0]);
 			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)
@@ -60,15 +62,28 @@ public class SiteSlideshowsActivity extends Activity implements
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
 		Intent localIntent = new Intent(this, SlideshowDetails.class);
-		localIntent.putExtra("SlideshowId",	((Slideshow) this.sites.get(paramInt)).id);
+		localIntent.putExtra("slideshowId",	((Slideshow) this.slideshows.get(paramInt)).getId());
+		localIntent.putExtra("slideshowsIds", this.getSlideshowsIds());
+		localIntent.putExtra("slideshowIndex", paramInt);
 		startActivity(localIntent);
 	}
 	
 	public void updateList(){
-		this.sites = this.databaseController.getSites();
-		this.titleTextView.setText(((Slideshow) this.sites.get(0)).getFriendlyTitle());
-		this.customAdapter = new CustomSlideshowAdapter(this, this.sites, "titles");
+		this.slideshows = this.databaseController.getSlideshows(this.verticalId);
+		Vertical vertical = this.databaseController.getVerticalById(this.verticalId);
+		this.titleTextView.setText(vertical.getVerticalName() + " - Slideshows");
+		this.customAdapter = new CustomSlideshowAdapter(this, this.slideshows, "titles");
 		this.mySitesListView.setOnItemClickListener(this);
 		this.mySitesListView.setAdapter(this.customAdapter);
+	}
+	
+	private int[] getSlideshowsIds() {
+		int[] ids = new int[100];
+		int index = 0;
+		for(Slideshow slideshow : this.slideshows) {
+			ids[index] = Integer.parseInt(slideshow.getId());
+			index++;
+		}
+		return ids;
 	}
 }
