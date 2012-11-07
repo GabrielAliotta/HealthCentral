@@ -42,7 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/quiz_score_layout"
         android:layout_centerHorizontal="true"
-        android:text="38% correct"
         android:textColor="#ff8dc73f"
         android:textSize="55.0px"
         android:textStyle="bold" />

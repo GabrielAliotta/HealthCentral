@@ -39,6 +39,8 @@ public class QuizResultActivity extends Activity{
 		
 		correctScore.setText(validAnswers);
 		outOfScore.setText(" Out of " + String.valueOf(answered.size()));
+		
+		percentageResult.setText(String.format("%.0f%% Correct", (Float.valueOf(validAnswers) / answered.size()) * 100));
 
 		CustomQuizResultAdapter customQuizResultAdapter = new CustomQuizResultAdapter(this, answered);
 		results.setAdapter(customQuizResultAdapter);
