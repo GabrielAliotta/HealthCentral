@@ -34,8 +34,7 @@ public class SiteResourcesActivity extends Activity implements
 		String str = getIntent().getExtras().getString("vertical");
 		this.mySitesListView = ((ListView) findViewById(R.id.list_verticals));
 		this.titleTextView = ((TextView) findViewById(R.id.title));
-		this.databaseController = new DatabaseController(
-				getApplicationContext());
+		this.databaseController = new DatabaseController(getApplicationContext());
 
 		resourcesList.add("Slideshows");
 		resourcesList.add("Quizzes");

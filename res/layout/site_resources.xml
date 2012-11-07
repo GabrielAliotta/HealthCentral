@@ -5,17 +5,10 @@
     android:background="@android:color/white"
     android:paddingBottom="20.0px" >
 
-    <TextView
-        android:id="@id/Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="test"
-        android:textColor="#ff007fb2"
-        android:textSize="50.0px"
-        android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/resource_image"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

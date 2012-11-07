@@ -8,11 +8,13 @@ import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
 import android.view.Window;
@@ -21,10 +23,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.heathcentral.model.Quiz;
 import com.heathcentral.model.QuizAnswered;
 import com.heathcentral.model.QuizQuestion;
 import com.heathcentral.model.QuizQuestionAnswer;
@@ -50,6 +52,8 @@ public class QuizDetailsActivity extends Activity{
 	private TextView correctAnswerTitle;
 	private TextView correctAnswer;
 	private TextView quizText;
+	private ProgressBar progressBar;
+	private TextView questionCounterBar;
 	private Button submitBtn;
 	private List<String> answersString = new ArrayList<String>();
 	private boolean resultMode = true;
@@ -78,6 +82,8 @@ public class QuizDetailsActivity extends Activity{
 		youAnswered = (TextView) findViewById(R.id.youAnswered);
 		correctAnswer = (TextView) findViewById(R.id.correctAnswer);
 		quizText = (TextView) findViewById(R.id.quizText);
+		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+		questionCounterBar = (TextView) findViewById(R.id.question_counter);
 		submitBtn = (Button) findViewById(R.id.quiz_submit_btn);
 		
 		quizText.setMovementMethod(new ScrollingMovementMethod());
@@ -93,8 +99,9 @@ public class QuizDetailsActivity extends Activity{
 
 		String quizId = getIntent().getExtras().getString("QuizId");
 		nextQuizId = getIntent().getExtras().getString("nextQuizId");
-		questions = databaseController.getQuestionsByVertical(quizId);		
-
+		questions = databaseController.getQuestionsByVertical(quizId);
+		
+		progressBar.setMax(questions.size());
 		adapter = new ArrayAdapter<String>(this, R.layout.list_answer_item,answersString);
 		 
 		questionAnswers.setAdapter(adapter);
@@ -119,6 +126,8 @@ public class QuizDetailsActivity extends Activity{
 	private void updateQuestion(){
 		answersString.clear();
 		
+		questionCounterBar.setText("Question " + String.valueOf(questionCounter + 1) + " of " + String.valueOf(questions.size()));
+		
 		quizTitle.setText(questions.get(questionCounter).getQuizTitle());
 		quizQuestion.setText(Html.fromHtml(questions.get(questionCounter).getQuestion()).toString().trim());
 		
@@ -136,6 +145,8 @@ public class QuizDetailsActivity extends Activity{
 		validAnswer = 0;
 		answeredValid = 0;
 		answeredInvalid = 0;
+		
+		progressBar.incrementProgressBy(1);
 		
 		correctScoreImage.setImageResource(R.drawable.checkmark);
 		incorrectScoreImage.setImageResource(android.R.drawable.ic_delete);
@@ -185,7 +196,9 @@ public class QuizDetailsActivity extends Activity{
 			}
 			SpannableStringBuilder youAnsweredString = new SpannableStringBuilder("You answered: " + answers.get(answerChecked).getTitle());
 			final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); 
+			final ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#CC4848"));
 			youAnsweredString.setSpan(bss, 0, 12, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+			youAnsweredString.setSpan(fcs, 13, youAnsweredString.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			quizScore.setVisibility(View.VISIBLE);
 			youAnswered.setVisibility(View.VISIBLE);
 			youAnswered.setText(youAnsweredString);

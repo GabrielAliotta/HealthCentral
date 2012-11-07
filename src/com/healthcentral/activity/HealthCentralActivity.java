@@ -38,8 +38,7 @@ public class HealthCentralActivity extends Activity implements
 				getApplicationContext());
 		try {
 			DatabaseController.initDatabase();
-			new GetVerticalsTask(this, this.databaseController)
-					.execute(new String[0]);
+			new GetVerticalsTask(this, this.databaseController).execute(new String[0]);
 			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)
