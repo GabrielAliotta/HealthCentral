@@ -1,23 +1,41 @@
 package com.heathcentral.model;
 
-public class QuizAnswered {
+import java.io.Serializable;
+
+public class QuizAnswered implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1398287680082338287L;
 	int questionId;
 	String question;
 	String questionText;
 	String answered;
 	String correctAnswer;
+	String nextQuizId;
 	boolean valid;
 	
-	public QuizAnswered(int questionId, String question, String questionText, String answered, String correctAnswer, boolean valid){
+	public QuizAnswered(int questionId, String question, String questionText, String answered, String correctAnswer, boolean valid, String nextQuizid){
 		this.questionId = questionId;
 		this.question = question;
 		this.questionText = questionText;
 		this.answered = answered;
 		this.correctAnswer = correctAnswer;
 		this.valid = valid;
+		this.nextQuizId = nextQuizid;
 	}
-	
+
+	public String getNextQuizId() {
+		return nextQuizId;
+	}
+
+
+	public void setNextQuizId(String nextQuizId) {
+		this.nextQuizId = nextQuizId;
+	}
+
+
 	public String getQuestionText() {
 		return questionText;
 	}

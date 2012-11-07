@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white" >
+
+    <TextView
+        android:id="@+id/question_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff007fb2"
+        android:textSize="35.0px" />
+
+    <ImageView
+        android:id="@+id/quiz_result_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/question_id" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/quiz_result_image"
+        android:layout_marginLeft="20px"
+        android:textColor="#666666"
+        android:textStyle="bold"
+        android:textSize="30.0px" />
+
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/question"
+        android:layout_marginTop="20px"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#C2C2C2"
+        android:textSize="30.0px" />
+
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/answer"
+        android:layout_marginTop="20px"
+        android:paddingBottom="20px"
+        android:textColor="#A3A3A3"
+        android:textSize="25.0px" />
+
+</RelativeLayout>

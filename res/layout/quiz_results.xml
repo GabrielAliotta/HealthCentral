@@ -8,65 +8,67 @@
         android:id="@+id/quiz_score_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/quiz_question"
-        android:layout_marginTop="20px"
-        android:visibility="gone" >
+        android:layout_marginTop="20px" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginLeft="20px"
-            android:layout_marginRight="20px"
-            android:text="Your score:"
+            android:text="Your score is: "
             android:textColor="#ff007fb2"
-            android:textSize="30.0px" />
+            android:textSize="40.0px"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/correct_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
             android:textColor="#ff8dc73f"
-            android:textSize="40.0px" />
-
-        <ImageView
-            android:id="@+id/correct_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="20px" />
+            android:textSize="40.0px"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/incorrect_score"
+            android:id="@+id/out_of_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#CC4848"
-            android:textSize="40.0px" />
-
-        <ImageView
-            android:id="@+id/incorrect_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="20px" />
+            android:textColor="#666666"
+            android:textSize="40.0px"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
+        android:id="@+id/percentage_results"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/quiz_score_layout"
         android:layout_centerHorizontal="true"
-        android:text="Your results"
-        android:textColor="#ff007fb2"
-        android:textSize="30.0px" />
+        android:text="38% correct"
+        android:textColor="#ff8dc73f"
+        android:textSize="55.0px"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/list_results"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/next_quiz_btn"
+        android:layout_below="@id/percentage_results"
         android:layout_marginTop="20px"
         android:cacheColorHint="#00000000"
         android:divider="#00000000" />
+
+    <Button
+        android:id="@+id/next_quiz_btn"
+        android:layout_width="180px"
+        android:layout_height="70px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20px"
+        android:layout_marginRight="40px"
+        android:background="#f99846"
+        android:onClick="nextQuizButtonPressed"
+        android:text="Next Quiz"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
 </RelativeLayout>

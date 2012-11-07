@@ -1,11 +1,13 @@
 package com.healthcentral.activity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
@@ -22,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.heathcentral.model.Quiz;
 import com.heathcentral.model.QuizAnswered;
 import com.heathcentral.model.QuizQuestion;
 import com.heathcentral.model.QuizQuestionAnswer;
@@ -50,7 +53,11 @@ public class QuizDetailsActivity extends Activity{
 	private Button submitBtn;
 	private List<String> answersString = new ArrayList<String>();
 	private boolean resultMode = true;
+	private String nextQuizId;
 	int questionCounter;
+	int validAnswer = 0;
+	int answeredValid = 0;
+	int answeredInvalid = 0;
 	
 	
 	@Override
@@ -85,6 +92,7 @@ public class QuizDetailsActivity extends Activity{
 		questionCounter = 0;
 
 		String quizId = getIntent().getExtras().getString("QuizId");
+		nextQuizId = getIntent().getExtras().getString("nextQuizId");
 		questions = databaseController.getQuestionsByVertical(quizId);		
 
 		adapter = new ArrayAdapter<String>(this, R.layout.list_answer_item,answersString);
@@ -102,90 +110,9 @@ public class QuizDetailsActivity extends Activity{
 		}
 		
 		if (resultMode){
-
-			int validAnswer = 0;
-			int answeredValid = 0;
-			int answeredInvalid = 0;
-			
-			correctScoreImage.setImageResource(R.drawable.checkmark);
-			incorrectScoreImage.setImageResource(android.R.drawable.ic_delete);
-			for(int i = 0; i < answers.size(); i++){
-				if (answers.get(i).getValid().equals("true")){
-					validAnswer = i;
-					break;
-				}
-			}
-			
-			int answerChecked = questionAnswers.getCheckedItemPosition();
-			questionAnswers.setVisibility(View.GONE);
-			submitBtn.setText("Next");
-			
-			quizQuestion.setVisibility(View.GONE);
-			if (answers.get(answerChecked).getValid().equals("true")){
-				answered.add(new QuizAnswered(questionCounter, Html.fromHtml(questions.get(questionCounter).getQuestion()).toString().trim(),
-						Html.fromHtml(questions.get(questionCounter).getAnswerText()).toString().trim(), answers.get(answerChecked).getTitle(), answers.get(validAnswer).getTitle(), true));
-				for(QuizAnswered answ : answered){
-					if(answ.isValid()){
-						answeredValid ++;
-					} else {
-						answeredInvalid ++;
-					}
-				}
-				quizScore.setVisibility(View.VISIBLE);
-				correctAnswer.setVisibility(View.VISIBLE);
-				correctAnswer.setTextSize(55);
-				correctAnswer.setText("Correct!");
-				quizText.setVisibility(View.VISIBLE);
-				quizText.setText(Html.fromHtml(questions.get(questionCounter).getAnswerText()));
-				correctScore.setText(String.valueOf(answeredValid));
-				incorrectScore.setText(String.valueOf(answeredInvalid));
-			} else {
-				answered.add(new QuizAnswered(questionCounter, Html.fromHtml(questions.get(questionCounter).getQuestion()).toString().trim(),
-						Html.fromHtml(questions.get(questionCounter).getAnswerText()).toString().trim(), answers.get(answerChecked).getTitle(), answers.get(validAnswer).getTitle(), false));
-				for(QuizAnswered answ : answered){
-					if(answ.isValid()){
-						answeredValid ++;
-					} else {
-						answeredInvalid ++;
-					}
-				}
-				SpannableStringBuilder youAnsweredString = new SpannableStringBuilder("You answered: " + answers.get(answerChecked).getTitle());
-				final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); 
-				youAnsweredString.setSpan(bss, 0, 12, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-				quizScore.setVisibility(View.VISIBLE);
-				youAnswered.setVisibility(View.VISIBLE);
-				youAnswered.setText(youAnsweredString);
-				correctAnswerTitle.setVisibility(View.VISIBLE);
-				correctAnswer.setVisibility(View.VISIBLE);
-				correctAnswer.setText(answers.get(validAnswer).getTitle());
-				quizText.setVisibility(View.VISIBLE);
-				quizText.setText(Html.fromHtml(questions.get(questionCounter).getAnswerText()));
-				correctScore.setText(String.valueOf(answeredValid));
-				incorrectScore.setText(String.valueOf(answeredInvalid));
-			}			
-		
-			resultMode = false;
-			
+			SubmitButtonPressed();
 		} else {
-			questionCounter ++;
-			
-			//TODO no more questions
-			if(questionCounter >= questions.size()){
-				return;
-			}
-			
-			quizQuestion.setVisibility(View.VISIBLE);
-			quizScore.setVisibility(View.GONE);
-			youAnswered.setVisibility(View.GONE);
-			correctAnswer.setVisibility(View.GONE);
-			correctAnswerTitle.setVisibility(View.GONE);
-			quizText.setVisibility(View.GONE);
-			correctAnswer.setTextSize(30);
-			questionAnswers.setVisibility(View.VISIBLE);
-			submitBtn.setText("Submit");
-			questionAnswers.setItemChecked(-1, true);
-			resultMode = true;
-			updateQuestion();
+			nextButtonPressed();
 		}
 	}
 	
@@ -203,4 +130,103 @@ public class QuizDetailsActivity extends Activity{
 		
 		adapter.notifyDataSetChanged();
 	}
+	
+	private void SubmitButtonPressed(){
+		
+		validAnswer = 0;
+		answeredValid = 0;
+		answeredInvalid = 0;
+		
+		correctScoreImage.setImageResource(R.drawable.checkmark);
+		incorrectScoreImage.setImageResource(android.R.drawable.ic_delete);
+		for(int i = 0; i < answers.size(); i++){
+			if (answers.get(i).getValid().equals("true")){
+				validAnswer = i;
+				break;
+			}
+		}
+		
+		int answerChecked = questionAnswers.getCheckedItemPosition();
+		questionAnswers.setVisibility(View.GONE);
+		if(questionCounter +1 >= questions.size()){
+			submitBtn.setText("See results");
+		} else {
+			submitBtn.setText("Next");
+		}			
+		
+		quizQuestion.setVisibility(View.GONE);
+		if (answers.get(answerChecked).getValid().equals("true")){
+			answered.add(new QuizAnswered(questionCounter, Html.fromHtml(questions.get(questionCounter).getQuestion()).toString().trim(),
+					Html.fromHtml(questions.get(questionCounter).getAnswerText()).toString().trim(), answers.get(answerChecked).getTitle(), answers.get(validAnswer).getTitle(), true, nextQuizId));
+			for(QuizAnswered answ : answered){
+				if(answ.isValid()){
+					answeredValid ++;
+				} else {
+					answeredInvalid ++;
+				}
+			}
+			quizScore.setVisibility(View.VISIBLE);
+			correctAnswer.setVisibility(View.VISIBLE);
+			correctAnswer.setTextSize(55);
+			correctAnswer.setText("Correct!");
+			quizText.setVisibility(View.VISIBLE);
+			quizText.setText(Html.fromHtml(questions.get(questionCounter).getAnswerText()));
+			correctScore.setText(String.valueOf(answeredValid));
+			incorrectScore.setText(String.valueOf(answeredInvalid));
+		} else {
+			answered.add(new QuizAnswered(questionCounter, Html.fromHtml(questions.get(questionCounter).getQuestion()).toString().trim(),
+					Html.fromHtml(questions.get(questionCounter).getAnswerText()).toString().trim(), answers.get(answerChecked).getTitle(), answers.get(validAnswer).getTitle(), false, nextQuizId));
+			for(QuizAnswered answ : answered){
+				if(answ.isValid()){
+					answeredValid ++;
+				} else {
+					answeredInvalid ++;
+				}
+			}
+			SpannableStringBuilder youAnsweredString = new SpannableStringBuilder("You answered: " + answers.get(answerChecked).getTitle());
+			final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); 
+			youAnsweredString.setSpan(bss, 0, 12, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+			quizScore.setVisibility(View.VISIBLE);
+			youAnswered.setVisibility(View.VISIBLE);
+			youAnswered.setText(youAnsweredString);
+			correctAnswerTitle.setVisibility(View.VISIBLE);
+			correctAnswer.setVisibility(View.VISIBLE);
+			correctAnswer.setText(answers.get(validAnswer).getTitle());
+			quizText.setVisibility(View.VISIBLE);
+			quizText.setText(Html.fromHtml(questions.get(questionCounter).getAnswerText()));
+			correctScore.setText(String.valueOf(answeredValid));
+			incorrectScore.setText(String.valueOf(answeredInvalid));
+		}			
+	
+		resultMode = false;
+	}
+	
+	private void nextButtonPressed(){
+		
+		questionCounter ++;
+		
+		//TODO no more questions
+		if(questionCounter >= questions.size()){
+			
+			Intent localIntent = new Intent(this, QuizResultActivity.class);
+			localIntent.putExtra("answered", (Serializable) answered);
+			localIntent.putExtra("validAnswers", String.valueOf(answeredValid));
+			startActivity(localIntent);
+			return;
+		}
+		
+		quizQuestion.setVisibility(View.VISIBLE);
+		quizScore.setVisibility(View.GONE);
+		youAnswered.setVisibility(View.GONE);
+		correctAnswer.setVisibility(View.GONE);
+		correctAnswerTitle.setVisibility(View.GONE);
+		quizText.setVisibility(View.GONE);
+		correctAnswer.setTextSize(30);
+		questionAnswers.setVisibility(View.VISIBLE);
+		submitBtn.setText("Submit");
+		questionAnswers.setItemChecked(-1, true);
+		resultMode = true;
+		updateQuestion();
+	}
+	
 }

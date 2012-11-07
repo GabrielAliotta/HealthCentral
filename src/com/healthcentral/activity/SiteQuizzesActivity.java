@@ -61,6 +61,7 @@ public class SiteQuizzesActivity extends Activity implements
 			int paramInt, long paramLong) {
 		Intent localIntent = new Intent(this, QuizDetailsActivity.class);
 		localIntent.putExtra("QuizId",	((Quiz) this.quizzes.get(paramInt)).getQuizId());
+		localIntent.putExtra("nextQuizId",	((Quiz) this.quizzes.get(paramInt)).getNextQuizId());
 		startActivity(localIntent);
 	}
 	
