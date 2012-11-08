@@ -6,12 +6,14 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.healthcentral.activity.R;
@@ -38,14 +40,13 @@ public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 		View rowView = inflater.inflate(R.layout.list_quiz_item, parent, false);
-		TextView nameTextView = (TextView) rowView.findViewById(R.id.Title);
-		nameTextView.setText(Html.fromHtml(values.get(position).getTitle()));
-		TextView descriptionTextView = (TextView) rowView.findViewById(R.id.Description);
-		descriptionTextView.setText(Html.fromHtml(values.get(position).getText()));
+		((TextView) rowView.findViewById(R.id.Title)).setText(Html.fromHtml(values.get(position).getTitle()));
+		((TextView) rowView.findViewById(R.id.Description)).setText(Html.fromHtml(values.get(position).getText()));
+		((RelativeLayout) rowView.findViewById(R.id.relative_quiz_item)).setBackgroundDrawable(new BitmapDrawable(theImage));
 
 		//set image
-		ImageView image = (ImageView) rowView.findViewById(R.id.QuizImage);
-		image.setImageBitmap(theImage);
+		//ImageView image = (ImageView) rowView.findViewById(R.id.QuizImage);
+		//image.setImageBitmap(theImage);
 
 		pos = position;
 

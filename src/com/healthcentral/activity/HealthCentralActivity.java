@@ -32,8 +32,6 @@ public class HealthCentralActivity extends Activity implements
 		setContentView(R.layout.main);
 		verticalsListView = (ListView) this.findViewById(R.id.list_verticals);
 		this.verticalsListView.setOnItemClickListener(this);
-		((TextView) findViewById(R.id.titleTwo)).setText("Central");
-		((TextView) findViewById(R.id.title)).setText("Health");
 		this.databaseController = new DatabaseController(
 				getApplicationContext());
 		try {

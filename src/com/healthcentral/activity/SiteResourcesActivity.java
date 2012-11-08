@@ -7,9 +7,11 @@ import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,17 +26,19 @@ public class SiteResourcesActivity extends Activity implements
 	private ListView mySitesListView;
 	private List<String> resourcesList = new ArrayList<String>();
 	private TextView titleTextView;
-	private Vertical vertical;
+	private Vertical vertical;	
 	private CustomResourcesAdapter customAdapter;
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
+		
+		((LinearLayout) findViewById(R.id.linearLayout)).setVisibility(View.GONE);
 		String str = getIntent().getExtras().getString("vertical");
-		this.mySitesListView = ((ListView) findViewById(R.id.list_verticals));
-		this.titleTextView = ((TextView) findViewById(R.id.title));
-		this.databaseController = new DatabaseController(getApplicationContext());
+		mySitesListView = ((ListView) findViewById(R.id.list_verticals));
+		titleTextView = ((TextView) findViewById(R.id.vertical_title));
+		databaseController = new DatabaseController(getApplicationContext());
 
 		resourcesList.add("Slideshows");
 		resourcesList.add("Quizzes");
@@ -42,10 +46,11 @@ public class SiteResourcesActivity extends Activity implements
 		try {
 			DatabaseController.initDatabase();
 			vertical = this.databaseController.getVerticalById(str);
-			this.titleTextView.setText(vertical.getVerticalName());
-			this.customAdapter = new CustomResourcesAdapter(this, resourcesList);
-			this.mySitesListView.setOnItemClickListener(this);
-			this.mySitesListView.setAdapter(this.customAdapter);
+			titleTextView.setText(vertical.getVerticalName());
+			titleTextView.setVisibility(View.VISIBLE);
+			customAdapter = new CustomResourcesAdapter(this, resourcesList);
+			mySitesListView.setOnItemClickListener(this);
+			mySitesListView.setAdapter(this.customAdapter);
 			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)

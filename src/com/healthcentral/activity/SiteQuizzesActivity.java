@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.healthcentral.common.CustomQuizAdapter;
@@ -18,22 +20,26 @@ import com.heathcentral.model.Quiz;
 import com.heathcentral.service.DatabaseController;
 import com.heathcentral.service.GetQuizzesTask;
 
-public class SiteQuizzesActivity extends Activity implements
-		AdapterView.OnItemClickListener {
+public class SiteQuizzesActivity extends Activity implements AdapterView.OnItemClickListener {
+	
 	private TextView titleTextView;
 	private String verticalId = null;
 	private CustomQuizAdapter customAdapter;
 	private DatabaseController databaseController;
 	private ListView mySitesListView;
+	private TextView actionActivity;
 	private List<Quiz> quizzes = new ArrayList<Quiz>();
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
+		
+		((LinearLayout) findViewById(R.id.linearLayout)).setVisibility(View.GONE);
 		verticalId = getIntent().getExtras().getString("vertical");
-		this.mySitesListView = ((ListView) findViewById(R.id.list_verticals));
-		this.titleTextView = ((TextView) findViewById(R.id.title));
+		mySitesListView = ((ListView) findViewById(R.id.list_verticals));
+		titleTextView = ((TextView) findViewById(R.id.vertical_title));
+		actionActivity = ((TextView) findViewById(R.id.action_activity));
 		this.databaseController = new DatabaseController(getApplicationContext());
 		try {
 			DatabaseController.initDatabase();
@@ -66,10 +72,13 @@ public class SiteQuizzesActivity extends Activity implements
 	}
 	
 	public void updateList(){
-		this.quizzes = this.databaseController.getQuizzesByVertical(verticalId);
-		this.titleTextView.setText(((Quiz) this.quizzes.get(0)).getFriendlyTitle());
-		this.customAdapter = new CustomQuizAdapter(this, this.quizzes);
-		this.mySitesListView.setOnItemClickListener(this);
-		this.mySitesListView.setAdapter(this.customAdapter);
+		quizzes = this.databaseController.getQuizzesByVertical(verticalId);
+		titleTextView.setText(((Quiz) this.quizzes.get(0)).getFriendlyTitle());
+		titleTextView.setVisibility(View.VISIBLE);
+		actionActivity.setText("Select a quiz");
+		actionActivity.setVisibility(View.VISIBLE);
+		customAdapter = new CustomQuizAdapter(this, this.quizzes);
+		mySitesListView.setOnItemClickListener(this);
+		mySitesListView.setAdapter(this.customAdapter);
 	}
 }

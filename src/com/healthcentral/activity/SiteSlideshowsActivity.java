@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,15 +29,19 @@ public class SiteSlideshowsActivity extends Activity implements
 	private List<Slideshow> slideshows = new ArrayList<Slideshow>();
 	private TextView titleTextView;
 	private String verticalId;
+	private TextView actionActivity;
 	
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
-		this.verticalId = getIntent().getExtras().getString("vertical");
-		this.mySitesListView = ((ListView) findViewById(R.id.list_verticals));
-		this.titleTextView = ((TextView) findViewById(R.id.title));
-		this.databaseController = new DatabaseController(getApplicationContext());
+		
+		((LinearLayout) findViewById(R.id.linearLayout)).setVisibility(View.GONE);
+		verticalId = getIntent().getExtras().getString("vertical");
+		mySitesListView = ((ListView) findViewById(R.id.list_verticals));
+		titleTextView = ((TextView) findViewById(R.id.vertical_title));
+		actionActivity = ((TextView) findViewById(R.id.action_activity));
+		databaseController = new DatabaseController(getApplicationContext());
 		try {
 			DatabaseController.initDatabase();
 			new GetSlideshowsTask(this, this.databaseController, this.verticalId).execute(new String[0]);
@@ -69,12 +74,15 @@ public class SiteSlideshowsActivity extends Activity implements
 	}
 	
 	public void updateList(){
-		this.slideshows = this.databaseController.getSlideshows(this.verticalId);
+		slideshows = this.databaseController.getSlideshows(this.verticalId);
 		Vertical vertical = this.databaseController.getVerticalById(this.verticalId);
-		this.titleTextView.setText(vertical.getVerticalName() + " - Slideshows");
-		this.customAdapter = new CustomSlideshowAdapter(this, this.slideshows, "titles");
-		this.mySitesListView.setOnItemClickListener(this);
-		this.mySitesListView.setAdapter(this.customAdapter);
+		titleTextView.setText(vertical.getVerticalName());
+		titleTextView.setVisibility(View.VISIBLE);
+		actionActivity.setText("Select a slideshow");
+		actionActivity.setVisibility(View.VISIBLE);
+		customAdapter = new CustomSlideshowAdapter(this, this.slideshows);
+		mySitesListView.setOnItemClickListener(this);
+		mySitesListView.setAdapter(this.customAdapter);
 	}
 	
 	private int[] getSlideshowsIds() {
