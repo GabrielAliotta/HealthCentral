@@ -8,7 +8,10 @@ import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
@@ -24,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +62,7 @@ public class QuizDetailsActivity extends Activity{
 	private List<String> answersString = new ArrayList<String>();
 	private boolean resultMode = true;
 	private String nextQuizId;
+	private Drawable quizImage;
 	int questionCounter;
 	int validAnswer = 0;
 	int answeredValid = 0;
@@ -100,7 +105,7 @@ public class QuizDetailsActivity extends Activity{
 		String quizId = getIntent().getExtras().getString("QuizId");
 		nextQuizId = getIntent().getExtras().getString("nextQuizId");
 		questions = databaseController.getQuestionsByVertical(quizId);
-		
+		quizImage = databaseController.getImageByQuizId(quizId); 
 		progressBar.setMax(questions.size());
 		adapter = new ArrayAdapter<String>(this, R.layout.list_answer_item,answersString);
 		 
@@ -125,6 +130,8 @@ public class QuizDetailsActivity extends Activity{
 	
 	private void updateQuestion(){
 		answersString.clear();
+		quizImage.setAlpha(80);
+		((RelativeLayout) findViewById(R.id.background_relative)).setBackgroundDrawable(quizImage);
 		
 		questionCounterBar.setText("Question " + String.valueOf(questionCounter + 1) + " of " + String.valueOf(questions.size()));
 		

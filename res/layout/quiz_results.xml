@@ -6,8 +6,9 @@
 
     <LinearLayout
         android:id="@+id/quiz_score_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/blue_gradient"
         android:layout_marginTop="20px" >
 
         <TextView
@@ -15,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20px"
             android:text="Your score is: "
-            android:textColor="#ff007fb2"
+            android:textColor="@android:color/white"
             android:textSize="40.0px"
             android:textStyle="bold" />
 
@@ -24,26 +25,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ff8dc73f"
-            android:textSize="40.0px"
+            android:text="4"
+            android:textSize="35.0px"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/out_of_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#666666"
-            android:textSize="40.0px"
+            android:textColor="@android:color/white"
+            android:textSize="35.0px"
+            android:text=" out of 8"
             android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/percentage_results"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/quiz_score_layout"
         android:layout_centerHorizontal="true"
-        android:textColor="#ff8dc73f"
+        android:gravity="center"
+        android:padding="5px"
+        android:textColor="@android:color/white"
+        android:background="@drawable/green_gradient"
         android:textSize="55.0px"
+        android:text="38% Correct"
         android:textStyle="bold" />
 
     <ListView
@@ -52,7 +59,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/next_quiz_btn"
         android:layout_below="@id/percentage_results"
-        android:layout_marginTop="20px"
         android:cacheColorHint="#00000000"
         android:divider="#00000000" />
 
@@ -64,7 +70,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="20px"
         android:layout_marginRight="40px"
-        android:background="#f99846"
+        android:background="@drawable/orange_gradient"
         android:onClick="nextQuizButtonPressed"
         android:text="Next Quiz"
         android:textColor="@android:color/white"

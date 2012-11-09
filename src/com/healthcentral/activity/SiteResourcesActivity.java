@@ -26,6 +26,7 @@ public class SiteResourcesActivity extends Activity implements
 	private ListView mySitesListView;
 	private List<String> resourcesList = new ArrayList<String>();
 	private TextView titleTextView;
+	private TextView actionActivity;
 	private Vertical vertical;	
 	private CustomResourcesAdapter customAdapter;
 
@@ -36,8 +37,9 @@ public class SiteResourcesActivity extends Activity implements
 		
 		((LinearLayout) findViewById(R.id.linearLayout)).setVisibility(View.GONE);
 		String str = getIntent().getExtras().getString("vertical");
-		mySitesListView = ((ListView) findViewById(R.id.list_verticals));
-		titleTextView = ((TextView) findViewById(R.id.vertical_title));
+		mySitesListView = (ListView) findViewById(R.id.list_verticals);
+		titleTextView = (TextView) findViewById(R.id.vertical_title);
+		actionActivity = (TextView) findViewById(R.id.action_activity);
 		databaseController = new DatabaseController(getApplicationContext());
 
 		resourcesList.add("Slideshows");
@@ -48,9 +50,11 @@ public class SiteResourcesActivity extends Activity implements
 			vertical = this.databaseController.getVerticalById(str);
 			titleTextView.setText(vertical.getVerticalName());
 			titleTextView.setVisibility(View.VISIBLE);
+			actionActivity.setText("Select a Resource");
+			actionActivity.setVisibility(View.VISIBLE);
 			customAdapter = new CustomResourcesAdapter(this, resourcesList);
 			mySitesListView.setOnItemClickListener(this);
-			mySitesListView.setAdapter(this.customAdapter);
+			mySitesListView.setAdapter(this.customAdapter);			
 			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)

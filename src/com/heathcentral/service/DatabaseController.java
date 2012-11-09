@@ -1,5 +1,6 @@
 package com.heathcentral.service;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,9 @@ import org.kroz.activerecord.Database;
 import org.kroz.activerecord.DatabaseBuilder;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 
 import com.heathcentral.model.Quiz;
 import com.heathcentral.model.QuizLearnMoreLink;
@@ -403,6 +407,25 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 		return questions;
+	}
+	
+	public BitmapDrawable getImageByQuizId(String quizId) {
+		Bitmap image = null;
+		List<Quiz> quiz = new ArrayList<Quiz>();
+
+		try {
+			if (getDatabase().isOpen() != true)
+				getDatabase().open();
+			quiz = getDatabase().findByColumn(Quiz.class, "quiz_Id", quizId);
+			getDatabase().close();
+		} catch (ActiveRecordException e) {
+			e.printStackTrace();
+		}
+		
+		ByteArrayInputStream imageStream = new ByteArrayInputStream(quiz.get(0).getImage());
+		image = BitmapFactory.decodeStream(imageStream);
+		
+		return new BitmapDrawable(image);
 	}
 
 	public String saveQuizQuestion(QuizQuestion quizQuestion) {

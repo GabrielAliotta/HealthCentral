@@ -10,6 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:background="@android:color/white"
         android:layout_marginTop="20px" >
 
         <TextView
@@ -52,7 +53,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/vertical_title"
-        android:layout_marginBottom="10px"
         android:padding="10px"
         android:gravity="center"
         android:background="@drawable/blue_gradient"
@@ -66,7 +66,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/action_activity"
-        android:layout_marginTop="20px"
         android:divider="#00000000" />
 
 </RelativeLayout>

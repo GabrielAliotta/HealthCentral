@@ -8,92 +8,152 @@
         android:id="@+id/quiz_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20px"
         android:layout_marginBottom="20px"
-        android:padding="15px"
-        android:gravity="center"
-        android:textColor="@android:color/white"
+        android:layout_marginTop="20px"
         android:background="@drawable/green_gradient"
+        android:gravity="center"
+        android:padding="15px"
+        android:textColor="@android:color/white"
         android:textSize="35.0px"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/quiz_question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/background_relative"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@id/quiz_title"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textColor="#ff007fb2"
-        android:textSize="30.0px"
-        android:textStyle="bold" />
-
-    <ListView
-        android:id="@+id/list_answers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_above="@+id/quiz_submit_btn"
-        android:layout_below="@id/quiz_question"
-        android:layout_marginTop="20px"
-        android:cacheColorHint="#00000000"
-        android:choiceMode="singleChoice"
-        android:divider="#00000000" />
+        android:layout_marginBottom="20px" >
 
-    <TextView
-        android:id="@+id/youAnswered"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/list_answers"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textColor="#ff007fb2"
-        android:textSize="30.0px"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/quiz_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="#ff007fb2"
+            android:textSize="30.0px"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/correctAnswerTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/youAnswered"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20px"
-        android:text="The correct answer is:"
-        android:textColor="#ff007fb2"
-        android:textSize="35.0px"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        <ListView
+            android:id="@+id/list_answers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/quiz_submit_btn"
+            android:layout_below="@id/quiz_question"
+            android:layout_marginTop="20px"
+            android:cacheColorHint="#00000000"
+            android:choiceMode="singleChoice"
+            android:divider="#00000000" />
 
-    <TextView
-        android:id="@+id/correctAnswer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/correctAnswerTitle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5px"
-        android:gravity="center"
-        android:textColor="#ff8dc73f"
-        android:textSize="40.0px"
-        android:textStyle="bold"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/youAnswered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/list_answers"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="#ff007fb2"
+            android:textSize="30.0px"
+            android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/quizText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/correctAnswer"
-        android:layout_above="@+id/quiz_score_layout"
-        android:layout_centerHorizontal="true"
-        android:maxLines="255"
-        android:paddingBottom="15px"
-        android:scrollbars="vertical"
-        android:scrollbarSize="30px"
-        android:scrollbarDefaultDelayBeforeFade="100"
-        android:textColor="#ff007fb2"
-        android:textSize="30.0px"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/correctAnswerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/youAnswered"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20px"
+            android:text="The correct answer is:"
+            android:textColor="#ff007fb2"
+            android:textSize="35.0px"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/correctAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/correctAnswerTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5px"
+            android:gravity="center"
+            android:textColor="#ff8dc73f"
+            android:textSize="40.0px"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/quizText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/quiz_score_layout"
+            android:layout_below="@id/correctAnswer"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:maxLines="255"
+            android:paddingBottom="15px"
+            android:scrollbarDefaultDelayBeforeFade="100"
+            android:scrollbarSize="30px"
+            android:scrollbars="vertical"
+            android:textColor="#ff007fb2"
+            android:textSize="30.0px"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/quiz_score_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20px"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:text="Your score:"
+                android:textColor="#ff007fb2"
+                android:textSize="30.0px"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/correct_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#ff8dc73f"
+                android:textSize="40.0px" />
+
+            <ImageView
+                android:id="@+id/correct_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_marginRight="20px" />
+
+            <TextView
+                android:id="@+id/incorrect_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#CC4848"
+                android:textSize="40.0px" />
+
+            <ImageView
+                android:id="@+id/incorrect_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_marginRight="20px" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <Button
-        android:id="@+id/quiz_submit_btn"
+        android:id="@id/quiz_submit_btn"
         android:layout_width="180px"
         android:layout_height="70px"
         android:layout_alignParentBottom="true"
@@ -105,57 +165,6 @@
         android:text="Submit"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
-
-    <LinearLayout
-        android:id="@+id/quiz_score_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/quiz_submit_btn"
-        android:layout_marginBottom="20px"
-        android:visibility="gone" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="20px"
-            android:layout_marginRight="20px"
-            android:text="Your score:"
-            android:textColor="#ff007fb2"
-            android:textSize="30.0px"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/correct_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#ff8dc73f"
-            android:textSize="40.0px" />
-
-        <ImageView
-            android:id="@+id/correct_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="20px" />
-
-        <TextView
-            android:id="@+id/incorrect_score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#CC4848"
-            android:textSize="40.0px" />
-
-        <ImageView
-            android:id="@+id/incorrect_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="20px" />
-    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"

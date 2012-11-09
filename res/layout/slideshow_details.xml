@@ -24,11 +24,14 @@
 
                 <TextView
                     android:id="@id/slideshow_title1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20px"
+                    android:background="@drawable/green_gradient"
                     android:gravity="center"
-                    android:textColor="#ff8dc73f"
+                    android:padding="10px"
+                    android:textColor="@android:color/white"
                     android:textSize="40.0px"
                     android:textStyle="bold" />
 
@@ -44,6 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/slideshowImage1"
+                    android:padding="20px"
                     android:textColor="#ff007fb2"
                     android:textSize="30.0px" />
             </RelativeLayout>
@@ -63,11 +67,14 @@
 
                 <TextView
                     android:id="@id/slideshow_title2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20px"
+                    android:background="@drawable/green_gradient"
                     android:gravity="center"
-                    android:textColor="#ff8dc73f"
+                    android:padding="10px"
+                    android:textColor="@android:color/white"
                     android:textSize="40.0px"
                     android:textStyle="bold" />
 
@@ -83,6 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/slideshowImage2"
+                    android:padding="20px"
                     android:textColor="#ff007fb2"
                     android:textSize="30.0px" />
             </RelativeLayout>
@@ -90,15 +98,13 @@
     </ViewFlipper>
 
     <TextView
-        android:id="@id/slideshow_page"
+        android:id="@+id/question_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:gravity="center"
-        android:paddingRight="10.0px"
-        android:textColor="#ff8dc73f"
-        android:textSize="30.0px"
-        android:textStyle="bold" />
+        android:padding="5px"
+        android:background="@android:color/white"
+        android:textSize="20px" />
 
 </RelativeLayout>

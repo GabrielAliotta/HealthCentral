@@ -17,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -38,7 +39,6 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 
 	private boolean isSlide1;
 
-	private TextView slidePage;
 	private DatabaseController databaseController;
 	private Slideshow slideshow = new Slideshow();
 	private Integer slideIndex;
@@ -49,6 +49,7 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 
 	private String slideshowId;
 	private Integer slideshowIndex;
+	private TextView pageCounter;
 
 	@SuppressWarnings({ "static-access" })
 	@Override
@@ -66,8 +67,7 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 		imageView2 = (ImageView) this.findViewById(R.id.slideshowImage2);
 		textTitle2 = (TextView) this.findViewById(R.id.slideshow_title2);
 		textContent2 = (TextView) this.findViewById(R.id.slideshow_article2);
-
-		slidePage = (TextView) this.findViewById(R.id.slideshow_page);
+		pageCounter = (TextView) findViewById(R.id.question_counter);
 
 		databaseController = new DatabaseController(getApplicationContext());
 		try {
@@ -92,10 +92,9 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 		textContent1.setText(Html.fromHtml(slides.get(0).getText()));
 		textContent1.setMovementMethod(LinkMovementMethod.getInstance());
 
-		slidePage.setText(slideIndex + "/" + slides.size());
+		pageCounter.setText("Page 1 of " + String.valueOf(slides.size()));
 
-		ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(
-				0).getImage());
+		ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(0).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 		imageView1.setImageBitmap(theImage);
 
@@ -122,22 +121,17 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 				ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
 
 				// Set an animation from res/anim: I pick push left in
-				vf.setInAnimation(AnimationUtils.loadAnimation(this,
-						R.anim.push_right_in));
-				vf.setOutAnimation(AnimationUtils.loadAnimation(this,
-						R.anim.push_right_out));
+				vf.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_in));
+				vf.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.push_right_out));
 				vf.showNext();
 
-				slidePage.setText(String.valueOf(slideIndex) + "/"
-						+ String.valueOf(slides.size()));
+				pageCounter.setText("Page " + String.valueOf(slideIndex) + " of " + String.valueOf(slides.size()));
 
 				if (!isSlide1) {
-					textContent1.setText(Html.fromHtml(slides.get(
-							slideIndex - 1).getText()));
+					textContent1.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
 					textTitle1.setText(slides.get(slideIndex - 1).getTitle());
 
-					ByteArrayInputStream imageStream = new ByteArrayInputStream(
-							slides.get(slideIndex - 1).getImage());
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(slideIndex - 1).getImage());
 					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView1.setImageBitmap(theImage);
@@ -173,12 +167,10 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 						R.anim.push_left_out));
 				vf.showNext();
 
-				slidePage.setText(String.valueOf(slideIndex) + "/"
-						+ String.valueOf(slides.size()));
+				pageCounter.setText("Page " + String.valueOf(slideIndex) + " of " + String.valueOf(slides.size()));
 
 				if (!isSlide1) {
-					textContent1.setText(Html.fromHtml(slides.get(
-							slideIndex - 1).getText()));
+					textContent1.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
 					textTitle1.setText(slides.get(slideIndex - 1).getTitle());
 
 					ByteArrayInputStream imageStream = new ByteArrayInputStream(
@@ -189,8 +181,7 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 
 					isSlide1 = true;
 				} else {
-					textContent2.setText(Html.fromHtml(slides.get(
-							slideIndex - 1).getText()));
+					textContent2.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
 					textTitle2.setText(slides.get(slideIndex - 1).getTitle());
 
 					ByteArrayInputStream imageStream = new ByteArrayInputStream(

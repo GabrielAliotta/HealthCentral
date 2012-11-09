@@ -23,7 +23,6 @@ public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 
 	private final Context context;
 	private final List<Quiz> values;
-	int pos;
 
 	public CustomQuizAdapter(Context context, List<Quiz> values) {
 		super(context, R.layout.list_quiz_item, values);
@@ -42,13 +41,10 @@ public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 		View rowView = inflater.inflate(R.layout.list_quiz_item, parent, false);
 		((TextView) rowView.findViewById(R.id.Title)).setText(Html.fromHtml(values.get(position).getTitle()));
 		((TextView) rowView.findViewById(R.id.Description)).setText(Html.fromHtml(values.get(position).getText()));
-		((RelativeLayout) rowView.findViewById(R.id.relative_quiz_item)).setBackgroundDrawable(new BitmapDrawable(theImage));
-
-		//set image
-		//ImageView image = (ImageView) rowView.findViewById(R.id.QuizImage);
-		//image.setImageBitmap(theImage);
-
-		pos = position;
+		
+		BitmapDrawable image = new BitmapDrawable(theImage);
+		image.setAlpha(100);
+		((RelativeLayout) rowView.findViewById(R.id.relative_quiz_item)).setBackgroundDrawable(image);
 
 		return rowView;
 	}

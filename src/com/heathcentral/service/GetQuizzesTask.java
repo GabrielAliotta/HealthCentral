@@ -55,7 +55,7 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 		JSONArray quizzes, questions, answers, textResults, learnMoreLinks = null;
 		
 		// url to make request
-		String url = "http://thcn-db01.bar.tpg.corp/index.php/tools/hke?contentType=quiz&vertical="
+		String url = "http://thcn-db01.bar.tpg.corp/index.php/tools/mobile?contentType=quiz&vertical="
 				+ vertical + "&json=true";
 
 		JSONParser jParser = new JSONParser(url, this.context, "quizzes-diet&exercises");
@@ -73,8 +73,8 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 
 					String description = quizJsonObject.getString("text");
 					String title = quizJsonObject.getString("title");
-					//String imageUrl = quizJsonObject.getString("image");
-					String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+					String imageUrl = quizJsonObject.getString("image");
+					//String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 					String verticalId = quizJsonObject.getString("vertical-id");
 					String nextQuizId = quizJsonObject.getString("nextQuiz");
 
@@ -96,8 +96,8 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 
 						String question = questionJsonObject.getString("title");
 						String answerText = questionJsonObject.getString("text");
-						//String questionImageUrl = questionJsonObject.getString("image");
-						String questionImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+						String questionImageUrl = questionJsonObject.getString("image");
+						//String questionImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 						answers = questionJsonObject.getJSONObject("answers").getJSONArray("answer");
 
 						QuizQuestion questionToSave = new QuizQuestion(quizId, title, answerText, question, questionImageUrl, Image.getImageFromURL(questionImageUrl));

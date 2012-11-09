@@ -45,8 +45,7 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 
 	protected Boolean doInBackground(final String... args) {
 		JSONArray slideshows, slides = null;
-		JSONParser jsonParser = new JSONParser(C5_HKE_TOOL_URL + "?vertical="+this.verticalId, this.context,
-				"slideshows.txt");
+		JSONParser jsonParser = new JSONParser(C5_HKE_TOOL_URL + "?vertical="+this.verticalId, this.context, "slideshows.txt");
 		JSONObject json = jsonParser.getJSON();
 
 		try {
@@ -56,8 +55,7 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 			byte[] image = Image.getImageFromURL(imageUrl);
 			
 			for (int iSlideshow = 0; iSlideshow < slideshows.length(); iSlideshow++) {
-				JSONObject slideshowJsonObject = slideshows.getJSONObject(
-						iSlideshow).getJSONObject("item");
+				JSONObject slideshowJsonObject = slideshows.getJSONObject(iSlideshow).getJSONObject("item");
 				String slideshowId = slideshowJsonObject.getString("id");
 				slides = slideshowJsonObject.getJSONObject("slides").getJSONArray("slide");
 				
@@ -66,8 +64,7 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 					String title = slideshowJsonObject.getString("title");
 //					String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 //					byte[] image = this.getImage(imageUrl);
-					String verticalId = slideshowJsonObject
-							.getString("vertical-id");
+					String verticalId = slideshowJsonObject.getString("vertical-id");
 					
 					Slideshow slideshowToSave = new Slideshow(slideshowId, title, description, imageUrl, image, verticalId);
 					databaseController.saveSlideshow(slideshowToSave);

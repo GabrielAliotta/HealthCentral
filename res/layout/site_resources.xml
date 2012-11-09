@@ -3,7 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@android:color/white"
-    android:paddingBottom="20.0px" >
+    android:paddingTop="10px"
+    android:paddingBottom="10px" >
 
     <ImageView
         android:id="@+id/resource_image"

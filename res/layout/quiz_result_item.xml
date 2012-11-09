@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:paddingTop="10px"
+    android:paddingBottom="10px"
     android:background="@android:color/white" >
 
     <TextView
@@ -44,7 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/answer"
         android:layout_marginTop="20px"
-        android:paddingBottom="20px"
         android:textColor="#A3A3A3"
         android:textSize="25.0px" />
 
