@@ -38,8 +38,7 @@ public class SplashActivity extends Activity {
 		public void run() {
 			if (!isFinishing()) {
 				mHandler.removeCallbacks(this);
-				startActivity(new Intent(SplashActivity.this,
-						HealthCentralActivity.class));
+				startActivity(new Intent(SplashActivity.this, HealthCentralActivity.class));
 				finish();
 			}
 		};

@@ -58,8 +58,9 @@ public class HealthCentralActivity extends Activity implements
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
 			int paramInt, long paramLong) {
 		Intent localIntent = new Intent(this, SiteResourcesActivity.class);
-		localIntent.putExtra("vertical",
-				((Vertical) this.verticals.get(paramInt)).verticalId);
+		localIntent.putExtra("vertical", ((Vertical) this.verticals.get(paramInt)).verticalId);
+		localIntent.putExtra("hasSlideshows", ((Vertical) this.verticals.get(paramInt)).getHasSlideshows());
+		localIntent.putExtra("hasQuizzes", ((Vertical) this.verticals.get(paramInt)).getHasQuizzes());
 		startActivity(localIntent);
 	}
 
