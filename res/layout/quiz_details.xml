@@ -21,8 +21,8 @@
         android:id="@+id/background_relative"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/quiz_title"
         android:layout_above="@+id/quiz_submit_btn"
+        android:layout_below="@id/quiz_title"
         android:layout_marginBottom="20px" >
 
         <TextView
@@ -39,66 +39,72 @@
             android:id="@+id/list_answers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/quiz_submit_btn"
             android:layout_below="@id/quiz_question"
             android:layout_marginTop="20px"
             android:cacheColorHint="#00000000"
             android:choiceMode="singleChoice"
             android:divider="#00000000" />
 
-        <TextView
-            android:id="@+id/youAnswered"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/list_answers"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:textColor="#ff007fb2"
-            android:textSize="30.0px"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/correctAnswerTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/youAnswered"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20px"
-            android:text="The correct answer is:"
-            android:textColor="#ff007fb2"
-            android:textSize="35.0px"
-            android:textStyle="bold"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/correctAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/correctAnswerTitle"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5px"
-            android:gravity="center"
-            android:textColor="#ff8dc73f"
-            android:textSize="40.0px"
-            android:textStyle="bold"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/quizText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_above="@+id/quiz_score_layout"
-            android:layout_below="@id/correctAnswer"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:maxLines="255"
-            android:paddingBottom="15px"
-            android:scrollbarDefaultDelayBeforeFade="100"
-            android:scrollbarSize="30px"
-            android:scrollbars="vertical"
-            android:textColor="#ff007fb2"
-            android:textSize="30.0px"
-            android:visibility="gone" />
+            android:layout_below="@id/list_answers" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <TextView
+                    android:id="@+id/youAnswered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textColor="#ff007fb2"
+                    android:textSize="30.0px"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/correctAnswerTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/youAnswered"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20px"
+                    android:text="The correct answer is:"
+                    android:textColor="#ff007fb2"
+                    android:textSize="35.0px"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/correctAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/correctAnswerTitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5px"
+                    android:gravity="center"
+                    android:textColor="#ff8dc73f"
+                    android:textSize="40.0px"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/quizText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/quiz_score_layout"
+                    android:layout_below="@id/correctAnswer"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:paddingBottom="15px"
+                    android:textColor="#ff007fb2"
+                    android:textSize="30.0px"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </ScrollView>
 
         <LinearLayout
             android:id="@+id/quiz_score_layout"

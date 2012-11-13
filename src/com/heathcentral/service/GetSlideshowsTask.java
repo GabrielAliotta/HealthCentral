@@ -22,8 +22,7 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 	private Context context;
 	private String verticalId;
 
-	public GetSlideshowsTask(Context context,
-			DatabaseController databaseController, String verticalId) {
+	public GetSlideshowsTask(Context context, DatabaseController databaseController, String verticalId) {
 		this.databaseController = databaseController;
 		this.context = context;
 		this.verticalId = verticalId;
@@ -45,7 +44,7 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 
 	protected Boolean doInBackground(final String... args) {
 		JSONArray slideshows, slides = null;
-		JSONParser jsonParser = new JSONParser(C5_HKE_TOOL_URL + "?vertical="+this.verticalId, this.context, "slideshows.txt");
+		JSONParser jsonParser = new JSONParser(C5_HKE_TOOL_URL + "?vertical="+this.verticalId + "&contentType=slideshow", this.context, "slideshows.txt");
 		JSONObject json = jsonParser.getJSON();
 
 		try {

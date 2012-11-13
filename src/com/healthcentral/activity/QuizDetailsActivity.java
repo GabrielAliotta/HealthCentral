@@ -91,8 +91,6 @@ public class QuizDetailsActivity extends Activity{
 		questionCounterBar = (TextView) findViewById(R.id.question_counter);
 		submitBtn = (Button) findViewById(R.id.quiz_submit_btn);
 		
-		quizText.setMovementMethod(new ScrollingMovementMethod());
-		
 		databaseController = new DatabaseController(getApplicationContext());
 		try {
 			databaseController.initDatabase();
