@@ -83,7 +83,7 @@
             android:layout_height="250px"
             android:layout_margin="10px"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/quiz_icon"
+            android:background="@drawable/quizzes_icon"
             android:layout_below="@+id/slideshows_image"
             android:onClick="quizPressed"
             android:visibility="gone" />

@@ -7,15 +7,21 @@ import java.util.List;
 import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
+import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -28,13 +34,13 @@ import com.heathcentral.service.DatabaseController;
 
 public class SlideshowDetails extends Activity implements SimpleGestureListener {
 
-	private ImageView imageView1;
-	private TextView textTitle1;
-	private TextView textContent1;
+	private Button imageView1;
+	private TextView slideshowMainTitle;
+	private TextView textTitle;
+	private WebView textContent1;
 
-	private ImageView imageView2;
-	private TextView textTitle2;
-	private TextView textContent2;
+	private Button imageView2;
+	private WebView textContent2;
 
 	private boolean isSlide1;
 
@@ -49,6 +55,10 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 	private String slideshowId;
 	private Integer slideshowIndex;
 	private TextView pageCounter;
+	
+	private Bitmap theImage;
+	
+	final String align = "<head><style>* {margin:0;padding:8;font-size:18; text-align:justify;color:007fb2}</style></head>";
 
 	@SuppressWarnings({ "static-access" })
 	@Override
@@ -59,14 +69,17 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 
 		detector = new SimpleGestureFilter(this, this);
 
-		imageView1 = (ImageView) this.findViewById(R.id.slideshowImage1);
-		textTitle1 = (TextView) this.findViewById(R.id.slideshow_title1);
-		textContent1 = (TextView) this.findViewById(R.id.slideshow_article1);
+		imageView1 = (Button) findViewById(R.id.slideshowImage1);
+		slideshowMainTitle = (TextView) findViewById(R.id.slideshow_main_title);
+		textTitle = (TextView) findViewById(R.id.slideshow_title);
+		textContent1 = (WebView) findViewById(R.id.slideshow_article1);
 
-		imageView2 = (ImageView) this.findViewById(R.id.slideshowImage2);
-		textTitle2 = (TextView) this.findViewById(R.id.slideshow_title2);
-		textContent2 = (TextView) this.findViewById(R.id.slideshow_article2);
+		imageView2 = (Button) findViewById(R.id.slideshowImage2);
+		textContent2 = (WebView) findViewById(R.id.slideshow_article2);
 		pageCounter = (TextView) findViewById(R.id.question_counter);
+		
+		textContent1.setFocusable(false);
+		textContent2.setFocusable(false);
 
 		databaseController = new DatabaseController(getApplicationContext());
 		try {
@@ -87,15 +100,18 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 		slides = databaseController.getSlides(slideshow.getId());
 		slideIndex = 1;
 
-		textTitle1.setText(slides.get(0).getTitle());
-		textContent1.setText(Html.fromHtml(slides.get(0).getText()));
-		textContent1.setMovementMethod(LinkMovementMethod.getInstance());
+		slideshowMainTitle.setText(slideshow.getTitle());
+		textTitle.setText(slides.get(0).getTitle());
+		//textContent1.setText(Html.fromHtml(slides.get(0).getText()));
+		//textContent1.setMovementMethod(LinkMovementMethod.getInstance());
+		textContent1.loadData(align + slides.get(0).getText(),"text/html","utf-8");
 
 		pageCounter.setText("Page 1 of " + String.valueOf(slides.size()));
 
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(0).getImage());
-		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
-		imageView1.setImageBitmap(theImage);
+		theImage = BitmapFactory.decodeStream(imageStream);
+		imageView1.setBackgroundDrawable(new BitmapDrawable(theImage));
+		//imageView1.setImageBitmap(theImage);
 
 		isSlide1 = true;
 	}
@@ -127,25 +143,29 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 				pageCounter.setText("Page " + String.valueOf(slideIndex) + " of " + String.valueOf(slides.size()));
 
 				if (!isSlide1) {
-					textContent1.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
-					textTitle1.setText(slides.get(slideIndex - 1).getTitle());
+					//textContent1.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
+					textContent1.loadData(align + slides.get(slideIndex - 1).getText(),"text/html","utf-8");
+					
+					textTitle.setText(slides.get(slideIndex - 1).getTitle());
 
 					ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(slideIndex - 1).getImage());
-					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+					theImage = BitmapFactory.decodeStream(imageStream);
 
-					imageView1.setImageBitmap(theImage);
+					imageView1.setBackgroundDrawable(new BitmapDrawable(theImage));
+					//imageView1.setImageBitmap(theImage);
 
 					isSlide1 = true;
 				} else {
-					textContent2.setText(Html.fromHtml(slides.get(
-							slideIndex - 1).getText()));
-					textTitle2.setText(slides.get(slideIndex - 1).getTitle());
+					//textContent2.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
+					textContent2.loadData(align + slides.get(slideIndex - 1).getText(),"text/html","utf-8");
+					textTitle.setText(slides.get(slideIndex - 1).getTitle());
 
 					ByteArrayInputStream imageStream = new ByteArrayInputStream(
 							slides.get(slideIndex - 1).getImage());
-					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+					theImage = BitmapFactory.decodeStream(imageStream);
 
-					imageView2.setImageBitmap(theImage);
+					imageView2.setBackgroundDrawable(new BitmapDrawable(theImage));
+					//imageView2.setImageBitmap(theImage);
 
 					isSlide1 = false;
 				}
@@ -169,25 +189,27 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 				pageCounter.setText("Page " + String.valueOf(slideIndex) + " of " + String.valueOf(slides.size()));
 
 				if (!isSlide1) {
-					textContent1.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
-					textTitle1.setText(slides.get(slideIndex - 1).getTitle());
+					//textContent1.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
+					textContent1.loadData(align + slides.get(slideIndex - 1).getText(),"text/html","utf-8");
+					textTitle.setText(slides.get(slideIndex - 1).getTitle());
 
-					ByteArrayInputStream imageStream = new ByteArrayInputStream(
-							slides.get(slideIndex - 1).getImage());
-					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(slideIndex - 1).getImage());
+					theImage = BitmapFactory.decodeStream(imageStream);
 
-					imageView1.setImageBitmap(theImage);
+					imageView1.setBackgroundDrawable(new BitmapDrawable(theImage));
+					//imageView1.setImageBitmap(theImage);
 
 					isSlide1 = true;
 				} else {
-					textContent2.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
-					textTitle2.setText(slides.get(slideIndex - 1).getTitle());
+					//textContent2.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
+					textContent2.loadData(align + slides.get(slideIndex - 1).getText(),"text/html","utf-8");
+					textTitle.setText(slides.get(slideIndex - 1).getTitle());
 
-					ByteArrayInputStream imageStream = new ByteArrayInputStream(
-							slides.get(slideIndex - 1).getImage());
-					Bitmap theImage = BitmapFactory.decodeStream(imageStream);
+					ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(slideIndex - 1).getImage());
+					theImage = BitmapFactory.decodeStream(imageStream);
 
-					imageView2.setImageBitmap(theImage);
+					imageView2.setBackgroundDrawable(new BitmapDrawable(theImage));
+					//imageView2.setImageBitmap(theImage);
 					isSlide1 = false;
 				}
 			} else if (slideIndex == slides.size()) {
@@ -206,6 +228,28 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 	}
 
 	public void onDoubleTap() {
+	}
+	
+	public void slideshowImage1Pressed (View view){
+		new Dialog(this, android.R.style.Theme_Light_NoTitleBar) {
+		    @Override
+		    public void onCreate(Bundle unused) {
+		        ImageView myImage = new ImageView(getContext());
+		        myImage.setImageBitmap(theImage);		        
+		        setContentView(myImage);
+		    }
+		}.show();
+	}
+	
+	public void slideshowImage2Pressed (View view){
+		new Dialog(this, android.R.style.Theme_Light_NoTitleBar) {
+		    @Override
+		    public void onCreate(Bundle unused) {
+		        ImageView myImage = new ImageView(getContext());
+		        myImage.setImageBitmap(theImage);
+		        setContentView(myImage);
+		    }
+		}.show();
 	}
 
 	@Override

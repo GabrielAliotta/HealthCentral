@@ -4,10 +4,36 @@
     android:layout_height="fill_parent"
     android:background="@android:color/white" >
 
+    <TextView
+        android:id="@+id/slideshow_main_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20.0px"
+        android:background="@drawable/green_gradient"
+        android:gravity="center"
+        android:padding="10px"
+        android:textColor="@android:color/white"
+        android:textSize="30.0px"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/slideshow_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/slideshow_main_title"
+        android:background="@drawable/blue_gradient"
+        android:gravity="center"
+        android:padding="10px"
+        android:textColor="@android:color/white"
+        android:textSize="25px"
+        android:textStyle="bold" />
+
     <ViewFlipper
         android:id="@id/details"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent"
+        android:layout_below="@id/slideshow_title" >
 
         <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -22,27 +48,21 @@
                 android:layout_height="fill_parent"
                 android:background="@android:color/white" >
 
-                <TextView
-                    android:id="@id/slideshow_title1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20px"
-                    android:background="@drawable/green_gradient"
-                    android:gravity="center"
-                    android:padding="10px"
-                    android:textColor="@android:color/white"
-                    android:textSize="40.0px"
-                    android:textStyle="bold" />
-
-                <ImageView
+                <Button
                     android:id="@id/slideshowImage1"
-                    android:layout_width="200.0px"
-                    android:layout_height="200.0px"
-                    android:layout_below="@id/slideshow_title1"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_width="400.0px"
+                    android:layout_height="400.0px"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="slideshowImage1Pressed" />
 
-                <TextView
+                <!-- <ImageView -->
+                <!-- android:id="@id/slideshowImage1" -->
+                <!-- android:layout_width="400.0px" -->
+                <!-- android:layout_height="400.0px" -->
+                <!-- android:layout_centerHorizontal="true" -->
+                <!-- android:onClick="slideshowImage1Pressed" /> -->
+
+                <WebView
                     android:id="@id/slideshow_article1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,27 +85,21 @@
                 android:layout_height="fill_parent"
                 android:background="@android:color/white" >
 
-                <TextView
-                    android:id="@id/slideshow_title2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20px"
-                    android:background="@drawable/green_gradient"
-                    android:gravity="center"
-                    android:padding="10px"
-                    android:textColor="@android:color/white"
-                    android:textSize="40.0px"
-                    android:textStyle="bold" />
-
-                <ImageView
+                <Button
                     android:id="@id/slideshowImage2"
-                    android:layout_width="200.0px"
-                    android:layout_height="200.0px"
-                    android:layout_below="@id/slideshow_title2"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_width="400.0px"
+                    android:layout_height="400.0px"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="slideshowImage2Pressed" />
 
-                <TextView
+                <!-- <ImageView -->
+                <!-- android:id="@id/slideshowImage2" -->
+                <!-- android:layout_width="400.0px" -->
+                <!-- android:layout_height="400.0px" -->
+                <!-- android:layout_centerHorizontal="true" -->
+                <!-- android:onClick="slideshowImage2Pressed" /> -->
+
+                <WebView
                     android:id="@id/slideshow_article2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,8 +117,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:padding="5px"
         android:background="@android:color/white"
+        android:padding="5px"
         android:textSize="20px" />
 
 </RelativeLayout>
