@@ -8,19 +8,17 @@ import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
-import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
 import android.view.Window;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -28,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +54,7 @@ public class QuizDetailsActivity extends Activity{
 	private TextView youAnswered;
 	private TextView correctAnswerTitle;
 	private TextView correctAnswer;
-	private TextView quizText;
+	private WebView quizText;
 	private ProgressBar progressBar;
 	private TextView questionCounterBar;
 	private Button submitBtn;
@@ -68,6 +67,7 @@ public class QuizDetailsActivity extends Activity{
 	int answeredValid = 0;
 	int answeredInvalid = 0;
 	
+	final String align = "<head><style>* {margin:0;padding:8;font-size:18; text-align:justify;color:007fb2}</style></head>"; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,10 +86,13 @@ public class QuizDetailsActivity extends Activity{
 		correctAnswerTitle = (TextView) findViewById(R.id.correctAnswerTitle);
 		youAnswered = (TextView) findViewById(R.id.youAnswered);
 		correctAnswer = (TextView) findViewById(R.id.correctAnswer);
-		quizText = (TextView) findViewById(R.id.quizText);
+		quizText = (WebView) findViewById(R.id.quizText);
 		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 		questionCounterBar = (TextView) findViewById(R.id.question_counter);
 		submitBtn = (Button) findViewById(R.id.quiz_submit_btn);
+		
+		quizText.setFocusable(false);
+		quizText.setBackgroundColor(0);
 		
 		databaseController = new DatabaseController(getApplicationContext());
 		try {
@@ -184,9 +187,9 @@ public class QuizDetailsActivity extends Activity{
 			quizScore.setVisibility(View.VISIBLE);
 			correctAnswer.setVisibility(View.VISIBLE);
 			correctAnswer.setTextSize(55);
-			correctAnswer.setText("Correct!");
+			correctAnswer.setText("Correct!");			
+			quizText.loadData(align + questions.get(questionCounter).getAnswerText(),"text/html","utf-8");
 			quizText.setVisibility(View.VISIBLE);
-			quizText.setText(Html.fromHtml(questions.get(questionCounter).getAnswerText()));
 			correctScore.setText(String.valueOf(answeredValid));
 			incorrectScore.setText(String.valueOf(answeredInvalid));
 		} else {
@@ -210,8 +213,8 @@ public class QuizDetailsActivity extends Activity{
 			correctAnswerTitle.setVisibility(View.VISIBLE);
 			correctAnswer.setVisibility(View.VISIBLE);
 			correctAnswer.setText(answers.get(validAnswer).getTitle());
+			quizText.loadData(align + questions.get(questionCounter).getAnswerText(),"text/html","utf-8");
 			quizText.setVisibility(View.VISIBLE);
-			quizText.setText(Html.fromHtml(questions.get(questionCounter).getAnswerText()));
 			correctScore.setText(String.valueOf(answeredValid));
 			incorrectScore.setText(String.valueOf(answeredInvalid));
 		}			

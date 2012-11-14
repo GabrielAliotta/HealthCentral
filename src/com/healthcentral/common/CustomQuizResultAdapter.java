@@ -11,6 +11,7 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class CustomQuizResultAdapter extends ArrayAdapter<QuizAnswered>{
 
 	private final Context context;
 	private final List<QuizAnswered> values;
+	final String align = "<head><style>* {margin:0;padding:0;font-size:16; text-align:justify;color:A3A3A3}</style></head>";
 
 	public CustomQuizResultAdapter(Context context, List<QuizAnswered> values) {
 		super(context, R.layout.quiz_result_item, values);
@@ -60,8 +62,8 @@ public class CustomQuizResultAdapter extends ArrayAdapter<QuizAnswered>{
 		question.setText(values.get(position).getQuestion());
 		TextView answer = (TextView) rowView.findViewById(R.id.answer);
 		answer.setText("Correct Answer: " + values.get(position).getCorrectAnswer());
-		TextView resultText = (TextView) rowView.findViewById(R.id.result_text);
-		resultText.setText(values.get(position).getQuestionText());
+		WebView resultText = (WebView) rowView.findViewById(R.id.result_text);
+		resultText.loadData(align + values.get(position).getQuestionText(),"text/html","utf-8");
 
 		return rowView;
 	}

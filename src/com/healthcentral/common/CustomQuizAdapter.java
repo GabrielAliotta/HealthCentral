@@ -12,11 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.healthcentral.activity.R;
+import com.healthcentral.utils.TextViewJustify;
 import com.heathcentral.model.Quiz;
 
 public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
@@ -33,14 +33,16 @@ public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+		
 		//Get image
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(values.get(position).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
 		View rowView = inflater.inflate(R.layout.list_quiz_item, parent, false);
+		TextView description = (TextView) rowView.findViewById(R.id.Description); 
 		((TextView) rowView.findViewById(R.id.Title)).setText(Html.fromHtml(values.get(position).getTitle()));
-		((TextView) rowView.findViewById(R.id.Description)).setText(Html.fromHtml(values.get(position).getText()));
+		description.setText(Html.fromHtml(values.get(position).getText()));
+		TextViewJustify.justifyText(description, 200f);
 		
 		BitmapDrawable image = new BitmapDrawable(theImage);
 		image.setAlpha(100);
