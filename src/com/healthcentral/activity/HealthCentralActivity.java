@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.healthcentral.common.CustomVerticalAdapter;
 import com.heathcentral.model.Vertical;
@@ -29,7 +30,8 @@ public class HealthCentralActivity extends Activity implements
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
-		verticalsListView = (ListView) this.findViewById(R.id.list_verticals);
+		verticalsListView = (ListView) findViewById(R.id.list_verticals);
+		verticalsListView.setDrawSelectorOnTop(true);
 		this.verticalsListView.setOnItemClickListener(this);
 		this.databaseController = new DatabaseController(
 				getApplicationContext());
@@ -66,8 +68,8 @@ public class HealthCentralActivity extends Activity implements
 
 	public void updateList() {
 		this.verticals = this.databaseController.getVerticals();
-		CustomVerticalAdapter localCustomAdapter = new CustomVerticalAdapter(
-				this, this.verticals);
+		CustomVerticalAdapter localCustomAdapter = new CustomVerticalAdapter(this, this.verticals);
 		this.verticalsListView.setAdapter(localCustomAdapter);
+		((TextView) findViewById(R.id.action_activity)).setVisibility(View.VISIBLE);
 	}
 }

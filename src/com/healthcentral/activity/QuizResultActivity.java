@@ -50,6 +50,7 @@ public class QuizResultActivity extends Activity{
 		Intent localIntent = new Intent(this, QuizDetailsActivity.class);
 		localIntent.putExtra("QuizId",	answered.get(0).getNextQuizId());
 		startActivity(localIntent);
+		finish();
 	}
 
 }

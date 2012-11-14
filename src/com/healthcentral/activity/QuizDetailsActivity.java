@@ -233,6 +233,7 @@ public class QuizDetailsActivity extends Activity{
 			localIntent.putExtra("answered", (Serializable) answered);
 			localIntent.putExtra("validAnswers", String.valueOf(answeredValid));
 			startActivity(localIntent);
+			finish();
 			return;
 		}
 		
