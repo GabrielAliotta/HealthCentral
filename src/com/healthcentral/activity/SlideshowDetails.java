@@ -152,11 +152,9 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 					theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView1.setBackgroundDrawable(new BitmapDrawable(theImage));
-					//imageView1.setImageBitmap(theImage);
 
 					isSlide1 = true;
 				} else {
-					//textContent2.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
 					textContent2.loadData(align + slides.get(slideIndex - 1).getText(),"text/html","utf-8");
 					textTitle.setText(slides.get(slideIndex - 1).getTitle());
 
@@ -165,7 +163,6 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 					theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView2.setBackgroundDrawable(new BitmapDrawable(theImage));
-					//imageView2.setImageBitmap(theImage);
 
 					isSlide1 = false;
 				}
@@ -189,7 +186,6 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 				pageCounter.setText("Page " + String.valueOf(slideIndex) + " of " + String.valueOf(slides.size()));
 
 				if (!isSlide1) {
-					//textContent1.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
 					textContent1.loadData(align + slides.get(slideIndex - 1).getText(),"text/html","utf-8");
 					textTitle.setText(slides.get(slideIndex - 1).getTitle());
 
@@ -197,11 +193,9 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 					theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView1.setBackgroundDrawable(new BitmapDrawable(theImage));
-					//imageView1.setImageBitmap(theImage);
 
 					isSlide1 = true;
 				} else {
-					//textContent2.setText(Html.fromHtml(slides.get(slideIndex - 1).getText()));
 					textContent2.loadData(align + slides.get(slideIndex - 1).getText(),"text/html","utf-8");
 					textTitle.setText(slides.get(slideIndex - 1).getTitle());
 
@@ -209,7 +203,6 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 					theImage = BitmapFactory.decodeStream(imageStream);
 
 					imageView2.setBackgroundDrawable(new BitmapDrawable(theImage));
-					//imageView2.setImageBitmap(theImage);
 					isSlide1 = false;
 				}
 			} else if (slideIndex == slides.size()) {
@@ -231,25 +224,23 @@ public class SlideshowDetails extends Activity implements SimpleGestureListener 
 	}
 	
 	public void slideshowImage1Pressed (View view){
-		new Dialog(this, android.R.style.Theme_Light_NoTitleBar) {
-		    @Override
-		    public void onCreate(Bundle unused) {
-		        ImageView myImage = new ImageView(getContext());
-		        myImage.setImageBitmap(theImage);		        
-		        setContentView(myImage);
-		    }
-		}.show();
+		
+		Dialog dialog = new Dialog(this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.slideshow_image_dialog);
+		((ImageView) dialog.findViewById(R.id.slideshow_image_for_dialog)).setImageBitmap(theImage);
+		dialog.show();
+		
 	}
 	
 	public void slideshowImage2Pressed (View view){
-		new Dialog(this, android.R.style.Theme_Light_NoTitleBar) {
-		    @Override
-		    public void onCreate(Bundle unused) {
-		        ImageView myImage = new ImageView(getContext());
-		        myImage.setImageBitmap(theImage);
-		        setContentView(myImage);
-		    }
-		}.show();
+		
+		Dialog dialog = new Dialog(this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.slideshow_image_dialog);
+		((ImageView) dialog.findViewById(R.id.slideshow_image_for_dialog)).setImageBitmap(theImage);
+		dialog.show();
+		
 	}
 
 	@Override
