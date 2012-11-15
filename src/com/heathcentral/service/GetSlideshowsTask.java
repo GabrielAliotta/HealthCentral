@@ -50,17 +50,28 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 		try {
 			slideshows = json.getJSONArray("items");
 
-			String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-			byte[] image = Image.getImageFromURL(imageUrl);
+			//String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+			//byte[] image = Image.getImageFromURL(imageUrl);
 			
 			for (int iSlideshow = 0; iSlideshow < slideshows.length(); iSlideshow++) {
 				JSONObject slideshowJsonObject = slideshows.getJSONObject(iSlideshow).getJSONObject("item");
+				String imageUrl = slideshowJsonObject.getString("slideshowImage");
+				if (imageUrl.equals("")){
+					imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+				}
+				byte[] image = Image.getImageFromURL(imageUrl);
+				
 				String slideshowId = slideshowJsonObject.getString("id");
 				slides = slideshowJsonObject.getJSONObject("slides").getJSONArray("slide");
 				
 				if (!databaseController.slideshowLoaded(slideshowId) && slides.length() > 0) {
 					String description = slideshowJsonObject.getString("blurb");
 					String title = slideshowJsonObject.getString("title");
+					imageUrl = slideshowJsonObject.getString("slideshowImage");
+					if (imageUrl.equals("")){
+						imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+					}
+					image = Image.getImageFromURL(imageUrl);
 //					String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 //					byte[] image = this.getImage(imageUrl);
 					String verticalId = slideshowJsonObject.getString("vertical-id");
@@ -72,6 +83,11 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 						JSONObject slideJsonObject = slides.getJSONObject(iSlide);
 						String slideTitle = slideJsonObject.getString("title");
 						String text = slideJsonObject.getString("text");
+						imageUrl = slideJsonObject.getString("image");
+						if (imageUrl.equals("")){
+							imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+						}
+						image = Image.getImageFromURL(imageUrl);
 //						String slideImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
 //						byte[] slideImage = this.getImage(slideImageUrl);
 						String slideId = slideJsonObject.getString("id");
