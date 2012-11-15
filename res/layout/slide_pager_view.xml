@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white" >
+
+    <TextView
+        android:id="@+id/slideshow_title"
+        android:layout_width="fill_parent"
+        android:layout_height="80px"
+        android:background="@drawable/blue_gradient"
+        android:gravity="center"
+        android:padding="10px"
+        android:textColor="@android:color/white"
+        android:textSize="25px"
+        android:textStyle="bold" />
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/slideshow_title"
+        android:fillViewport="true" >
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@id/relativeLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/white" >
+
+            <Button
+                android:id="@+id/slideshowImage"
+                android:layout_width="340.0px"
+                android:layout_height="340.0px"
+                android:layout_centerHorizontal="true"
+                android:onClick="slideshowImagePressed"
+                android:textColor="@android:color/transparent" />
+
+            <!-- <ImageView -->
+            <!-- android:id="@id/slideshowImage1" -->
+            <!-- android:layout_width="400.0px" -->
+            <!-- android:layout_height="400.0px" -->
+            <!-- android:layout_centerHorizontal="true" -->
+            <!-- android:onClick="slideshowImage1Pressed" /> -->
+
+            <WebView
+                android:id="@+id/slideshow_article"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/slideshowImage"
+                android:padding="20px"
+                android:textColor="#ff007fb2"
+                android:textSize="30.0px" />
+        </RelativeLayout>
+    </ScrollView>
+    
+    <TextView
+        android:id="@+id/question_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/white"
+        android:padding="5px"
+        android:textSize="20px" />
+
+</RelativeLayout>

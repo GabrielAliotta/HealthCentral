@@ -5,7 +5,6 @@
     <public type="layout" name="list_item" id="0x7f030000" />
     <public type="layout" name="list_slideshow_item" id="0x7f030001" />
     <public type="layout" name="main" id="0x7f030002" />
-    <public type="layout" name="slideshow_details" id="0x7f030003" />
     <public type="layout" name="splash_screen" id="0x7f030004" />
     <public type="anim" name="push_left_in" id="0x7f040000" />
     <public type="anim" name="push_left_out" id="0x7f040001" />
