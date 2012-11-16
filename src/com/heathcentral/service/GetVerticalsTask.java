@@ -9,7 +9,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.healthcentral.activity.HealthCentralActivity;
-import com.healthcentral.utils.Image;
 import com.healthcentral.utils.JSONParser;
 import com.heathcentral.model.Vertical;
 
@@ -45,8 +44,8 @@ public class GetVerticalsTask extends AsyncTask<String, Void, Boolean> {
 		
 		try{
 			verticals = json.getJSONArray("verticals");
-			String verticalImageURL = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-			byte[] verticalImage = Image.getImageFromURL(verticalImageURL);
+			//String verticalImageURL = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+			//byte[] verticalImage = Image.getImageFromURL(verticalImageURL);
 			
 			for(int iVertical = 0; iVertical < verticals.length(); iVertical++) {
 				JSONObject jsonVerticalObject = verticals.getJSONObject(iVertical).getJSONObject("vertical");
@@ -58,7 +57,7 @@ public class GetVerticalsTask extends AsyncTask<String, Void, Boolean> {
 					String hasSlideshows = jsonVerticalObject.getString("hasSlideshows");
 					String hasQuizzes = jsonVerticalObject.getString("hasQuizzes");
 					
-					Vertical vertical = new Vertical(verticalId, verticalName, verticalImageURL, verticalImage, hasSlideshows, hasQuizzes);
+					Vertical vertical = new Vertical(verticalId, verticalName, "", new byte[]{}, hasSlideshows, hasQuizzes);
 					databaseController.saveVertical(vertical);
 				}
 			}

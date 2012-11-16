@@ -41,8 +41,7 @@ public class JSONParser {
 	}
 
 	public JSONObject getJSON() {
-		Boolean isLocalEnv = Boolean.parseBoolean(this.context
-				.getString(R.string.app_local_env));
+		Boolean isLocalEnv = Boolean.parseBoolean(this.context.getString(R.string.app_local_env));
 		return (isLocalEnv) ? this.getJSONFromTxt(this.context, this.file)
 				: this.getJSONFromUrl(this.url);
 	}

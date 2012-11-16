@@ -58,7 +58,7 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 		String url = "http://thcn-db01.bar.tpg.corp/index.php/tools/mobile?contentType=quiz&vertical="
 				+ vertical + "&json=true";
 
-		JSONParser jParser = new JSONParser(url, this.context, "quizzes-diet&exercises");
+		JSONParser jParser = new JSONParser(url, this.context, "quizzes-" + vertical + ".txt");
 		JSONObject json = jParser.getJSON();
 		
 		try {
