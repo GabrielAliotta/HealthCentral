@@ -2,7 +2,6 @@ package com.healthcentral.activity;
 
 
 import java.io.ByteArrayInputStream;
-import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,12 +78,16 @@ public class SlideshowPagerActivity extends Activity {
 
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
 				if (arg0 + 1 == slides.size() && arg2 == 0 && state != 2 && !breakIntent) {
+					if(!String.valueOf(slideshowIds[++slideshowIndex]).equals("0")){
 					Intent localIntent = new Intent(getApplicationContext(), SlideshowPagerActivity.class);
 					localIntent.putExtra("slideshowId",	String.valueOf(slideshowIds[++slideshowIndex]));
 					localIntent.putExtra("slideshowIndex", slideshowIndex);
 					localIntent.putExtra("slideshowsIds", slideshowIds);
 					startActivity(localIntent);
 					breakIntent = true;
+					} else {
+						finish();
+					}
 				}
 			}
 

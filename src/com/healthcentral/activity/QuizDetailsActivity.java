@@ -105,7 +105,7 @@ public class QuizDetailsActivity extends Activity{
 		String quizId = getIntent().getExtras().getString("QuizId");
 		nextQuizId = getIntent().getExtras().getString("nextQuizId");
 		questions = databaseController.getQuestionsByVertical(quizId);
-		quizImage = databaseController.getImageByQuizId(quizId); 
+		quizImage = databaseController.getImageByQuizId(quizId);
 		progressBar.setMax(questions.size());
 		adapter = new ArrayAdapter<String>(this, R.layout.list_answer_item,answersString);
 		 
