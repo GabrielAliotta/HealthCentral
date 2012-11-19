@@ -50,16 +50,10 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 		try {
 			slideshows = json.getJSONArray("items");
 
-			String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-			byte[] image = Image.getImageFromURL(imageUrl);
+			String imageUrl = "";
 			
 			for (int iSlideshow = 0; iSlideshow < slideshows.length(); iSlideshow++) {
 				JSONObject slideshowJsonObject = slideshows.getJSONObject(iSlideshow).getJSONObject("item");
-//				String imageUrl = slideshowJsonObject.getString("slideshowImage");
-//				if (imageUrl.equals("")){
-//					imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-//				}
-//				byte[] image = Image.getImageFromURL(imageUrl);
 				
 				String slideshowId = slideshowJsonObject.getString("id");
 				slides = slideshowJsonObject.getJSONObject("slides").getJSONArray("slide");
@@ -68,31 +62,25 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 					String description = slideshowJsonObject.getString("blurb");
 					String title = slideshowJsonObject.getString("title");
 					imageUrl = slideshowJsonObject.getString("slideshowImage");
-//					if (imageUrl.equals("")){
-//						imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-//					}
-//					image = Image.getImageFromURL(imageUrl);
-//					String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-//					byte[] image = this.getImage(imageUrl);
+					
+					Image image = new Image(imageUrl, context);
+					
 					String verticalId = slideshowJsonObject.getString("vertical-id");
 					
-					Slideshow slideshowToSave = new Slideshow(slideshowId, title, description, imageUrl, image, verticalId);
+					Slideshow slideshowToSave = new Slideshow(slideshowId, title, description, imageUrl, image.getImage(), verticalId);
 					databaseController.saveSlideshow(slideshowToSave);
 					
 					for(int iSlide = 0; iSlide < slides.length(); iSlide++) {
 						JSONObject slideJsonObject = slides.getJSONObject(iSlide);
 						String slideTitle = slideJsonObject.getString("title");
-						String text = slideJsonObject.getString("text");
-//						imageUrl = slideJsonObject.getString("image");
-//						if (imageUrl.equals("")){
-//							imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-//						}
-//						image = Image.getImageFromURL(imageUrl);
-//						String slideImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
-//						byte[] slideImage = this.getImage(slideImageUrl);
+						String text = slideJsonObject.getString("text");						
+						imageUrl = slideJsonObject.getString("image");
+						
+						Image slideImage = new Image(imageUrl, context);
+						
 						String slideId = slideJsonObject.getString("id");
 						
-						Slide slideToSave = new Slide(slideshowId, slideId, slideTitle, text, image);
+						Slide slideToSave = new Slide(slideshowId, slideId, slideTitle, text, slideImage.getImage());
 						
 						databaseController.saveSlide(slideToSave);
 					}

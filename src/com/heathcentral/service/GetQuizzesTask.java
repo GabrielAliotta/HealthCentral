@@ -58,7 +58,7 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 		String url = "http://thcn-db01.bar.tpg.corp/index.php/tools/mobile?contentType=quiz&vertical="
 				+ vertical + "&json=true";
 
-		JSONParser jParser = new JSONParser(url, this.context, "quizzes-" + vertical + ".txt");
+		JSONParser jParser = new JSONParser(url, context, "quizzes-" + vertical + ".txt");
 		JSONObject json = jParser.getJSON();
 		
 		try {
@@ -73,20 +73,14 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 
 					String description = quizJsonObject.getString("text");
 					String title = quizJsonObject.getString("title");
-					//String imageUrl = quizJsonObject.getString("image");
-					String imageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+					String imageUrl = quizJsonObject.getString("image");
 					String verticalId = quizJsonObject.getString("vertical-id");
 					String nextQuizId = quizJsonObject.getString("nextQuiz");
 
-					Quiz quizToSave;
+					//NEW IMAGE METHOD
+					Image image = new Image(imageUrl, context);
 					
-					if(!imageUrl.equals("")){
-						//Get image For Quiz
-						quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, Image.getImageFromURL(imageUrl), nextQuizId);
-					}else {
-						quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, new byte[0], nextQuizId);
-					}
-					
+					Quiz quizToSave = new Quiz(verticalId, "",quizId, title, description, imageUrl, image.getImage(), nextQuizId);
 					databaseController.saveQuiz(quizToSave);
 
 					questions = quizJsonObject.getJSONObject("questions").getJSONArray("question");
@@ -96,11 +90,13 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 
 						String question = questionJsonObject.getString("title");
 						String answerText = questionJsonObject.getString("text");
-						//String questionImageUrl = questionJsonObject.getString("image");
-						String questionImageUrl = "http://www.healthcentral.com/about/wp-content/uploads/2009/06/apple_150x150.gif";
+						String questionImageUrl = questionJsonObject.getString("image");
 						answers = questionJsonObject.getJSONObject("answers").getJSONArray("answer");
+						
+						//NEW IMAGE METHOD
+						Image questionImage = new Image(questionImageUrl, context);
 
-						QuizQuestion questionToSave = new QuizQuestion(quizId, title, answerText, question, questionImageUrl, Image.getImageFromURL(questionImageUrl));
+						QuizQuestion questionToSave = new QuizQuestion(quizId, title, answerText, question, questionImageUrl, questionImage.getImage());
 
 						String questionId = databaseController.saveQuizQuestion(questionToSave);
 
