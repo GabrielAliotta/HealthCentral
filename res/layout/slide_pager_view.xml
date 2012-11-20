@@ -20,7 +20,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/slideshow_title"
-        android:padding="20px"
         android:fillViewport="true" >
 
         <RelativeLayout
@@ -28,6 +27,8 @@
             android:id="@id/relativeLayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:paddingTop="30px"
+            android:paddingBottom="20px"
             android:background="@android:color/white" >
 
             <Button
@@ -50,7 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/slideshowImage"
-                android:padding="20px"
+                android:paddingTop="10px"
+                android:paddingBottom="10px"
                 android:textColor="#ff007fb2"
                 android:textSize="30.0px" />
         </RelativeLayout>

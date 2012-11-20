@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_centerHorizontal="true"
-    android:paddingBottom="20.0px" >
+    android:padding="30.0px" >
 
     <RelativeLayout
         android:id="@+id/relative_quiz_item"

@@ -59,7 +59,7 @@
         android:textColor="@android:color/white"
         android:textSize="25px"
         android:textStyle="bold"
-        android:text="Select a topic"
+        android:text="Select a Topic"
         android:visibility="gone" />
 
     <ListView
