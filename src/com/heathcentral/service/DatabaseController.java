@@ -141,8 +141,7 @@ public class DatabaseController {
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			slideshowOnDb = getDatabase().findByColumn(Slideshow.class,
-					"id", slideshowId);
+			slideshowOnDb = getDatabase().findByColumn(Slideshow.class,	"id", slideshowId);
 			getDatabase().close();
 			if (slideshowOnDb.size() > 0)
 				isLoaded = true;
@@ -190,7 +189,7 @@ public class DatabaseController {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public List<Slide> getSlides(String slideshowId) {
 		List<Slide> slide = null;
 		try {
@@ -518,8 +517,7 @@ public class DatabaseController {
 		try {
 			if (getDatabase().isOpen() != true)
 				getDatabase().open();
-			quizOnDb = getDatabase()
-					.findByColumn(Quiz.class, "quiz_Id", quizId);
+			quizOnDb = getDatabase().findByColumn(Quiz.class, "quiz_Id", quizId);
 			getDatabase().close();
 			if (quizOnDb.size() > 0)
 				quizzesLoaded = true;

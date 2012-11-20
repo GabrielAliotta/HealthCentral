@@ -224,8 +224,6 @@ public class QuizDetailsActivity extends Activity{
 	private void nextButtonPressed(){
 		
 		questionCounter ++;
-		
-		//TODO no more questions
 		if(questionCounter >= questions.size()){
 			
 			Intent localIntent = new Intent(this, QuizResultActivity.class);
@@ -234,7 +232,7 @@ public class QuizDetailsActivity extends Activity{
 			startActivity(localIntent);
 			finish();
 			return;
-		}
+		}		
 		
 		quizQuestion.setVisibility(View.VISIBLE);
 		quizScore.setVisibility(View.GONE);

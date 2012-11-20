@@ -35,6 +35,7 @@ public class SlideshowPagerActivity extends Activity {
 	private Slideshow slideshow = new Slideshow();
 	private Integer slideshowIndex;
 	private int[] slideshowIds = null;
+	private boolean slideshowIsLoaded;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -54,6 +55,8 @@ public class SlideshowPagerActivity extends Activity {
 		slideshowIndex = getIntent().getExtras().getInt("slideshowIndex");
 		slideshowIds = getIntent().getExtras().getIntArray("slideshowsIds");
 		slideshow = databaseController.getSlideshowById(slideshowId);
+		
+		slideshowIsLoaded = databaseController.slideshowLoaded(String.valueOf(slideshowIds[++slideshowIndex]));
         
 		updateList();
     }
@@ -78,12 +81,13 @@ public class SlideshowPagerActivity extends Activity {
 
 			public void onPageScrolled(int arg0, float arg1, int arg2) {
 				if (arg0 + 1 == slides.size() && arg2 == 0 && state != 2 && !breakIntent) {
-					if(!String.valueOf(slideshowIds[++slideshowIndex]).equals("0")){
+					if(slideshowIsLoaded){
 					Intent localIntent = new Intent(getApplicationContext(), SlideshowPagerActivity.class);
 					localIntent.putExtra("slideshowId",	String.valueOf(slideshowIds[++slideshowIndex]));
 					localIntent.putExtra("slideshowIndex", slideshowIndex);
 					localIntent.putExtra("slideshowsIds", slideshowIds);
 					startActivity(localIntent);
+					finish();
 					breakIntent = true;
 					} else {
 						finish();
