@@ -426,7 +426,7 @@ public class DatabaseController {
 		
 		return new BitmapDrawable(image);
 	}
-
+	
 	public String saveQuizQuestion(QuizQuestion quizQuestion) {
 		QuizQuestion quizQuestionToSave = null;
 
@@ -441,7 +441,7 @@ public class DatabaseController {
 			quizQuestionToSave.setAnswerText(quizQuestion.getAnswerText());
 			quizQuestionToSave.setQuestion(quizQuestion.getQuestion());
 			quizQuestionToSave.setImageUrl(quizQuestion.getImageUrl());
-			quizQuestionToSave.setImage(quizQuestionToSave.getImage());
+			quizQuestionToSave.setImage(quizQuestion.getImage());
 			questionId = quizQuestionToSave.save();
 
 			getDatabase().close();

@@ -95,7 +95,7 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 						
 						//NEW IMAGE METHOD
 						Image questionImage = new Image(questionImageUrl, context);
-
+						
 						QuizQuestion questionToSave = new QuizQuestion(quizId, title, answerText, question, questionImageUrl, questionImage.getImage());
 
 						String questionId = databaseController.saveQuizQuestion(questionToSave);

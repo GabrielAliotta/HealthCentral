@@ -1,5 +1,6 @@
 package com.healthcentral.activity;
 
+import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,9 @@ import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
@@ -57,6 +60,7 @@ public class QuizDetailsActivity extends Activity{
 	private ProgressBar progressBar;
 	private TextView questionCounterBar;
 	private Button submitBtn;
+	private RelativeLayout relativeBackground;
 	private List<String> answersString = new ArrayList<String>();
 	private boolean resultMode = true;
 	private String nextQuizId;
@@ -89,6 +93,7 @@ public class QuizDetailsActivity extends Activity{
 		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 		questionCounterBar = (TextView) findViewById(R.id.question_counter);
 		submitBtn = (Button) findViewById(R.id.quiz_submit_btn);
+		relativeBackground = (RelativeLayout) findViewById(R.id.background_relative);
 		
 		quizText.setFocusable(false);
 		quizText.setBackgroundColor(0);
@@ -105,7 +110,6 @@ public class QuizDetailsActivity extends Activity{
 		String quizId = getIntent().getExtras().getString("QuizId");
 		nextQuizId = getIntent().getExtras().getString("nextQuizId");
 		questions = databaseController.getQuestionsByVertical(quizId);
-		quizImage = databaseController.getImageByQuizId(quizId);
 		progressBar.setMax(questions.size());
 		adapter = new ArrayAdapter<String>(this, R.layout.list_answer_item,answersString);
 		 
@@ -130,8 +134,12 @@ public class QuizDetailsActivity extends Activity{
 	
 	private void updateQuestion(){
 		answersString.clear();
+		
+		ByteArrayInputStream imageStream = new ByteArrayInputStream(questions.get(questionCounter).getImage());
+		quizImage = new BitmapDrawable(BitmapFactory.decodeStream(imageStream));
 		quizImage.setAlpha(80);
-		((RelativeLayout) findViewById(R.id.background_relative)).setBackgroundDrawable(quizImage);
+		
+		relativeBackground.setBackgroundDrawable(quizImage);
 		
 		questionCounterBar.setText("Question " + String.valueOf(questionCounter + 1) + " of " + String.valueOf(questions.size()));
 		

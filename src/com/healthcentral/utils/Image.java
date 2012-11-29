@@ -8,7 +8,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.apache.http.util.ByteArrayBuffer;
-import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -31,6 +30,9 @@ public class Image {
 	}
 
 	private byte[] getImageFromURL(String imageURL) {
+		if(imageURL.equals("")){
+			imageURL = "http://www.healthcentral.com/image.png";
+		}
 		InputStream is = null;
 		AssetManager am = context.getAssets();
 		ByteArrayBuffer baf = null;
