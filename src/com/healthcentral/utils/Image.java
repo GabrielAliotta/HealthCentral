@@ -1,6 +1,7 @@
 package com.healthcentral.utils;
 
 import java.io.BufferedInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -25,24 +26,19 @@ public class Image {
 	}
 
 	public byte[] getImage() {
-		Boolean isLocalEnv = Boolean.parseBoolean(this.context
-				.getString(R.string.app_local_env));
-		return (isLocalEnv) ? this.getImageFromTxt(context, url) : this
-				.getImageFromURL(url);
+		Boolean isLocalEnv = Boolean.parseBoolean(this.context.getString(R.string.app_local_env));
+		return (isLocalEnv) ? this.getImageFromTxt(context, url) : this.getImageFromURL(url);
 	}
 
 	private byte[] getImageFromURL(String imageURL) {
 		InputStream is = null;
+		AssetManager am = context.getAssets();
 		ByteArrayBuffer baf = null;
 		byte[] image = null;
 		if (imageURL != null) {
 			try {
 				URL url = new URL(imageURL);
 				is = url.openConnection().getInputStream();
-				if (is == null) {
-					AssetManager am = context.getAssets();
-					is = am.open("apple_150x150.gif");
-				}
 				BufferedInputStream bis = new BufferedInputStream(is, 128);
 				baf = new ByteArrayBuffer(128);
 				int current = 0;
@@ -52,9 +48,22 @@ public class Image {
 				image = baf.toByteArray();
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
-			} catch (IOException e) {
+			} catch (FileNotFoundException e){
+				try {
+					is = am.open("apple_150x150.gif");
+					BufferedInputStream bis = new BufferedInputStream(is, 128);
+					baf = new ByteArrayBuffer(128);
+					int current = 0;
+					while ((current = bis.read()) != -1) {
+						baf.append((byte) current);
+					}
+					image = baf.toByteArray();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			} catch (IOException e) {				
 				e.printStackTrace();
-			}
+			} 
 		}
 		return image;
 	}
@@ -80,8 +89,7 @@ public class Image {
 				image = baf.toByteArray();
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
-			} catch (IOException e) {
-
+			} catch (FileNotFoundException e){
 				try {
 					is = am.open("apple_150x150.gif");
 					BufferedInputStream bis = new BufferedInputStream(is, 128);
@@ -91,10 +99,10 @@ public class Image {
 						baf.append((byte) current);
 					}
 					image = baf.toByteArray();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				} catch (IOException e1){
 					e1.printStackTrace();
 				}
+			}catch (IOException e) {				
 				e.printStackTrace();
 			}
 		}
