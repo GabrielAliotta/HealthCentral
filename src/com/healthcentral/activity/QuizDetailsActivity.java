@@ -116,7 +116,7 @@ public class QuizDetailsActivity extends Activity{
 		questionAnswers.setAdapter(adapter);
 		
 		updateQuestion();
-	}
+	} 
 	
 	public void buttonPressed (View view){	
 		

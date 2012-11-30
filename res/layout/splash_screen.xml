@@ -12,31 +12,21 @@
         android:layout_gravity="center" >
 
         <LinearLayout
-            android:id="@id/linearLayout"
-            android:layout_width="wrap_content"
+        android:id="@id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15px"
+        android:background="@android:color/white" >
+        
+        <ImageView 
+            android:id="@+id/hc_logo_title"
+            android:layout_width="450.0px"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" >
+            android:src="@drawable/hc_logo_title"
+            />
 
-            <TextView
-                android:id="@id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Health"
-                android:textColor="#ff8dc73f"
-                android:textSize="70.0px"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@id/titleTwo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/title"
-                android:gravity="center"
-                android:text="Central"
-                android:textColor="#ff007fb2"
-                android:textSize="70.0px"
-                android:textStyle="bold" />
-        </LinearLayout>
+     </LinearLayout>
     </ViewFlipper>
 
     <ViewFlipper
