@@ -36,7 +36,9 @@ public class CustomSlideshowAdapter extends ArrayAdapter<Slideshow>{
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(values.get(position).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 		
-		View rowView = inflater.inflate(R.layout.list_slideshow_item, parent, false);
+		View rowView = convertView;
+		if (rowView == null)
+			rowView = inflater.inflate(R.layout.list_slideshow_item, parent, false);
 		TextView nameTextView = (TextView) rowView.findViewById(R.id.Title);
 		nameTextView.setText(values.get(position).getTitle());
 		

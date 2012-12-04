@@ -38,7 +38,9 @@ public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(values.get(position).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);
 
-		View rowView = inflater.inflate(R.layout.list_quiz_item, parent, false);
+		View rowView = convertView;
+		if (rowView == null)
+			rowView = inflater.inflate(R.layout.list_quiz_item, parent, false);
 		TextView description = (TextView) rowView.findViewById(R.id.Description); 
 		((TextView) rowView.findViewById(R.id.Title)).setText(Html.fromHtml(values.get(position).getTitle()));
 		description.setText(Html.fromHtml(values.get(position).getText()));

@@ -35,7 +35,9 @@ public class CustomQuizResultAdapter extends ArrayAdapter<QuizAnswered>{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-		View rowView = inflater.inflate(R.layout.quiz_result_item, parent, false);
+		View rowView = convertView;
+		if (rowView == null)
+			rowView = inflater.inflate(R.layout.quiz_result_item, parent, false);
 		
 		String questionIdString = String.valueOf(values.get(position).getQuestionId() +1) + ". ";
 		

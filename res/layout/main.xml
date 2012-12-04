@@ -35,7 +35,7 @@
         android:textSize="40.0px"
         android:textStyle="bold" 
         android:visibility="gone"/>
-    
+   
     <TextView 
         android:id="@+id/action_activity"
         android:layout_width="fill_parent"
@@ -55,7 +55,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/action_activity"
-        android:listSelector="@drawable/list_selector_blue_gradient"
-        android:divider="#00000000" />
+        android:listSelector="@drawable/list_selector_blue_gradient" />
 
 </RelativeLayout>
