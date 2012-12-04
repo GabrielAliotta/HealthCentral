@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,7 +32,6 @@ public class HealthCentralActivity extends Activity implements
 		requestWindowFeature(1);
 		setContentView(R.layout.main);
 		verticalsListView = (ListView) findViewById(R.id.list_verticals);
-		verticalsListView.setDrawSelectorOnTop(true);
 		this.verticalsListView.setOnItemClickListener(this);
 		this.databaseController = new DatabaseController(
 				getApplicationContext());
