@@ -55,6 +55,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/action_activity"
-        android:listSelector="@drawable/list_selector_blue_gradient" />
+        style="@android:style/Theme.Holo.Light" />
 
 </RelativeLayout>

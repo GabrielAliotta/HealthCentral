@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.healthcentral.activity.R;
@@ -47,8 +47,9 @@ public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 		TextViewJustify.justifyText(description, 200f);
 		
 		BitmapDrawable image = new BitmapDrawable(theImage);
-		image.setAlpha(100);
-		((RelativeLayout) rowView.findViewById(R.id.relative_quiz_item)).setBackgroundDrawable(image);
+//		image.setAlpha(100);
+//		((RelativeLayout) rowView.findViewById(R.id.relative_quiz_item)).setBackgroundDrawable(image);
+		((ImageView) rowView.findViewById(R.id.slideshowImage)).setImageDrawable(image);
 
 		return rowView;
 	}

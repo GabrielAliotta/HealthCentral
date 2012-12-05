@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -43,8 +44,9 @@ public class CustomSlideshowAdapter extends ArrayAdapter<Slideshow>{
 		nameTextView.setText(values.get(position).getTitle());
 		
 		BitmapDrawable image = new BitmapDrawable(theImage);
-		image.setAlpha(100);
-		((RelativeLayout) rowView.findViewById(R.id.relative_slideshow_item)).setBackgroundDrawable(image);
+//		image.setAlpha(100);
+//		((RelativeLayout) rowView.findViewById(R.id.relative_slideshow_item)).setBackgroundDrawable(image);
+		((ImageView) rowView.findViewById(R.id.slideshowImage)).setImageDrawable(image);
 
 		pos = position;
 

@@ -3,22 +3,29 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_centerHorizontal="true"
-    android:padding="30.0px" >
+    android:padding="10.0px" >
 
     <RelativeLayout
         android:id="@+id/relative_quiz_item"
-        android:layout_width="350px"
-        android:layout_height="350px"
-        android:layout_centerHorizontal="true" 
+        android:layout_width="350.0px"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:gravity="bottom">
+        
+        <ImageView
+            android:id="@id/slideshowImage"
+            android:layout_width="300.0px"
+            android:layout_height="300.0px"
+            android:layout_centerHorizontal="true"
+            android:padding="10.0px" />
 
         <TextView
             android:id="@id/Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:layout_below="@id/slideshowImage"
             android:gravity="center"
-            android:text="test"
             android:textColor="#ff007fb2"
             android:textSize="30.0px"
             android:textStyle="bold" />
@@ -29,7 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/Title"
             android:layout_centerHorizontal="true"
-            android:text="description"
             android:textColor="#ff007fb2"
             android:textSize="20.0px"
             android:textStyle="bold" />

@@ -60,7 +60,7 @@ public class QuizDetailsActivity extends Activity{
 	private ProgressBar progressBar;
 	private TextView questionCounterBar;
 	private Button submitBtn;
-	private RelativeLayout relativeBackground;
+	//private RelativeLayout relativeBackground;
 	private List<String> answersString = new ArrayList<String>();
 	private boolean resultMode = true;
 	private String nextQuizId;
@@ -93,7 +93,7 @@ public class QuizDetailsActivity extends Activity{
 		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 		questionCounterBar = (TextView) findViewById(R.id.question_counter);
 		submitBtn = (Button) findViewById(R.id.quiz_submit_btn);
-		relativeBackground = (RelativeLayout) findViewById(R.id.background_relative);
+		//relativeBackground = (RelativeLayout) findViewById(R.id.background_relative);
 		
 		quizText.setFocusable(false);
 		quizText.setBackgroundColor(0);
@@ -139,7 +139,7 @@ public class QuizDetailsActivity extends Activity{
 		quizImage = new BitmapDrawable(BitmapFactory.decodeStream(imageStream));
 		quizImage.setAlpha(80);
 		
-		relativeBackground.setBackgroundDrawable(quizImage);
+		//relativeBackground.setBackgroundDrawable(quizImage);
 		
 		questionCounterBar.setText("Question " + String.valueOf(questionCounter + 1) + " of " + String.valueOf(questions.size()));
 		
