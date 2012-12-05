@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="15px"
+        android:padding="15.0px"
         android:background="@android:color/white" >
         
         <ImageView 
@@ -27,8 +27,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
-        android:layout_marginTop="20px"
-        android:padding="15px"
+        android:layout_marginTop="20.0px"
+        android:padding="15.0px"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:background="@drawable/green_gradient"
@@ -41,13 +41,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/vertical_title"
-        android:padding="10px"
+        android:padding="10.0px"
         android:gravity="center"
         android:background="@drawable/blue_gradient"
         android:textColor="@android:color/white"
-        android:textSize="25px"
+        android:textSize="25.0px"
         android:textStyle="bold"
-        android:text="Select a Topic"
         android:visibility="gone" />
 
     <ListView
