@@ -69,6 +69,6 @@ public class HealthCentralActivity extends Activity implements
 		this.verticals = this.databaseController.getVerticals();
 		CustomVerticalAdapter localCustomAdapter = new CustomVerticalAdapter(this, this.verticals);
 		this.verticalsListView.setAdapter(localCustomAdapter);
-		//((TextView) findViewById(R.id.action_activity)).setVisibility(View.VISIBLE);
+		((TextView) findViewById(R.id.action_activity)).setVisibility(View.VISIBLE);
 	}
 }

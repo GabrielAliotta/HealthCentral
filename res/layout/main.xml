@@ -54,6 +54,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/action_activity"
-        style="@android:style/Theme.Holo.Light" />
+        android:divider="#00000000" />
 
 </RelativeLayout>
