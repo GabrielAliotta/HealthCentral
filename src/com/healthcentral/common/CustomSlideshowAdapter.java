@@ -40,7 +40,7 @@ public class CustomSlideshowAdapter extends ArrayAdapter<Slideshow>{
 		View rowView = convertView;
 		if (rowView == null)
 			rowView = inflater.inflate(R.layout.list_slideshow_item, parent, false);
-		TextView nameTextView = (TextView) rowView.findViewById(R.id.Title);
+		TextView nameTextView = (TextView) rowView.findViewById(android.R.id.text1);
 		nameTextView.setText(values.get(position).getTitle());
 		
 		BitmapDrawable image = new BitmapDrawable(theImage);

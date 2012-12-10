@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.healthcentral.activity.R;
 import com.heathcentral.model.Vertical;
 
 public class CustomVerticalAdapter extends ArrayAdapter<Vertical> {
@@ -18,7 +17,7 @@ public class CustomVerticalAdapter extends ArrayAdapter<Vertical> {
 	private final List<Vertical> values;
 
 	public CustomVerticalAdapter(Context context, List<Vertical> values) {
-		super(context, R.layout.list_item, values);
+		super(context, android.R.layout.simple_list_item_1, values);
 		this.context = context;
 		this.values = values;
 	}
@@ -35,9 +34,9 @@ public class CustomVerticalAdapter extends ArrayAdapter<Vertical> {
 		
 		View rowView = convertView;
 		if (rowView == null)
-			rowView = inflater.inflate(R.layout.list_item, parent, false);
+			rowView = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
 		
-		TextView nameTextView = (TextView) rowView.findViewById(R.id.Title);
+		TextView nameTextView = (TextView) rowView.findViewById(android.R.id.text1);
 		nameTextView.setText(values.get(position).getVerticalName());
 		
 //		ImageView image = (ImageView) rowView.findViewById(R.id.slideshowImage);

@@ -23,7 +23,7 @@ import com.heathcentral.model.Slide;
 public class CustomPagerAdapter extends PagerAdapter {
 	
 	private Context context;
-	final String align = "<head><style>* {margin:0;padding:8;font-size:18; text-align:justify;color:007fb2}</style></head>";
+	final String align = "<head><style>* {margin:0;padding:8;font-size:18; text-align:justify;color:848484}</style></head>";
 	private List<Slide> slides;
 	
 	public CustomPagerAdapter(Context context, List<Slide> slides){

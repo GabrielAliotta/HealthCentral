@@ -41,14 +41,12 @@ public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 		View rowView = convertView;
 		if (rowView == null)
 			rowView = inflater.inflate(R.layout.list_quiz_item, parent, false);
-		TextView description = (TextView) rowView.findViewById(R.id.Description); 
-		((TextView) rowView.findViewById(R.id.Title)).setText(Html.fromHtml(values.get(position).getTitle()));
-		description.setText(Html.fromHtml(values.get(position).getText()));
-		TextViewJustify.justifyText(description, 200f);
+		//TextView description = (TextView) rowView.findViewById(android.R.id.text2); 
+		((TextView) rowView.findViewById(android.R.id.text1)).setText(Html.fromHtml(values.get(position).getTitle()));
+		//description.setText(Html.fromHtml(values.get(position).getText()));
+		//TextViewJustify.justifyText(description, 200f);
 		
 		BitmapDrawable image = new BitmapDrawable(theImage);
-//		image.setAlpha(100);
-//		((RelativeLayout) rowView.findViewById(R.id.relative_quiz_item)).setBackgroundDrawable(image);
 		((ImageView) rowView.findViewById(R.id.slideshowImage)).setImageDrawable(image);
 
 		return rowView;
