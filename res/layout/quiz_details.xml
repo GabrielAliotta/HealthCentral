@@ -10,7 +10,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20px"
-        android:layout_marginTop="20px"
         android:background="@drawable/green_gradient"
         android:gravity="center"
         android:padding="15px"

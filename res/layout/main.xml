@@ -27,7 +27,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
-        android:layout_marginTop="20.0px"
         android:padding="15.0px"
         android:gravity="center"
         android:textColor="@android:color/white"

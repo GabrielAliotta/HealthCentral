@@ -27,7 +27,7 @@ public class GetVerticalsTask extends AsyncTask<String, Void, Boolean> {
 	}
 
 	protected void onPreExecute() {
-		this.dialog.setMessage("Loading Verticals");
+		this.dialog.setMessage("Loading");
 		this.dialog.show();
 	}
 
