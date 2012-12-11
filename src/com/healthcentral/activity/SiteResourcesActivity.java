@@ -44,12 +44,10 @@ public class SiteResourcesActivity extends Activity {
 
 		if (hasSlideshows.equals("true")){
 			slideshowImage.setVisibility(View.VISIBLE);
-			slideshowImage.startAnimation(animationRightIn);
 		} 
 		
 		if (hasQuizzes.equals("true")){
 			quizImage.setVisibility(View.VISIBLE);
-			quizImage.startAnimation(animationRightOut);
 		}
 
 		try {
@@ -58,11 +56,13 @@ public class SiteResourcesActivity extends Activity {
 			titleTextView.setText(vertical.getVerticalName());
 			titleTextView.setVisibility(View.VISIBLE);
 			((TextView) findViewById(R.id.action_activity)).setText("Select a Resource");
-			return;
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)
 				localActiveRecordException.printStackTrace();
 		}
+		
+		slideshowImage.startAnimation(animationRightIn);
+		quizImage.startAnimation(animationRightOut);
 	}
 
 	protected void onDestroy() {
