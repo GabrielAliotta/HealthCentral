@@ -64,7 +64,8 @@ public class CustomPagerAdapter extends PagerAdapter {
 		WebView slideText = (WebView) rowView.findViewById(R.id.slideshow_article);
 		slideText.setFocusable(false);
 		slideText.setClickable(false);
-		slideText.loadData(align + slides.get(position).getText(),"text/html","utf-8");
+		String slideContent = slides.get(position).getText();
+		slideText.loadData(align + slideContent.replace("%", "&#37"),"text/html","utf-8");
 		
 		((TextView) rowView.findViewById(R.id.question_counter)).setText("Page " + String.valueOf(position +1) + " of " + String.valueOf(slides.size()));
 
