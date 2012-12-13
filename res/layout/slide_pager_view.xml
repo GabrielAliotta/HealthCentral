@@ -53,7 +53,7 @@
                 android:layout_below="@id/slideshowImage"
                 android:paddingTop="10px"
                 android:paddingBottom="10px"
-                android:textSize="30.0px" />
+                android:textSize="10.0px" />
         </RelativeLayout>
     </ScrollView>
     
