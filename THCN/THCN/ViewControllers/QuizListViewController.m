@@ -69,7 +69,7 @@
         //unhide the loader
         [pvc.view removeFromSuperview];
         
-        [UIAlertView showWithError:error];
+        //[UIAlertView showWithError:error];
         
         NSLog(@"%@\t%@\t%@\t%@", [error localizedDescription], [error localizedFailureReason],
               [error localizedRecoveryOptions], [error localizedRecoverySuggestion]);

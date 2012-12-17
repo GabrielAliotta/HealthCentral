@@ -19,30 +19,31 @@
 -(NSArray*)getStaticVerticals{
 
     Vertical * v1 = [[Vertical alloc]init];
-    v1._id = @"1";
-    v1.name = @"Vertical 1";
-    v1.imageURL = @"";
+    v1._id = @"acid-reflux";
+    v1.name = @"Acid Reflux";
+    v1.imageURL = @"http:\/\/www.healthcentral.com\/about\/wp-content\/uploads\/2009\/06\/apple_150x150.gif";
     v1.hasQuizzes = TRUE;
     v1.hasSlideshows = TRUE;
 
     Vertical * v2 = [[Vertical alloc]init];
-    v2._id = @"2";
-    v2.name = @"Vertical 2";
-    v2.imageURL = @"";
+    v2._id = @"adhd";
+    v2.name = @"ADHD";
+    v2.imageURL = @"http:\/\/www.healthcentral.com\/about\/wp-content\/uploads\/2009\/06\/apple_150x150.gif";
     v2.hasQuizzes = TRUE;
     v2.hasSlideshows = TRUE;
     
     Vertical * v3 = [[Vertical alloc]init];
-    v3._id = @"3";
-    v3.name = @"Vertical 3";
-    v3.imageURL = @"";
+    v3._id = @"allergy";
+    
+    v3.name = @"Allergy";
+    v3.imageURL = @"http:\/\/www.healthcentral.com\/about\/wp-content\/uploads\/2009\/06\/apple_150x150.gif";
     v3.hasQuizzes = TRUE;
     v3.hasSlideshows = TRUE;
     
     Vertical * v4 = [[Vertical alloc]init];
-    v4._id = @"4";
-    v4.name = @"Vertical 4";
-    v4.imageURL = @"";
+    v4._id = @"alzheimers";
+    v4.name = @"Alzheimer's";
+    v4.imageURL = @"http:\/\/www.healthcentral.com\/about\/wp-content\/uploads\/2009\/06\/apple_150x150.gif";
     v4.hasQuizzes = TRUE;
     v4.hasSlideshows = TRUE;
     
@@ -55,10 +56,10 @@
 
     SlideShow *ss1 = [[SlideShow alloc]init];
     
-    ss1._id = @"ss1";
-    ss1.title = @"Slide Show 1";
-    ss1.text = @"Slide Show 1";
-    ss1.image = @"http://us-wdc.img.e-planning.net/esb/4/1/40a8/c18a96e55248b457.jpg";
+    ss1._id = @"1620";
+    ss1.title = @"10 Foods to Avoid with Acid Reflux";
+    ss1.text = @"Acid reflux and Heartburn symptoms are often triggered by specific foods.  While every person's individual food sensitivities are different these foods are most likely to cause acid reflux symptoms.";
+    ss1.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/4413\/1049\/7288\/coffee_300x300.jpg";
     ss1.slides = [self getSlidesSlides];
     
     SlideShow *ss2 = [[SlideShow alloc]init];
@@ -93,40 +94,40 @@
 -(NSArray*)getSlidesSlides{
 
     Slide * s1 = [[Slide alloc]init];
-    s1._id = @"slide 1";
-    s1.text = @"tetx 1";
-    s1.title = @"Slide Title 1";
-    s1.image = @"s1";
+    s1._id = @"1626";
+    s1.text = @"Coffee";
+    s1.title = @"<p><span>Caffeinated beverages such as coffee, some teas and soda will trigger Acid Reflux symptoms for most people. &nbsp;They are best avoided all together. &nbsp;Try a run or yoga for your morning jolt instead.&nbsp;<\/span><\/p>";
+    s1.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/4413\/1049\/7288\/coffee_300x300.jpg";
     
     Slide * s2 = [[Slide alloc]init];
-    s2._id = @"s2";
-    s2.text = @"tetx 2";
-    s2.title = @"Slide Title 2";
-    s2.image = @"s2";
+    s2._id = @"1627";
+    s2.text = @"Cheesecake";
+    s2.title = @"<p>The high fat content in cheesecake will trigger reflux symptoms.&nbsp;<\/p>";
+    s2.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/7013\/1049\/8689\/cheesecake_300x300_istock.jpg";
     
     Slide * s3 = [[Slide alloc]init];
-    s3._id = @"s3";
-    s3.text = @"tetx 3";
-    s3.title = @"Slide Title 3";
-    s3.image = @"s3";
+    s3._id = @"1630";
+    s3.text = @"Broccoli";
+    s3.title = @"p>If your acid reflux is associated with gas and indegestion, foods like broccoli will add gas to your digestive system triggering reflux symptoms.<\/p>";
+    s3.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/9813\/1050\/1043\/broccoli2_300x300_stockxchng.jpg";
     
     Slide * s4 = [[Slide alloc]init];
-    s4._id = @"s4";
-    s4.text = @"tetx 4";
-    s4.title = @"Slide Title 4";
-    s4.image = @"s4";
+    s4._id = @"1632";
+    s4.text = @"Citrus Fruits";
+    s4.title = @"<p>The acid present in citrus fruits will trigger reflux symptoms.<\/p>";
+    s4.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/4713\/1050\/0908\/citrus_fruit_300x300_istock.jpg";
     
     Slide * s5 = [[Slide alloc]init];
-    s5._id = @"s5";
-    s5.text = @"tetx 5";
-    s5.title = @"Slide Title 5";
-    s5.image = @"s5";
+    s5._id = @"1635";
+    s5.text = @"Alcohol";
+    s5.title = @"<p>Beer, wine and liquor can all cause severe acid reflux symptoms.<\/p>";
+    s5.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/6713\/1050\/3632\/beer_300x300_stock.xchng.jpg";
     
     Slide * s6 = [[Slide alloc]init];
-    s6._id = @"s6";
-    s6.text = @"tetx 6";
-    s6.title = @"Slide Title 6";
-    s6.image = @"s6";
+    s6._id = @"1636";
+    s6.text = @"Spicy Foods";
+    s6.title = @"<p>Spicy foods (chili, curry, etc.) are among the most common causes of acid reflux symptoms in Americans.&nbsp; If you suffer from any kind of reflux, it is best to avoid the heat.<\/p>";
+    s6.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/3013\/1056\/8158\/chilies_300x300_stock.xchng.jpg";
     
     NSArray * list = [NSArray arrayWithObjects:s1,s2, s3, s4, s5, s6, nil];
     
@@ -137,11 +138,11 @@
 {
 
     Quizz * q1 = [[Quizz alloc]init];
-    q1.text = @"1";
-    q1.title = @"t1";
+    q1.text = @"Heartburn Trigger Foods";
+    q1.title = @"One way to control acid reflux and heartburn symptoms is to know which foods are most likely to cause reflux.  Do you know which of these foods are common reflux triggers? ";
     q1._id = @"t1";
-    q1.image = @"";
-    q1.nextQuizId = @"2";
+    q1.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/8513\/2346\/2716\/question_mark_2_300x300_stock.xchng.jpg";
+    q1.nextQuizId = @"4159";
     q1.questions = [self getQuizQuestion];
     
     Quizz * q2 = [[Quizz alloc]init];
@@ -176,19 +177,14 @@
 -(NSArray *)getQuizAnswer{
 
     QuizAnswer *qa1 = [[QuizAnswer alloc]init];
-    qa1.title = @"Is this TRUE";
+    qa1.title = @"True";
     qa1.isValid = TRUE;
 
     QuizAnswer *qa2 = [[QuizAnswer alloc]init];
-    qa2.title = @"This is false";
+    qa2.title = @"Flase";
     qa2.isValid = FALSE;
     
-    
-    QuizAnswer *qa3 = [[QuizAnswer alloc]init];
-    qa3.title = @"This is an example";
-    qa3.isValid = FALSE;
-    
-    NSArray * list = [NSArray arrayWithObjects:qa1, qa2, qa3, nil];
+    NSArray * list = [NSArray arrayWithObjects:qa1, qa2, nil];
     
     return list;
     

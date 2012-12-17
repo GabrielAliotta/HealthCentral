@@ -35,16 +35,17 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
     currentQuestionNumber = 0;
     numOfCorrectQuestions = 0;
     numOfWrongQuestions = 0;
-    listOfAnswers = [[NSMutableArray alloc]init];
-    answerView.hidden = TRUE;
     
+    listOfAnswers = [[NSMutableArray alloc]init];
     
     [self.view addSubview:questionView];
     [self.view addSubview:answerView];
     answerView.hidden = TRUE;
+    
     [self questionsProgresss].progress = ((float)(currentQuestionNumber + 1) / (float)selectedQuiz.questions.count);
     
     // Do any additional setup after loading the view from its nib.
