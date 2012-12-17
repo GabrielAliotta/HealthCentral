@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ao4-L1-Iu3">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+    </dependencies>
+    <scenes>
+        <!--Verticals View Controller - Root View Controller-->
+        <scene sceneID="I5D-yF-My9">
+            <objects>
+                <tableViewController id="JBo-nC-bEo" customClass="VerticalsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nSR-yC-2Xf">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="LPe-1P-nOa">
+                            <rect key="frame" x="0.0" y="66" width="320" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </activityIndicatorView>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="LEB-LI-mcX">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="TEt-i1-ADN" kind="push" identifier="ShowSlectionItems" id="JTm-b1-7tv"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="y0I-0f-qbL"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="LPe-1P-nOa" id="omF-Al-PNq"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HZM-VB-Eaa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-54" y="-92"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zKy-3z-tKS">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="ao4-L1-Iu3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mT6-32-vTz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JBo-nC-bEo" kind="relationship" relationship="rootViewController" id="Skl-8H-u5p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uap-a4-doc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-578" y="-32"/>
+        </scene>
+        <!--Item Selection View Controller-->
+        <scene sceneID="Pod-uv-6Cb">
+            <objects>
+                <viewController id="TEt-i1-ADN" customClass="ItemSelectionViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4I3-Kc-mqB"/>
+                    <connections>
+                        <segue destination="yGX-uz-x6a" kind="push" identifier="DoSlide" id="noj-fk-TIc"/>
+                        <segue destination="Xb6-Sp-S9W" kind="push" identifier="DoQuizz" id="PPG-Ot-afG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xaX-Lh-eB4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="399" y="-92"/>
+        </scene>
+        <!--Slide Show View Controller-->
+        <scene sceneID="f4F-zX-ihc">
+            <objects>
+                <viewController id="yGX-uz-x6a" customClass="SlideShowViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Iqk-4U-S9o"/>
+                    <connections>
+                        <segue destination="i4z-Jy-AkS" kind="push" identifier="ViewSlideShow" id="7fu-bf-grU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZMo-Sz-N9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="-333"/>
+        </scene>
+        <!--Slides View Controller-->
+        <scene sceneID="ryv-XB-oT5">
+            <objects>
+                <viewController id="i4z-Jy-AkS" customClass="SlidesViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3iH-s6-e39"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ePD-Yw-71u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1418" y="-333"/>
+        </scene>
+        <!--Quiz List View Controller-->
+        <scene sceneID="HJI-te-kIV">
+            <objects>
+                <viewController id="Xb6-Sp-S9W" customClass="QuizListViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Qtx-nd-tUU"/>
+                    <connections>
+                        <segue destination="fhd-Ia-d1w" kind="push" identifier="ExecuteQuiz" id="1Zh-K6-Gyi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Xv-qc-8Gy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="332"/>
+        </scene>
+        <!--Quizz View Controller-->
+        <scene sceneID="Si6-pd-51S">
+            <objects>
+                <viewController id="fhd-Ia-d1w" customClass="QuizzViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mQE-kv-Dj4"/>
+                    <connections>
+                        <segue destination="s0h-AW-3Lt" kind="push" identifier="ShowResults" id="Lhd-Fw-XCj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aX1-RP-FxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1395" y="332"/>
+        </scene>
+        <!--Quiz Results View Controller-->
+        <scene sceneID="xeG-Si-Aml">
+            <objects>
+                <viewController id="s0h-AW-3Lt" customClass="QuizResultsViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mVi-ak-xqU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBl-wk-SWT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="332"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="AnswerView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AnswerView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="answerExplanation" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="correctLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="correctQuestionAnswer" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="numOfCorrects" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="numOfWrongs" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="questionAnswer" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ItemSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="quizzesTap:" candidateClass="UIButton"/>
+                <relationship kind="action" name="slidesTap:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="quizButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="slideButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="verticalTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="QuestionView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuestionView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="questionOptions" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="questionText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="QuizListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuizListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="quizListTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="QuizResultsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuizResultsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="correctPercentage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nextQuiz" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="resultList" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="QuizzViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/QuizzViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="SubmitAnswer:"/>
+                <relationship kind="action" name="nextQuestion:"/>
+                <relationship kind="outlet" name="answerView" candidateClass="AnswerView"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="questionNumber" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="questionView" candidateClass="QuestionView"/>
+                <relationship kind="outlet" name="questionsProgresss" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="submitButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="SlideShowViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SlideShowViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="slideShowTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="SlidesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SlidesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changePage:"/>
+                <relationship kind="outlet" name="slidePageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="slideScrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="slideShowTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="VerticalsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/VerticalsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
