@@ -38,6 +38,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:(0/255.0) green:(136/255.0) blue:(189/255.0) alpha:1];
+    
     self.title = @"Health Central";
     
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
@@ -108,10 +110,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(!cell)
+    {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:CellIdentifier];
+    }
     
     // Configure the cell...
+    UIView *selectionColor = [[UIView alloc] init];
+    selectionColor.backgroundColor = [UIColor colorWithRed:(140/255.0) green:(198/255.0) blue:(1/255.0) alpha:1];
+    cell.selectedBackgroundView = selectionColor;
     cell.textLabel.text = [(Vertical*)[datasource objectAtIndex:indexPath.row] name];
+    cell.textLabel.textColor = [UIColor colorWithRed:(0/255.0) green:(136/255.0) blue:(189/255.0) alpha:1];
+    
+    
     return cell;
 }
 

@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.title = selectedVertical.name;
     quizButton.hidden = !selectedVertical.hasQuizzes;
     slideButton.hidden = !selectedVertical.hasSlideshows;

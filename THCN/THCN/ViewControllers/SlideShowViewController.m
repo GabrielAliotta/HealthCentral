@@ -49,7 +49,7 @@
     
     [self.view addSubview:pvc.view];
     
-    self.title = selectedSlideShow.title;
+    self.title = selectedVertical.name;
 
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
