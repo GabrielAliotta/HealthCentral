@@ -22,6 +22,10 @@
 		001D4EA4167E552C0036B8F0 /* QuizResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001D4EA2167E552C0036B8F0 /* QuizResultsViewController.xib */; };
 		001D4EA8167E571A0036B8F0 /* QuizResultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 001D4EA7167E571A0036B8F0 /* QuizResultCellView.m */; };
 		001D4EAA167E57270036B8F0 /* QuizResultCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001D4EA9167E57270036B8F0 /* QuizResultCellView.xib */; };
+		005E27E41680EBE800119388 /* hc_logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E01680EBE800119388 /* hc_logo_title.png */; };
+		005E27E51680EBE800119388 /* hc_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E11680EBE800119388 /* hc_logo.jpg */; };
+		005E27E61680EBE800119388 /* quizzes_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E21680EBE800119388 /* quizzes_icon.png */; };
+		005E27E71680EBE800119388 /* slideshow_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E31680EBE800119388 /* slideshow_icon.png */; };
 		00666673167A1AAF00FAE748 /* QuizListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00666671167A1AAE00FAE748 /* QuizListViewController.m */; };
 		00666674167A1AAF00FAE748 /* QuizListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00666672167A1AAE00FAE748 /* QuizListViewController.xib */; };
 		00666678167A1B6D00FAE748 /* Quizz.m in Sources */ = {isa = PBXBuildFile; fileRef = 00666677167A1B6D00FAE748 /* Quizz.m */; };
@@ -89,6 +93,10 @@
 		001D4EA6167E571A0036B8F0 /* QuizResultCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizResultCellView.h; sourceTree = "<group>"; };
 		001D4EA7167E571A0036B8F0 /* QuizResultCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizResultCellView.m; sourceTree = "<group>"; };
 		001D4EA9167E57270036B8F0 /* QuizResultCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizResultCellView.xib; sourceTree = "<group>"; };
+		005E27E01680EBE800119388 /* hc_logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hc_logo_title.png; sourceTree = "<group>"; };
+		005E27E11680EBE800119388 /* hc_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hc_logo.jpg; sourceTree = "<group>"; };
+		005E27E21680EBE800119388 /* quizzes_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quizzes_icon.png; sourceTree = "<group>"; };
+		005E27E31680EBE800119388 /* slideshow_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideshow_icon.png; sourceTree = "<group>"; };
 		00666670167A1AAE00FAE748 /* QuizListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizListViewController.h; sourceTree = "<group>"; };
 		00666671167A1AAE00FAE748 /* QuizListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizListViewController.m; sourceTree = "<group>"; };
 		00666672167A1AAE00FAE748 /* QuizListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizListViewController.xib; sourceTree = "<group>"; };
@@ -178,6 +186,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		005E27DF1680EBCD00119388 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				005E27E01680EBE800119388 /* hc_logo_title.png */,
+				005E27E11680EBE800119388 /* hc_logo.jpg */,
+				005E27E21680EBE800119388 /* quizzes_icon.png */,
+				005E27E31680EBE800119388 /* slideshow_icon.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		007000F8166FA0DA00135550 /* MKNetworkKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +365,7 @@
 		0070FFF9166E551B00135550 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				005E27DF1680EBCD00119388 /* Images */,
 				0070FFFA166E551B00135550 /* THCN-Info.plist */,
 				0070FFFB166E551B00135550 /* InfoPlist.strings */,
 				0070FFFE166E551C00135550 /* main.m */,
@@ -424,6 +444,10 @@
 				00666682167A1EA200FAE748 /* QuizListCellView.xib in Resources */,
 				001D4EA4167E552C0036B8F0 /* QuizResultsViewController.xib in Resources */,
 				001D4EAA167E57270036B8F0 /* QuizResultCellView.xib in Resources */,
+				005E27E41680EBE800119388 /* hc_logo_title.png in Resources */,
+				005E27E51680EBE800119388 /* hc_logo.jpg in Resources */,
+				005E27E61680EBE800119388 /* quizzes_icon.png in Resources */,
+				005E27E71680EBE800119388 /* slideshow_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

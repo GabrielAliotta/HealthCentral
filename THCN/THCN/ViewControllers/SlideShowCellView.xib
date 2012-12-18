@@ -43,7 +43,7 @@
 							<object class="IBUILabel" id="958328921">
 								<reference key="NSNextResponder" ref="639225686"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{74, 20}, {226, 39}}</string>
+								<string key="NSFrame">{{74, 12}, {226, 56}}</string>
 								<reference key="NSSuperview" ref="639225686"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -63,16 +63,16 @@
 									<bytes key="NSWhite">MQA</bytes>
 								</object>
 								<int key="IBUIBaselineAdjustment">0</int>
-								<int key="IBUINumberOfLines">2</int>
+								<int key="IBUINumberOfLines">3</int>
 								<object class="IBUIFontDescription" key="IBUIFontDescription">
 									<string key="name">HelveticaNeue</string>
 									<string key="family">Helvetica Neue</string>
 									<int key="traits">0</int>
-									<double key="pointSize">17</double>
+									<double key="pointSize">15</double>
 								</object>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">HelveticaNeue-Medium</string>
-									<double key="NSSize">17</double>
+									<double key="NSSize">15</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>

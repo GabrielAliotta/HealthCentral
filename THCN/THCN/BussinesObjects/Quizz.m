@@ -11,7 +11,7 @@
 
 @implementation Quizz
 
-@synthesize _id, title, text, imageData, nextQuizId, image, questions;
+@synthesize _id, title, text, imageData, nextQuizId, image, questions, nextQuiz;
 
 - (id)initWithAttributes:(NSDictionary *)attributes{
     self = [super init];
@@ -24,6 +24,7 @@
     text = [attributes valueForKeyPath:@"text"];
     image = [attributes valueForKeyPath:@"image"];
     nextQuizId = [attributes valueForKeyPath:@"nextQuiz"];
+    nextQuiz = nil;
     
     NSMutableArray *list = [[NSMutableArray alloc]init];
     

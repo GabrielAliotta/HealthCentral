@@ -39,11 +39,12 @@
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIPageControl" id="931173343">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">1316</int>
+						<int key="NSvFlags">1292</int>
 						<object class="NSPSMatrix" key="NSFrameMatrix"/>
-						<string key="NSFrame">{{0, 380}, {320, 36}}</string>
+						<string key="NSFrame">{{0, 386}, {320, 36}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="852680843">
 							<int key="NSColorSpace">3</int>
@@ -56,35 +57,37 @@
 						<int key="IBUINumberOfPages">3</int>
 						<object class="NSColor" key="IBUIPageIndicatorTintColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
+							<bytes key="NSRGB">MC41MzcyNTQ5MDIgMC41MzcyNTQ5MDIgMC41MzcyNTQ5MDIAA</bytes>
 						</object>
 						<object class="NSColor" key="IBUICurrentPageIndicatorTintColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC41MzcyNTQ5MDIgMC41MzcyNTQ5MDIgMC41MzcyNTQ5MDIAA</bytes>
+							<bytes key="NSRGB">MCAwLjUzMzMzMzMzMzMgMC43NDExNzY0NzA2AA</bytes>
 						</object>
 					</object>
 					<object class="IBUIScrollView" id="801391595">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{0, 50}, {320, 330}}</string>
+						<int key="NSvFlags">274</int>
+						<string key="NSFrame">{{0, 50}, {320, 336}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="379439397"/>
+						<reference key="NSNextKeyView" ref="931173343"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="852680843"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
 						<bool key="IBUIPagingEnabled">YES</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 					</object>
 					<object class="IBUILabel" id="379439397">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 0}, {280, 51}}</string>
+						<string key="NSFrame">{{20, 0}, {280, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="931173343"/>
+						<reference key="NSNextKeyView" ref="801391595"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -116,10 +119,10 @@
 						<double key="preferredMaxLayoutWidth">280</double>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 416}</string>
+				<string key="NSFrameSize">{320, 422}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="801391595"/>
+				<reference key="NSNextKeyView" ref="379439397"/>
 				<reference key="IBUIBackgroundColor" ref="852680843"/>
 				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
 					<string key="IBUISimulatedSizeMetricsClass">IBUISimulatedFreeformSizeMetricsSentinel</string>
@@ -185,8 +188,8 @@
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="801391595"/>
-							<reference ref="931173343"/>
 							<reference ref="379439397"/>
+							<reference ref="931173343"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>

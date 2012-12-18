@@ -136,25 +136,34 @@
             if ([vc isKindOfClass:[QuizzViewController class]])
             {
                 
-                QuizNetworkEngine * engine = [[QuizNetworkEngine alloc]initWithHostName:@"thcn-db01.bar.tpg.corp"];
+                if (!selectedQuiz.nextQuiz)
+                {
+                
+                    QuizNetworkEngine * engine = [[QuizNetworkEngine alloc]initWithHostName:@"thcn-db01.bar.tpg.corp"];
             
                 
-                [engine getQuiz:self.selectedQuiz.nextQuizId withCompletionHandler:^(Quizz *newQuiz) {
+                    [engine getQuiz:self.selectedQuiz.nextQuizId withCompletionHandler:^(Quizz *newQuiz) {
                     
-                    [pvc.view removeFromSuperview];
+                        [pvc.view removeFromSuperview];
+                        ((QuizzViewController*)vc).selectedQuiz = newQuiz;
+                        [self.navigationController popToViewController:vc animated:YES];
                     
-                    ((QuizzViewController*)vc).selectedQuiz = newQuiz;
-                    [self.navigationController popToViewController:vc animated:YES];
+                    } errorHandler:^(NSError *error) {
                     
-                } errorHandler:^(NSError *error) {
+                        [pvc.view removeFromSuperview];
                     
-                    [pvc.view removeFromSuperview];
+                        //[UIAlertView showWithError:error];
                     
-                    //[UIAlertView showWithError:error];
-                    
-                    NSLog(@"%@\t%@\t%@\t%@", [error localizedDescription], [error localizedFailureReason],
+                        NSLog(@"%@\t%@\t%@\t%@", [error localizedDescription], [error localizedFailureReason],
                           [error localizedRecoveryOptions], [error localizedRecoverySuggestion]);
-                }];
+                    }];
+                }
+                else
+                {
+                    [pvc.view removeFromSuperview];
+                    ((QuizzViewController*)vc).selectedQuiz = selectedQuiz.nextQuiz;
+                    [self.navigationController popToViewController:vc animated:YES];
+                }
                 
                 
             }

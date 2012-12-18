@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSData * imageData;
 @property (nonatomic, strong) NSString *nextQuizId;
 @property (nonatomic, strong) NSArray *questions;
+@property (nonatomic, strong) Quizz *nextQuiz;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 

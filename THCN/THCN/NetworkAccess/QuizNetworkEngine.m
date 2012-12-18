@@ -54,6 +54,17 @@
              [quizList addObject:quiz];
          }
          
+         for (Quizz *quiz in quizList){
+             
+             for (Quizz *quizAux in quizList) {
+                 if (quiz.nextQuizId == quiz._id)
+                 {
+                     quiz.nextQuiz = quizAux;
+                     break;
+                 }
+             }
+         }
+
          completionBlock([NSArray arrayWithArray:quizList]);
          
      }errorHandler:^(MKNetworkOperation *errorOp, NSError* error) {
@@ -92,7 +103,7 @@
          Quizz * quiz;
          
          for (NSDictionary* element in responseList) {
-            quiz = [[Quizz alloc]initWithAttributes:[element objectForKey:@"item"]];
+             quiz = [[Quizz alloc]initWithAttributes:[element objectForKey:@"item"]];
              
              quiz.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[quiz image]]];
              
