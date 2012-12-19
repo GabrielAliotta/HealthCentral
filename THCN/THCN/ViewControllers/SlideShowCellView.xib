@@ -43,9 +43,10 @@
 							<object class="IBUILabel" id="958328921">
 								<reference key="NSNextResponder" ref="639225686"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{74, 12}, {226, 56}}</string>
+								<string key="NSFrame">{{74, 12}, {216, 56}}</string>
 								<reference key="NSSuperview" ref="639225686"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -55,8 +56,7 @@
 								<string key="IBUIText">Label</string>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
-									<string key="IBUIColorCocoaTouchKeyPath">darkTextColor</string>
+									<bytes key="NSRGB">MCAwLjUzMzMzMzMzMzMgMC43NDExNzY0NzA2AA</bytes>
 								</object>
 								<object class="NSColor" key="IBUIHighlightedColor">
 									<int key="NSColorSpace">3</int>
@@ -76,7 +76,7 @@
 									<int key="NSfFlags">16</int>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-								<double key="preferredMaxLayoutWidth">226</double>
+								<double key="preferredMaxLayoutWidth">216</double>
 							</object>
 							<object class="IBUIImageView" id="766657439">
 								<reference key="NSNextResponder" ref="639225686"/>
@@ -90,7 +90,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 79}</string>
+						<string key="NSFrameSize">{300, 79}</string>
 						<reference key="NSSuperview" ref="674668564"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="766657439"/>
@@ -112,6 +112,7 @@
 				<reference key="NSNextKeyView" ref="639225686"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUIAccessoryType">1</int>
 				<reference key="IBUIContentView" ref="639225686"/>
 				<real value="80" key="IBUIRowHeight"/>
 			</object>
