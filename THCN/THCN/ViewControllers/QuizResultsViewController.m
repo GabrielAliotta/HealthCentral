@@ -23,7 +23,7 @@
 
 @implementation QuizResultsViewController
 
-@synthesize selectedQuiz, listOfAnswers, correctPercentage;
+@synthesize selectedQuiz, listOfAnswers, correctPercentage, numCorrect, numWrong;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,7 +55,9 @@
 
     
     correctPercentage.text = [NSString stringWithFormat:@"%d %% Correct", ((count*100)/[self.listOfAnswers count]) ];
-    // Do any additional setup after loading the view from its nib.
+
+    numCorrect.text = [NSString stringWithFormat:@"%d", count];
+    numWrong.text = [NSString stringWithFormat:@"%d", [self.listOfAnswers count] - count];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,10 +105,9 @@
     
     
     QuizQuestion * question = [selectedQuiz.questions objectAtIndex:indexPath.row];
-    cell.questionNum.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
-    cell.questionText.text = ((QuizAnswer*)[listOfAnswers objectAtIndex:indexPath.row]).title;
+    cell.questionText.text = [NSString stringWithFormat:@"%d. %@", indexPath.row + 1, ((QuizAnswer*)[listOfAnswers objectAtIndex:indexPath.row]).title];
     [cell.questionExplanation loadHTMLString:question.text baseURL:nil];
-    cell.correctQuestionText.text = question.title;
+    cell.correctQuestionText.text =  [NSString stringWithFormat:@"Correct Answer: %@",question.title];
     
     return cell;
     

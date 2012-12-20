@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *correctPercentage;
 @property (strong, nonatomic) NSArray *listOfAnswers;
 @property (strong, nonatomic) Quizz *selectedQuiz;
+@property (weak, nonatomic) IBOutlet UILabel *numCorrect;
+@property (weak, nonatomic) IBOutlet UILabel *numWrong;
 
 - (IBAction)nextQuiz:(id)sender;
 

@@ -932,11 +932,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/QuizResultsViewController.m"
-         timestampString = "377451946.995158"
+         timestampString = "377717342.011612"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "83"
-         endingLineNumber = "83"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -945,11 +945,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/QuizResultsViewController.m"
-         timestampString = "377451946.995158"
+         timestampString = "377717342.011612"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "77"
-         endingLineNumber = "77"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
          landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -958,11 +958,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/QuizResultsViewController.m"
-         timestampString = "377451946.995158"
+         timestampString = "377717342.011612"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "72"
-         endingLineNumber = "72"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
          landmarkName = "-numberOfSectionsInTableView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -971,11 +971,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/QuizResultsViewController.m"
-         timestampString = "377451946.995158"
+         timestampString = "377717342.011612"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
+         startingLineNumber = "73"
+         endingLineNumber = "73"
          landmarkName = "-numberOfSectionsInTableView:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1140,11 +1140,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/QuizResultsViewController.m"
-         timestampString = "377451946.995158"
+         timestampString = "377717342.011612"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "118"
-         endingLineNumber = "118"
+         startingLineNumber = "119"
+         endingLineNumber = "119"
          landmarkName = "-nextQuiz:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1179,11 +1179,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/QuizResultsViewController.m"
-         timestampString = "377550406.770223"
+         timestampString = "377717342.011612"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "148"
-         endingLineNumber = "148"
+         startingLineNumber = "149"
+         endingLineNumber = "149"
          landmarkName = "-nextQuiz:"
          landmarkType = "5">
       </FileBreakpoint>
