@@ -45,13 +45,14 @@
     questionView.delegate = self;
     answerView.delegate = self;
     
-    answerView.quizTitle = [NSString stringWithFormat:@"Quiz: %@", selectedQuiz.title];
-    questionView.quizTitle = [NSString stringWithFormat:@"Quiz: %@", selectedQuiz.title];
-    
     [self.view addSubview:questionView];
     [self.view addSubview:answerView];
     answerView.hidden = TRUE;
     partialResultsQuestisonsViews.hidden = TRUE;
+    
+    answerView.quizTitle.text = [NSString stringWithFormat:@"Quiz: %@", selectedQuiz.title];
+    questionView.quizTitle.text = [NSString stringWithFormat:@"Quiz: %@", selectedQuiz.title];
+    
     
     // Do any additional setup after loading the view from its nib.
     self.questionView.question = [[selectedQuiz questions]objectAtIndex:currentQuestionNumber];
@@ -151,7 +152,7 @@
     
         answerView.questionAnswer.text = [[self.questionView selectedAnswer]title];
         
-        answerView.answerExplanation.frame = CGRectMake(40, 180, answerView.answerExplanation.frame.size.width, answerView.answerExplanation.frame.size.height);
+        answerView.answerExplanation.frame = CGRectMake(14, 155, answerView.answerExplanation.frame.size.width, answerView.answerExplanation.frame.size.height);
     }
     else
     {
@@ -159,7 +160,7 @@
         answerView.questionAnswer.hidden = TRUE;
         answerView.correctLabel.hidden = FALSE;
         answerView.resultAnswerView.hidden = TRUE;
-        answerView.answerExplanation.frame = CGRectMake(40, 60, answerView.answerExplanation.frame.size.width, answerView.answerExplanation.frame.size.height);
+        answerView.answerExplanation.frame = CGRectMake(14, 60, answerView.answerExplanation.frame.size.width, answerView.answerExplanation.frame.size.height);
 
     }
     
