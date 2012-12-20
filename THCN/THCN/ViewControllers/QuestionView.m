@@ -11,7 +11,7 @@
 
 @implementation QuestionView
 
-@synthesize questionText, questionOptions, question, selectedAnswer;
+@synthesize questionText, questionOptions, question, selectedAnswer, delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -91,6 +91,11 @@
     {
         [questionOptions cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].accessoryType = UITableViewCellAccessoryNone;
     }
+}
+
+-(IBAction) submitQuestion:(id) sender{
+
+    [delegate questionAnswered:selectedAnswer];
 }
 
 @end

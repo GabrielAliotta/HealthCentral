@@ -26,6 +26,7 @@
 		005E27E51680EBE800119388 /* hc_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E11680EBE800119388 /* hc_logo.jpg */; };
 		005E27E61680EBE800119388 /* quizzes_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E21680EBE800119388 /* quizzes_icon.png */; };
 		005E27E71680EBE800119388 /* slideshow_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E31680EBE800119388 /* slideshow_icon.png */; };
+		005E27EA1683869100119388 /* NSString+StripHTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 005E27E91683869100119388 /* NSString+StripHTMLTags.m */; };
 		00666673167A1AAF00FAE748 /* QuizListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00666671167A1AAE00FAE748 /* QuizListViewController.m */; };
 		00666674167A1AAF00FAE748 /* QuizListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00666672167A1AAE00FAE748 /* QuizListViewController.xib */; };
 		00666678167A1B6D00FAE748 /* Quizz.m in Sources */ = {isa = PBXBuildFile; fileRef = 00666677167A1B6D00FAE748 /* Quizz.m */; };
@@ -97,6 +98,8 @@
 		005E27E11680EBE800119388 /* hc_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hc_logo.jpg; sourceTree = "<group>"; };
 		005E27E21680EBE800119388 /* quizzes_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quizzes_icon.png; sourceTree = "<group>"; };
 		005E27E31680EBE800119388 /* slideshow_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideshow_icon.png; sourceTree = "<group>"; };
+		005E27E81683869000119388 /* NSString+StripHTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StripHTMLTags.h"; sourceTree = "<group>"; };
+		005E27E91683869100119388 /* NSString+StripHTMLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StripHTMLTags.m"; sourceTree = "<group>"; };
 		00666670167A1AAE00FAE748 /* QuizListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizListViewController.h; sourceTree = "<group>"; };
 		00666671167A1AAE00FAE748 /* QuizListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizListViewController.m; sourceTree = "<group>"; };
 		00666672167A1AAE00FAE748 /* QuizListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizListViewController.xib; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				00156A3816761A4C009DF0FC /* StaticGetObjects.m */,
 				00666683167A234100FAE748 /* QuizNetworkEngine.h */,
 				00666684167A234100FAE748 /* QuizNetworkEngine.m */,
+				005E27E81683869000119388 /* NSString+StripHTMLTags.h */,
+				005E27E91683869100119388 /* NSString+StripHTMLTags.m */,
 			);
 			path = NetworkAccess;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				00666696167A4B1E00FAE748 /* QuizAnswer.m in Sources */,
 				001D4EA3167E552C0036B8F0 /* QuizResultsViewController.m in Sources */,
 				001D4EA8167E571A0036B8F0 /* QuizResultCellView.m in Sources */,
+				005E27EA1683869100119388 /* NSString+StripHTMLTags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

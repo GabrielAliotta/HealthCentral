@@ -7,6 +7,7 @@
 //
 
 #import "Slide.h"
+#import "NSString+StripHTMLTags.h"
 
 @implementation Slide
 
@@ -19,7 +20,7 @@
     }
     
     _id = [attributes valueForKeyPath:@"id"];
-    text = [attributes valueForKeyPath:@"text"];
+    text = [[attributes valueForKeyPath:@"text"]stringByStrippingHTML];
     title = [attributes valueForKeyPath:@"title"];
     image = [attributes valueForKeyPath:@"image"];
     

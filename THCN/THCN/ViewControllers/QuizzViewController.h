@@ -11,17 +11,18 @@
 #import "AnswerView.h"
 #import "Quizz.h"
 
-@interface QuizzViewController : UIViewController
+@interface QuizzViewController : UIViewController<QuestionAnsweredDelegate, NextQuestionDelegate>
 
 @property (strong, nonatomic) IBOutlet AnswerView *answerView;
 @property (strong, nonatomic) IBOutlet QuestionView *questionView;
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
-@property (weak, nonatomic) IBOutlet UIProgressView *questionsProgresss;
 @property (weak, nonatomic) IBOutlet UILabel *questionNumber;
 
+@property (weak, nonatomic) IBOutlet UIView *partialResultsQuestisonsViews;
+
+@property (weak, nonatomic) IBOutlet UILabel *numOfCorrect;
+@property (weak, nonatomic) IBOutlet UILabel *numOfWrong;
+
 @property (strong, nonatomic) Quizz *selectedQuiz;
-- (IBAction)SubmitAnswer:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *nextButton;
-- (IBAction)nextQuestion:(id)sender;
+
 
 @end

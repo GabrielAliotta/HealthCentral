@@ -21,7 +21,7 @@
 
 @implementation QuizzViewController
 
-@synthesize questionView, answerView, selectedQuiz, questionNumber, questionsProgresss, submitButton, nextButton;
+@synthesize questionView, answerView, selectedQuiz, questionNumber, numOfCorrect, numOfWrong, partialResultsQuestisonsViews;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,11 +42,13 @@
     
     listOfAnswers = [[NSMutableArray alloc]init];
     
+    questionView.delegate = self;
+    answerView.delegate = self;
+    
     [self.view addSubview:questionView];
     [self.view addSubview:answerView];
     answerView.hidden = TRUE;
-    
-    [self questionsProgresss].progress = ((float)(currentQuestionNumber + 1) / (float)selectedQuiz.questions.count);
+    partialResultsQuestisonsViews.hidden = TRUE;
     
     // Do any additional setup after loading the view from its nib.
     self.questionView.question = [[selectedQuiz questions]objectAtIndex:currentQuestionNumber];
@@ -67,9 +69,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)SubmitAnswer:(id)sender {
-    
-    if ([self.questionView selectedAnswer])
+-(void)questionAnswered:(QuizAnswer *)selectedAnswered{
+
+    if (selectedAnswered)
     {
         [listOfAnswers addObject:[self.questionView selectedAnswer]];
         
@@ -81,12 +83,11 @@
         {
             numOfWrongQuestions ++;
         }
-    
+        
         [self setQuestionResult:[[self.questionView selectedAnswer]isValid]];
-    
-        submitButton.hidden = TRUE;
-        nextButton.hidden = FALSE;
+        
         answerView.hidden = FALSE;
+        partialResultsQuestisonsViews.hidden = FALSE;
     }
     else
     {
@@ -95,17 +96,16 @@
     }
 }
 
-- (IBAction)nextQuestion:(id)sender {
-    
+
+
+-(void)nextQuestion{
+
     self.questionView.selectedAnswer = nil;
     currentQuestionNumber ++;
     [self updateNumOfQuestions];
 
-    [self questionsProgresss].progress = ((float)(currentQuestionNumber + 1) / (float)selectedQuiz.questions.count);
-
-    submitButton.hidden = FALSE;
-    nextButton.hidden = TRUE;
-    answerView.hidden = TRUE;    
+    answerView.hidden = TRUE;
+    partialResultsQuestisonsViews.hidden = TRUE;
     
     if (currentQuestionNumber < selectedQuiz.questions.count)
     {
@@ -155,8 +155,9 @@
     }
     
     [answerView.answerExplanation loadHTMLString:question.text baseURL:nil];
-    answerView.numOfCorrects.text = [NSString stringWithFormat:@"%d", numOfCorrectQuestions];
-    answerView.numOfWrongs.text = [NSString stringWithFormat:@"%d", numOfWrongQuestions];
+    
+    numOfCorrect.text = [NSString stringWithFormat:@"%d", numOfCorrectQuestions];
+    numOfWrong.text = [NSString stringWithFormat:@"%d", numOfWrongQuestions];
     
 
 }

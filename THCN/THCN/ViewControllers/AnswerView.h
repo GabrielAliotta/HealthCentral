@@ -8,13 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol NextQuestionDelegate <NSObject>
+
+-(void)nextQuestion;
+
+@end
+
 @interface AnswerView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel *correctLabel;
 @property (weak, nonatomic) IBOutlet UILabel *questionAnswer;
 @property (weak, nonatomic) IBOutlet UILabel *correctQuestionAnswer;
 @property (weak, nonatomic) IBOutlet UIWebView *answerExplanation;
-@property (weak, nonatomic) IBOutlet UILabel *numOfCorrects;
-@property (weak, nonatomic) IBOutlet UILabel *numOfWrongs;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+
+@property (strong, nonatomic) id<NextQuestionDelegate> delegate;
+
+-(IBAction) nextQuestion:(id) sender;
 
 @end

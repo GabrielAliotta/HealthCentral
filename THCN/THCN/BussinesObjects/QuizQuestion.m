@@ -8,6 +8,7 @@
 
 #import "QuizQuestion.h"
 #import "QuizAnswer.h"
+#import "NSString+StripHTMLTags.h"
 
 @implementation QuizQuestion
 
@@ -20,7 +21,7 @@
     }
     
     title = [attributes valueForKeyPath:@"title"];
-    text = [attributes valueForKeyPath:@"text"];
+    text = [[attributes valueForKeyPath:@"text"] stringByStrippingHTML];
     image = [attributes valueForKeyPath:@"image"];
     
     NSMutableArray *list = [[NSMutableArray alloc]init];
@@ -37,5 +38,6 @@
     return self;
     
 }
+
 
 @end

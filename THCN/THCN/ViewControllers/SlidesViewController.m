@@ -50,17 +50,12 @@
     {
         
         SlideItemView *slideView = [[[NSBundle mainBundle] loadNibNamed:@"SlideItemView" owner:self options:nil] objectAtIndex:0];
-        
-        // Get the app bundle path
-        NSString *path = [[NSBundle mainBundle] bundlePath];
-        // And use it as the base URL
-        NSURL *baseURL = [NSURL fileURLWithPath:path];
-        
         slideView.slideTitle.text = [NSString stringWithFormat:@"%d. %@", i+1, slide.title];
-        [slideView.slideContent loadHTMLString:slide.text baseURL:baseURL];
+        slideView.slideText.text = slide.text;
+        
         slideView.slideImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[slide image]]]];
         
-        slideView.scrollView.contentSize=CGSizeMake(slideScrollView.frame.size.width, slideView.slideContent.frame.size.height + slideView.slideTitle.frame.size.height + slideView.slideImage.frame.size.height + 30);
+        slideView.scrollView.contentSize=CGSizeMake(slideScrollView.frame.size.width, slideView.slideText.frame.size.height + slideView.slideTitle.frame.size.height + slideView.slideImage.frame.size.height + 30);
         
         
         

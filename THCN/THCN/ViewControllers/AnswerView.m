@@ -10,6 +10,8 @@
 
 @implementation AnswerView
 
+@synthesize delegate;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -28,5 +30,9 @@
 }
 */
 
+-(IBAction) nextQuestion:(id) sender{
+    
+    [delegate nextQuestion];
+}
 
 @end
