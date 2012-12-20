@@ -190,6 +190,7 @@
     
     UIViewController *viewController = [segue destinationViewController];
     ((SlidesViewController *)viewController).selectedSlideShow = selectedSlideShow;
+        ((SlidesViewController *)viewController).selectedVertical = selectedVertical;
     
 }
 

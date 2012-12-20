@@ -16,7 +16,7 @@
 
 @implementation SlidesViewController
 
-@synthesize slideScrollView, slidePageControl, selectedSlideShow, slideShowTitle;
+@synthesize slideScrollView, selectedVertical, slidePageControl, selectedSlideShow, slideShowTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +33,9 @@
     // Do any additional setup after loading the view from its nib.
     slideShowTitle.text = selectedSlideShow.title;
     
-    self.title = @"Slide Show";
+    self.title = selectedVertical.name;
+    
+    self.navigationItem.backBarButtonItem.title = @"Back";
 
     int numOfPages = [[selectedSlideShow slides] count];
     
@@ -54,7 +56,7 @@
         // And use it as the base URL
         NSURL *baseURL = [NSURL fileURLWithPath:path];
         
-        slideView.slideTitle.text = slide.title;
+        slideView.slideTitle.text = [NSString stringWithFormat:@"%d. %@", i+1, slide.title];
         [slideView.slideContent loadHTMLString:slide.text baseURL:baseURL];
         slideView.slideImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[slide image]]]];
         

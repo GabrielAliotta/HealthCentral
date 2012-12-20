@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "SlideShow.h"
+#import "Vertical.h"
 
 @interface SlidesViewController : UIViewController<UIScrollViewDelegate>
 
 @property (strong, nonatomic) SlideShow  *selectedSlideShow;
+@property (strong, nonatomic) Vertical  *selectedVertical;
 @property (weak, nonatomic) IBOutlet UIScrollView *slideScrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *slidePageControl;
 @property (weak, nonatomic) IBOutlet UILabel *slideShowTitle;
