@@ -9,40 +9,48 @@
         android:id="@id/linearLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:background="#FF0088BD"
         android:gravity="center"
-        android:padding="15.0px"
-        android:background="@android:color/white" >
-        
-        <ImageView 
-            android:id="@+id/hc_logo_title"
+        android:padding="15.0px" >
+
+        <!-- <ImageView -->
+        <!-- android:id="@+id/hc_logo_title" -->
+        <!-- android:layout_width="400.0px" -->
+        <!-- android:layout_height="wrap_content" -->
+        <!-- android:src="@drawable/hc_logo_title" -->
+        <!-- /> -->
+
+        <TextView
             android:layout_width="400.0px"
             android:layout_height="wrap_content"
-            android:src="@drawable/hc_logo_title"
-            />
-
-     </LinearLayout>
+            android:text="HealthCentral"
+            android:textSize="40.0px"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:gravity="center" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/vertical_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
-        android:padding="15.0px"
+        android:background="#FF0088BD"
         android:gravity="center"
+        android:padding="15.0px"
         android:textColor="@android:color/white"
-        android:background="@drawable/green_gradient"
         android:textSize="40.0px"
-        android:textStyle="bold" 
-        android:visibility="gone"/>
-   
-    <TextView 
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/action_activity"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/vertical_title"
-        android:padding="10.0px"
+        android:background="#FF005272"
         android:gravity="center"
-        android:background="@drawable/blue_gradient"
+        android:padding="10.0px"
         android:textColor="@android:color/white"
         android:textSize="25.0px"
         android:textStyle="bold"
@@ -52,6 +60,8 @@
         android:id="@+id/list_verticals"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/action_activity" />
+        android:layout_below="@id/action_activity"
+        android:divider="#83C5E0"
+        android:dividerHeight="1sp" />
 
 </RelativeLayout>

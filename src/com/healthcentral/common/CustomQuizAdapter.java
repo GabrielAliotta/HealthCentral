@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -41,10 +42,11 @@ public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 		View rowView = convertView;
 		if (rowView == null)
 			rowView = inflater.inflate(R.layout.list_quiz_item, parent, false);
-		//TextView description = (TextView) rowView.findViewById(android.R.id.text2); 
-		((TextView) rowView.findViewById(android.R.id.text1)).setText(Html.fromHtml(values.get(position).getTitle()));
-		//description.setText(Html.fromHtml(values.get(position).getText()));
-		//TextViewJustify.justifyText(description, 200f);
+		
+		TextView nameTextView = (TextView) rowView.findViewById(android.R.id.text1);
+		nameTextView.setTextColor(Color.parseColor("#FF0088BD"));
+		nameTextView.setText(Html.fromHtml(values.get(position).getTitle()));
+		
 		
 		BitmapDrawable image = new BitmapDrawable(theImage);
 		((ImageView) rowView.findViewById(R.id.slideshowImage)).setImageDrawable(image);

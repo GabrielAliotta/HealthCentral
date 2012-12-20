@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,7 @@ public class CustomSlideshowAdapter extends ArrayAdapter<Slideshow>{
 		if (rowView == null)
 			rowView = inflater.inflate(R.layout.list_slideshow_item, parent, false);
 		TextView nameTextView = (TextView) rowView.findViewById(android.R.id.text1);
+		nameTextView.setTextColor(Color.parseColor("#FF0088BD"));
 		nameTextView.setText(values.get(position).getTitle());
 		
 		BitmapDrawable image = new BitmapDrawable(theImage);

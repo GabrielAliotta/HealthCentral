@@ -2,7 +2,10 @@ package com.healthcentral.common;
 
 import java.util.List;
 
+import android.R;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +40,7 @@ public class CustomVerticalAdapter extends ArrayAdapter<Vertical> {
 			rowView = inflater.inflate(android.R.layout.simple_list_item_1, parent, false);
 		
 		TextView nameTextView = (TextView) rowView.findViewById(android.R.id.text1);
+		nameTextView.setTextColor(Color.parseColor("#FF0088BD"));
 		nameTextView.setText(values.get(position).getVerticalName());
 		
 //		ImageView image = (ImageView) rowView.findViewById(R.id.slideshowImage);

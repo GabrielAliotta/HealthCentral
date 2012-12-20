@@ -9,17 +9,29 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/green_gradient"
+        android:background="#FF0088BD"
         android:gravity="center"
-        android:padding="10px"
+        android:padding="15.0px"
         android:textColor="@android:color/white"
-        android:textSize="30.0px"
+        android:textSize="40.0px"
+        android:textStyle="bold" />
+    
+    <TextView
+        android:id="@+id/slideshow_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/slideshow_main_title"
+        android:background="#FF005272"
+        android:gravity="center"
+        android:padding="10.0px"
+        android:textColor="@android:color/white"
+        android:textSize="25.0px"
         android:textStyle="bold" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/slides_pager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/slideshow_main_title" />
+        android:layout_below="@id/slideshow_title" />
 
 </RelativeLayout>

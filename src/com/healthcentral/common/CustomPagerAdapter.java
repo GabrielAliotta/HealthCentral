@@ -53,8 +53,8 @@ public class CustomPagerAdapter extends PagerAdapter {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.slide_pager_view, null, false);
 		
-		TextView slideTitle = (TextView) rowView.findViewById(R.id.slideshow_title);
-		slideTitle.setText(slides.get(position).getTitle());
+		//TextView slideTitle = (TextView) rowView.findViewById(R.id.slideshow_title);
+		//slideTitle.setText(slides.get(position).getTitle());
 		
 		Button slideImage = (Button) rowView.findViewById(R.id.slideshowImage);
 		slideImage.setText(String.valueOf(position));

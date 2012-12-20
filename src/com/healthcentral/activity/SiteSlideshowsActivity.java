@@ -64,12 +64,13 @@ public class SiteSlideshowsActivity extends Activity implements
 		}
 	}
 
-	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
-			int paramInt, long paramLong) {
+	public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {
+		Vertical vertical = this.databaseController.getVerticalById(this.verticalId);
 		Intent localIntent = new Intent(this, SlideshowPagerActivity.class);
 		localIntent.putExtra("slideshowId",	((Slideshow) this.slideshows.get(paramInt)).getId());
 		localIntent.putExtra("slideshowsIds", this.getSlideshowsIds());
 		localIntent.putExtra("slideshowIndex", paramInt);
+		localIntent.putExtra("verticalName", vertical.getVerticalName());
 		startActivity(localIntent);
 	}
 	
@@ -78,7 +79,7 @@ public class SiteSlideshowsActivity extends Activity implements
 		Vertical vertical = this.databaseController.getVerticalById(this.verticalId);
 		titleTextView.setText(vertical.getVerticalName());
 		titleTextView.setVisibility(View.VISIBLE);
-		actionActivity.setText("Select a slideshow");
+		actionActivity.setText("Slideshows");
 		actionActivity.setVisibility(View.VISIBLE);
 		customAdapter = new CustomSlideshowAdapter(this, this.slideshows);
 		mySitesListView.setOnItemClickListener(this);

@@ -35,6 +35,7 @@ public class SlideshowPagerActivity extends Activity {
 	private Slideshow slideshow = new Slideshow();
 	private Integer slideshowIndex;
 	private int[] slideshowIds = null;
+	private String verticalName;
 	private boolean slideshowIsLoaded;
 	
 	/** Called when the activity is first created. */
@@ -54,6 +55,7 @@ public class SlideshowPagerActivity extends Activity {
 		slideshowId = getIntent().getExtras().getString("slideshowId");
 		slideshowIndex = getIntent().getExtras().getInt("slideshowIndex");
 		slideshowIds = getIntent().getExtras().getIntArray("slideshowsIds");
+		verticalName = getIntent().getExtras().getString("verticalName");
 		slideshow = databaseController.getSlideshowById(slideshowId);
 		
 		slideshowIsLoaded = databaseController.slideshowLoaded(String.valueOf(slideshowIds[++slideshowIndex]));
@@ -66,7 +68,8 @@ public class SlideshowPagerActivity extends Activity {
 		slides = databaseController.getSlides(slideshow.getId());
 		customPagerAdapter = new CustomPagerAdapter(this, slides);
 		
-		((TextView) findViewById(R.id.slideshow_main_title)).setText(slideshow.getTitle());
+		((TextView) findViewById(R.id.slideshow_main_title)).setText(verticalName);
+		((TextView) findViewById(R.id.slideshow_title)).setText(slideshow.getTitle());
 		
         viewPager = (ViewPager) findViewById(R.id.slides_pager);
         viewPager.setAdapter(customPagerAdapter);

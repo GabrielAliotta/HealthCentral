@@ -42,11 +42,6 @@ public class CustomAdapter extends ArrayAdapter<Slideshow> {
 		if (rowView == null)
 			rowView = inflater.inflate(R.layout.list_item, parent, false);
 		TextView nameTextView = (TextView) rowView.findViewById(R.id.Title);
-//		if(valueWanted.equals("vertical")){
-//			nameTextView.setText(values.get(position).getFriendlyTitle());
-//		} else {
-//			nameTextView.setText(values.get(position).getTitle());
-//		}
 		
 		ImageView image = (ImageView) rowView.findViewById(R.id.slideshowImage);
 		image.setImageBitmap(theImage);

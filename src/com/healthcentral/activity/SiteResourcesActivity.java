@@ -1,53 +1,56 @@
 package com.healthcentral.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
+import com.healthcentral.common.CustomSiteResourceAdapter;
 import com.heathcentral.model.Vertical;
 import com.heathcentral.service.DatabaseController;
 
-public class SiteResourcesActivity extends Activity {
+public class SiteResourcesActivity extends Activity implements OnItemClickListener{
 
 	private DatabaseController databaseController;
 	private TextView titleTextView;
 	private Vertical vertical;
 	private String hasSlideshows;
 	private String hasQuizzes;
-	private ImageView slideshowImage;
-	private ImageView quizImage;
+	private ListView listResources;
+	private List<String> resources = new ArrayList<String>();
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		requestWindowFeature(1);
 		setContentView(R.layout.site_resources);
 		
-		Animation animationRightIn = AnimationUtils.loadAnimation(this, R.anim.resource_item_left);
-		Animation animationRightOut = AnimationUtils.loadAnimation(this, R.anim.resource_item_right);
+		//Animation animationRightIn = AnimationUtils.loadAnimation(this, R.anim.resource_item_left);
+		//Animation animationRightOut = AnimationUtils.loadAnimation(this, R.anim.resource_item_right);
 		
-		((LinearLayout) findViewById(R.id.linearLayout)).setVisibility(View.GONE);
 		String str = getIntent().getExtras().getString("vertical");
 		hasSlideshows = getIntent().getExtras().getString("hasSlideshows");
 		hasQuizzes = getIntent().getExtras().getString("hasQuizzes");
 		titleTextView = (TextView) findViewById(R.id.vertical_title);
-		slideshowImage = (ImageView) findViewById(R.id.slideshows_image);
-		quizImage = (ImageView) findViewById(R.id.quizzes_image);
+		listResources = (ListView) findViewById(R.id.list_resources);
 		databaseController = new DatabaseController(getApplicationContext());
 
+		listResources.setOnItemClickListener(this);
+		
 		if (hasSlideshows.equals("true")){
-			slideshowImage.setVisibility(View.VISIBLE);
+			resources.add("Slideshows");
 		} 
 		
 		if (hasQuizzes.equals("true")){
-			quizImage.setVisibility(View.VISIBLE);
+			resources.add("Quizzes");
 		}
 
 		try {
@@ -55,14 +58,16 @@ public class SiteResourcesActivity extends Activity {
 			vertical = this.databaseController.getVerticalById(str);
 			titleTextView.setText(vertical.getVerticalName());
 			titleTextView.setVisibility(View.VISIBLE);
-			((TextView) findViewById(R.id.action_activity)).setText("Select a Resource");
 		} catch (ActiveRecordException localActiveRecordException) {
 			while (true)
 				localActiveRecordException.printStackTrace();
 		}
 		
-		slideshowImage.startAnimation(animationRightIn);
-		quizImage.startAnimation(animationRightOut);
+		CustomSiteResourceAdapter customSiteResourceAdapter = new CustomSiteResourceAdapter(this, resources);
+		listResources.setAdapter(customSiteResourceAdapter);
+		
+		//slideshowImage.startAnimation(animationRightIn);
+		//quizImage.startAnimation(animationRightOut);
 	}
 
 	protected void onDestroy() {
@@ -77,13 +82,21 @@ public class SiteResourcesActivity extends Activity {
 		}
 	}
 	
-	public void slideshowPressed(View view){
+	public void onItemClick(AdapterView<?> paramAdapterView, View paramView,
+			int paramInt, long paramLong) {
+		if (paramInt == 0)
+			slideshowPressed();
+		else
+			quizPressed();
+	}
+	
+	public void slideshowPressed(){
 		Intent localIntent = new Intent(this, SiteSlideshowsActivity.class);
 		localIntent.putExtra("vertical", vertical.getVerticalId());
 		startActivity(localIntent);
 	}
 	
-	public void quizPressed(View view){
+	public void quizPressed(){
 		Intent localIntent = new Intent(this, SiteQuizzesActivity.class);
 		localIntent.putExtra("vertical", vertical.getVerticalId());
 		startActivity(localIntent);
