@@ -16,9 +16,7 @@
 @property (strong, nonatomic) IBOutlet AnswerView *answerView;
 @property (strong, nonatomic) IBOutlet QuestionView *questionView;
 @property (weak, nonatomic) IBOutlet UILabel *questionNumber;
-
 @property (weak, nonatomic) IBOutlet UIView *partialResultsQuestisonsViews;
-
 @property (weak, nonatomic) IBOutlet UILabel *numOfCorrect;
 @property (weak, nonatomic) IBOutlet UILabel *numOfWrong;
 

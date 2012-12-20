@@ -19,8 +19,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *correctLabel;
 @property (weak, nonatomic) IBOutlet UILabel *questionAnswer;
 @property (weak, nonatomic) IBOutlet UILabel *correctQuestionAnswer;
-@property (weak, nonatomic) IBOutlet UIWebView *answerExplanation;
+@property (weak, nonatomic) IBOutlet UILabel *quizTitle;
+@property (weak, nonatomic) IBOutlet UITextView *answerExplanation;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (weak, nonatomic) IBOutlet UIView *resultAnswerView;
 
 @property (strong, nonatomic) id<NextQuestionDelegate> delegate;
 

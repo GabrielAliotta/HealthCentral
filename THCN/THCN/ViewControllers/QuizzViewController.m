@@ -45,6 +45,9 @@
     questionView.delegate = self;
     answerView.delegate = self;
     
+    answerView.quizTitle = [NSString stringWithFormat:@"Quiz: %@", selectedQuiz.title];
+    questionView.quizTitle = [NSString stringWithFormat:@"Quiz: %@", selectedQuiz.title];
+    
     [self.view addSubview:questionView];
     [self.view addSubview:answerView];
     answerView.hidden = TRUE;
@@ -136,25 +139,31 @@
         answerView.correctLabel.hidden = TRUE;
         answerView.correctQuestionAnswer.hidden = FALSE;
         answerView.questionAnswer.hidden = FALSE;
+        answerView.resultAnswerView.hidden = FALSE;
         
         for (QuizAnswer *validAnswer in question.answers) {
             if ([validAnswer isValid])
             {
-                answerView.correctQuestionAnswer.text = [NSString stringWithFormat:@"The correct answer is: %@",validAnswer.title];
+                answerView.correctQuestionAnswer.text = validAnswer.title;
                 break;
             }
         }
     
-        answerView.questionAnswer.text = [NSString stringWithFormat:@"You answered: %@", [[self.questionView selectedAnswer]title]];
+        answerView.questionAnswer.text = [[self.questionView selectedAnswer]title];
+        
+        answerView.answerExplanation.frame = CGRectMake(40, 180, answerView.answerExplanation.frame.size.width, answerView.answerExplanation.frame.size.height);
     }
     else
     {
         answerView.correctQuestionAnswer.hidden = TRUE;
         answerView.questionAnswer.hidden = TRUE;
         answerView.correctLabel.hidden = FALSE;
+        answerView.resultAnswerView.hidden = TRUE;
+        answerView.answerExplanation.frame = CGRectMake(40, 60, answerView.answerExplanation.frame.size.width, answerView.answerExplanation.frame.size.height);
+
     }
     
-    [answerView.answerExplanation loadHTMLString:question.text baseURL:nil];
+    answerView.answerExplanation.text = question.text;
     
     numOfCorrect.text = [NSString stringWithFormat:@"%d", numOfCorrectQuestions];
     numOfWrong.text = [NSString stringWithFormat:@"%d", numOfWrongQuestions];
