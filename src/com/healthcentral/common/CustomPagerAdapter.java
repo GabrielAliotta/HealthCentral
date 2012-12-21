@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ import com.heathcentral.model.Slide;
 public class CustomPagerAdapter extends PagerAdapter {
 	
 	private Context context;
-	final String align = "<head><style>* {margin:0;padding:4;font-size:16; text-align:justify;color:848484}</style></head>";
+	final String align = "<head><style>* {margin:0;padding-left:10;padding-right:4;font-size:16;color:848484}</style></head>";
 	private List<Slide> slides;
 	
 	public CustomPagerAdapter(Context context, List<Slide> slides){
@@ -53,13 +54,12 @@ public class CustomPagerAdapter extends PagerAdapter {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowView = inflater.inflate(R.layout.slide_pager_view, null, false);
 		
-		//TextView slideTitle = (TextView) rowView.findViewById(R.id.slideshow_title);
-		//slideTitle.setText(slides.get(position).getTitle());
+		TextView slideTitle = (TextView) rowView.findViewById(R.id.slideshow_title);
+		slideTitle.setText(String.valueOf(position +1) + ". " + slides.get(position).getTitle());
 		
-		Button slideImage = (Button) rowView.findViewById(R.id.slideshowImage);
-		slideImage.setText(String.valueOf(position));
+		ImageView slideImage = (ImageView) rowView.findViewById(R.id.slideshowImage);
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(position).getImage());
-		slideImage.setBackgroundDrawable(new BitmapDrawable(BitmapFactory.decodeStream(imageStream)));
+		slideImage.setImageDrawable(new BitmapDrawable(BitmapFactory.decodeStream(imageStream)));
 		
 		WebView slideText = (WebView) rowView.findViewById(R.id.slideshow_article);
 		slideText.setFocusable(false);
@@ -67,7 +67,7 @@ public class CustomPagerAdapter extends PagerAdapter {
 		String slideContent = slides.get(position).getText();
 		slideText.loadData(align + slideContent.replace("%", "&#37"),"text/html","utf-8");
 		
-		((TextView) rowView.findViewById(R.id.question_counter)).setText("Page " + String.valueOf(position +1) + " of " + String.valueOf(slides.size()));
+		((TextView) rowView.findViewById(R.id.question_counter)).setText(String.valueOf(position +1) + " of " + String.valueOf(slides.size()));
 
 		((ViewPager) collection).addView(rowView,0);
 		

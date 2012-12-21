@@ -5,43 +5,39 @@
     android:background="@android:color/white" >
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:id="@+id/scroll_view"
+        android:layout_width="wrap_content"
+        android:layout_height="550.0px"
         android:fillViewport="true" >
 
         <RelativeLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@id/relativeLayout"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:paddingTop="30px"
-            android:paddingBottom="20px"
             android:background="@android:color/white" >
 
-            <Button
+            <ImageView
                 android:id="@+id/slideshowImage"
-                android:layout_width="340.0px"
-                android:layout_height="340.0px"
-                android:layout_centerHorizontal="true"
-                android:onClick="slideshowImagePressed"
-                android:textColor="@android:color/transparent" />
+                android:layout_width="fill_parent"
+                android:layout_height="150sp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop" />
 
-            <!-- <ImageView -->
-            <!-- android:id="@id/slideshowImage1" -->
-            <!-- android:layout_width="400.0px" -->
-            <!-- android:layout_height="400.0px" -->
-            <!-- android:layout_centerHorizontal="true" -->
-            <!-- android:onClick="slideshowImage1Pressed" /> -->
-
+			<TextView 
+			    android:id="@+id/slideshow_title"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_below="@id/slideshowImage"
+			    android:textStyle="bold"
+			    android:textSize="30.0px"
+			    android:padding="10.0px" />
+			
             <WebView
                 android:id="@+id/slideshow_article"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/slideshowImage"
-                android:paddingTop="10px"
-                android:paddingBottom="10px"
-                android:textSize="10.0px" />
+                android:layout_below="@id/slideshow_title"
+                android:paddingBottom="30.0px" />
         </RelativeLayout>
     </ScrollView>
     
@@ -49,10 +45,12 @@
         android:id="@+id/question_counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:background="@android:color/white"
-        android:padding="5px"
-        android:textSize="20px" />
+        android:padding="5.0px"
+        android:textSize="20.0px"
+        android:text="TEST"
+        android:textStyle="bold" />
 
 </RelativeLayout>

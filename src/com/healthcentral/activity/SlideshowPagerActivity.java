@@ -1,7 +1,6 @@
 package com.healthcentral.activity;
 
 
-import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +12,11 @@ import com.heathcentral.model.Slideshow;
 import com.heathcentral.service.DatabaseController;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SlideshowPagerActivity extends Activity {
@@ -89,6 +83,7 @@ public class SlideshowPagerActivity extends Activity {
 					localIntent.putExtra("slideshowId",	String.valueOf(slideshowIds[++slideshowIndex]));
 					localIntent.putExtra("slideshowIndex", slideshowIndex);
 					localIntent.putExtra("slideshowsIds", slideshowIds);
+					localIntent.putExtra("verticalName", verticalName);
 					startActivity(localIntent);
 					finish();
 					breakIntent = true;
@@ -104,17 +99,4 @@ public class SlideshowPagerActivity extends Activity {
         });
 	}
     
-	public void slideshowImagePressed (View view){
-		
-		Button image = (Button) view;
-		ByteArrayInputStream imageStream = new ByteArrayInputStream(slides.get(Integer.parseInt((String) image.getText())).getImage());
-
-		Dialog dialog = new Dialog(this);
-		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		dialog.setContentView(R.layout.slideshow_image_dialog);
-		((ImageView) dialog.findViewById(R.id.slideshow_image_for_dialog)).setImageBitmap(BitmapFactory.decodeStream(imageStream));
-		dialog.show();
-		
-	}
-
 }
