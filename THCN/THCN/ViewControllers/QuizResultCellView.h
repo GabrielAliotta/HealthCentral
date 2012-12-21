@@ -11,6 +11,6 @@
 @interface QuizResultCellView : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *questionText;
 @property (weak, nonatomic) IBOutlet UILabel *correctQuestionText;
-@property (weak, nonatomic) IBOutlet UIWebView *questionExplanation;
+@property (weak, nonatomic) IBOutlet UITextView *questionExplanation;
 
 @end

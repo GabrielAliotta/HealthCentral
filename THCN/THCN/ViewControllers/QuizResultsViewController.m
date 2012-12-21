@@ -106,7 +106,7 @@
     
     QuizQuestion * question = [selectedQuiz.questions objectAtIndex:indexPath.row];
     cell.questionText.text = [NSString stringWithFormat:@"%d. %@", indexPath.row + 1, ((QuizAnswer*)[listOfAnswers objectAtIndex:indexPath.row]).title];
-    [cell.questionExplanation loadHTMLString:question.text baseURL:nil];
+    cell.questionExplanation.text = question.text;
     cell.correctQuestionText.text =  [NSString stringWithFormat:@"Correct Answer: %@",question.title];
     
     return cell;
