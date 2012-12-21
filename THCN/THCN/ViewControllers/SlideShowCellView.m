@@ -25,6 +25,10 @@
 {
     [super setSelected:selected animated:animated];
 
+    UIView *selectionColor = [[UIView alloc] init];
+    selectionColor.backgroundColor = [UIColor colorWithRed:(140/255.0) green:(198/255.0) blue:(1/255.0) alpha:1];
+    self.selectedBackgroundView = selectionColor;
+    
     // Configure the view for the selected state
 }
 

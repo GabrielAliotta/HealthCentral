@@ -44,7 +44,8 @@
     slideScrollView.pagingEnabled=YES;    
     slidePageControl.numberOfPages=numOfPages;
     slidePageControl.currentPage=0;
-    
+    slidePageControl.backgroundColor = [UIColor lightGrayColor];
+    slidePageControl.hidden = FALSE;
     int i = 0;
     for (Slide *slide in [selectedSlideShow slides])
     {
