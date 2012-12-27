@@ -68,6 +68,7 @@ public class SiteQuizzesActivity extends Activity implements AdapterView.OnItemC
 		Intent localIntent = new Intent(this, QuizDetailsActivity.class);
 		localIntent.putExtra("QuizId",	((Quiz) this.quizzes.get(paramInt)).getQuizId());
 		localIntent.putExtra("nextQuizId",	((Quiz) this.quizzes.get(paramInt)).getNextQuizId());
+		localIntent.putExtra("verticalTitle",	((Quiz) this.quizzes.get(paramInt)).getFriendlyTitle());
 		startActivity(localIntent);
 	}
 	

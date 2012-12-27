@@ -9,5 +9,5 @@
     android:checkMark="?android:attr/listChoiceIndicatorSingle"
     android:padding="20px"
     android:textColor="#ff007fb2"
-    android:textSize="27px"
+    android:textSize="24px"
 />

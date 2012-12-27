@@ -23,17 +23,18 @@ public class CustomSlideshowAdapter extends ArrayAdapter<Slideshow>{
 
 	private final Context context;
 	private final List<Slideshow> values;
+	private LayoutInflater inflater;
 	int pos;
 
 	public CustomSlideshowAdapter(Context context, List<Slideshow> values) {
 		super(context, R.layout.list_slideshow_item, values);
+		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.context = context;
 		this.values = values;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(values.get(position).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);

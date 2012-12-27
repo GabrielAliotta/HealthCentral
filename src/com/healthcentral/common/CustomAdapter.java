@@ -20,12 +20,15 @@ import com.heathcentral.model.Slideshow;
 public class CustomAdapter extends ArrayAdapter<Slideshow> {
 
 	private final Context context;
+	private LayoutInflater inflater;
 	private final List<Slideshow> values;
 	private final String valueWanted;
 	int pos;
 
 	public CustomAdapter(Context context, List<Slideshow> values, String valueWanted) {
 		super(context, R.layout.list_item, values);
+		
+		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.context = context;
 		this.values = values;
 		this.valueWanted = valueWanted;
@@ -33,7 +36,6 @@ public class CustomAdapter extends ArrayAdapter<Slideshow> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(values.get(position).getImage());
 		Bitmap theImage = BitmapFactory.decodeStream(imageStream);

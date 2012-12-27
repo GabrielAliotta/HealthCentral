@@ -23,17 +23,18 @@ import com.heathcentral.model.Quiz;
 public class CustomQuizAdapter extends ArrayAdapter<Quiz>{
 
 	private final Context context;
+	private LayoutInflater inflater;
 	private final List<Quiz> values;
 
 	public CustomQuizAdapter(Context context, List<Quiz> values) {
 		super(context, R.layout.list_quiz_item, values);
+		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.context = context;
 		this.values = values;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		//Get image
 		ByteArrayInputStream imageStream = new ByteArrayInputStream(values.get(position).getImage());

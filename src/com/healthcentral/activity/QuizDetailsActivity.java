@@ -28,7 +28,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,23 +53,27 @@ public class QuizDetailsActivity extends Activity{
 	private TextView incorrectScore;
 	private ImageView incorrectScoreImage;
 	private TextView youAnswered;
-	private TextView correctAnswerTitle;
 	private TextView correctAnswer;
 	private WebView quizText;
 	private ProgressBar progressBar;
 	private TextView questionCounterBar;
+	private TextView verticalTitleTextView;
 	private Button submitBtn;
-	//private RelativeLayout relativeBackground;
 	private List<String> answersString = new ArrayList<String>();
 	private boolean resultMode = true;
 	private String nextQuizId;
+	private String verticalTitle;
 	private Drawable quizImage;
 	int questionCounter;
 	int validAnswer = 0;
 	int answeredValid = 0;
 	int answeredInvalid = 0;
 	
-	final String align = "<head><style>* {margin:0;padding:8;font-size:18; text-align:justify;color:007fb2}</style></head>"; 
+	final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); 
+	final ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#CC4848"));	
+	final ForegroundColorSpan fcsCorrectAnswer = new ForegroundColorSpan(Color.parseColor("#8dc73f"));
+	
+	final String align = "<head><style>* {margin:0;padding:4;font-size:16; text-align:justify;color:007fb2}</style></head>"; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,15 +89,13 @@ public class QuizDetailsActivity extends Activity{
 		correctScoreImage = (ImageView) findViewById(R.id.correct_image);
 		incorrectScore = (TextView) findViewById(R.id.incorrect_score);
 		incorrectScoreImage = (ImageView) findViewById(R.id.incorrect_image);
-		correctAnswerTitle = (TextView) findViewById(R.id.correctAnswerTitle);
 		youAnswered = (TextView) findViewById(R.id.youAnswered);
 		correctAnswer = (TextView) findViewById(R.id.correctAnswer);
 		quizText = (WebView) findViewById(R.id.quizText);
 		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 		questionCounterBar = (TextView) findViewById(R.id.question_counter);
+		verticalTitleTextView = (TextView) findViewById(R.id.vertical_title);
 		submitBtn = (Button) findViewById(R.id.quiz_submit_btn);
-		//relativeBackground = (RelativeLayout) findViewById(R.id.background_relative);
-		
 		quizText.setFocusable(false);
 		quizText.setBackgroundColor(0);
 		
@@ -109,11 +110,15 @@ public class QuizDetailsActivity extends Activity{
 
 		String quizId = getIntent().getExtras().getString("QuizId");
 		nextQuizId = getIntent().getExtras().getString("nextQuizId");
+		verticalTitle = getIntent().getExtras().getString("verticalTitle");
 		questions = databaseController.getQuestionsByVertical(quizId);
 		progressBar.setMax(questions.size());
 		adapter = new ArrayAdapter<String>(this, R.layout.list_answer_item,answersString);
 		 
 		questionAnswers.setAdapter(adapter);
+		quizTitle.setText(questions.get(questionCounter).getQuizTitle());
+		
+		verticalTitleTextView.setText(verticalTitle);
 		
 		updateQuestion();
 	} 
@@ -139,11 +144,8 @@ public class QuizDetailsActivity extends Activity{
 		quizImage = new BitmapDrawable(BitmapFactory.decodeStream(imageStream));
 		quizImage.setAlpha(80);
 		
-		//relativeBackground.setBackgroundDrawable(quizImage);
-		
 		questionCounterBar.setText("Question " + String.valueOf(questionCounter + 1) + " of " + String.valueOf(questions.size()));
 		
-		quizTitle.setText(questions.get(questionCounter).getQuizTitle());
 		quizQuestion.setText(Html.fromHtml(questions.get(questionCounter).getQuestion()).toString().trim());
 		
 		answers = databaseController.getAnswersByQuestionId(String.valueOf(questions.get(questionCounter).getID()));
@@ -191,10 +193,13 @@ public class QuizDetailsActivity extends Activity{
 					answeredInvalid ++;
 				}
 			}
+			SpannableStringBuilder correctString = new SpannableStringBuilder("Correct!");
+			correctString.setSpan(bss, 0, 8, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+			correctString.setSpan(fcsCorrectAnswer, 0, 8, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			quizScore.setVisibility(View.VISIBLE);
 			correctAnswer.setVisibility(View.VISIBLE);
-			correctAnswer.setTextSize(55);
-			correctAnswer.setText("Correct!");			
+			correctAnswer.setTextSize(40);
+			correctAnswer.setText(correctString);			
 			quizText.loadData(align + questions.get(questionCounter).getAnswerText(),"text/html","utf-8");
 			quizText.setVisibility(View.VISIBLE);
 			correctScore.setText(String.valueOf(answeredValid));
@@ -209,17 +214,17 @@ public class QuizDetailsActivity extends Activity{
 					answeredInvalid ++;
 				}
 			}
-			SpannableStringBuilder youAnsweredString = new SpannableStringBuilder("You answered: " + answers.get(answerChecked).getTitle());
-			final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); 
-			final ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#CC4848"));
+			SpannableStringBuilder youAnsweredString = new SpannableStringBuilder("You answered: " + answers.get(answerChecked).getTitle());				
 			youAnsweredString.setSpan(bss, 0, 12, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			youAnsweredString.setSpan(fcs, 13, youAnsweredString.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+			SpannableStringBuilder correctAnswerString = new SpannableStringBuilder("The correct answer is: " + answers.get(validAnswer).getTitle());			
+			correctAnswerString.setSpan(bss, 0, 21, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+			correctAnswerString.setSpan(fcsCorrectAnswer, 22, correctAnswerString.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			quizScore.setVisibility(View.VISIBLE);
 			youAnswered.setVisibility(View.VISIBLE);
 			youAnswered.setText(youAnsweredString);
-			correctAnswerTitle.setVisibility(View.VISIBLE);
 			correctAnswer.setVisibility(View.VISIBLE);
-			correctAnswer.setText(answers.get(validAnswer).getTitle());
+			correctAnswer.setText(correctAnswerString);
 			quizText.loadData(align + questions.get(questionCounter).getAnswerText(),"text/html","utf-8");
 			quizText.setVisibility(View.VISIBLE);
 			correctScore.setText(String.valueOf(answeredValid));
@@ -235,8 +240,11 @@ public class QuizDetailsActivity extends Activity{
 		if(questionCounter >= questions.size()){
 			
 			Intent localIntent = new Intent(this, QuizResultActivity.class);
+			localIntent.putExtra("verticalTitle", verticalTitle);
+			localIntent.putExtra("quizTitle", questions.get(0).getQuizTitle());
 			localIntent.putExtra("answered", (Serializable) answered);
 			localIntent.putExtra("validAnswers", String.valueOf(answeredValid));
+			localIntent.putExtra("invalidAnswers", String.valueOf(answeredInvalid));
 			startActivity(localIntent);
 			finish();
 			return;
@@ -246,9 +254,8 @@ public class QuizDetailsActivity extends Activity{
 		quizScore.setVisibility(View.GONE);
 		youAnswered.setVisibility(View.GONE);
 		correctAnswer.setVisibility(View.GONE);
-		correctAnswerTitle.setVisibility(View.GONE);
+		correctAnswer.setTextSize(18);
 		quizText.setVisibility(View.GONE);
-		correctAnswer.setTextSize(30);
 		questionAnswers.setVisibility(View.VISIBLE);
 		submitBtn.setText("Submit");
 		questionAnswers.setItemChecked(-1, true);

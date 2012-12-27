@@ -17,10 +17,12 @@ import com.heathcentral.model.Vertical;
 public class CustomVerticalAdapter extends ArrayAdapter<Vertical> {
 
 	private final Context context;
+	private LayoutInflater inflater;
 	private final List<Vertical> values;
 
 	public CustomVerticalAdapter(Context context, List<Vertical> values) {
 		super(context, android.R.layout.simple_list_item_1, values);
+		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.context = context;
 		this.values = values;
 	}
