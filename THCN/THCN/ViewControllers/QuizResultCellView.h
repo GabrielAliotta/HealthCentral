@@ -12,5 +12,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *questionText;
 @property (weak, nonatomic) IBOutlet UILabel *correctQuestionText;
 @property (weak, nonatomic) IBOutlet UITextView *questionExplanation;
+@property (weak, nonatomic) IBOutlet UIImageView *questionIcon;
+
+@property (nonatomic) BOOL isCorrect;
 
 @end

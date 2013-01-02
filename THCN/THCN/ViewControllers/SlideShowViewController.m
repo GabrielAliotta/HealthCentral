@@ -133,6 +133,8 @@
     SlideShow * slideShow = [datasource objectAtIndex:indexPath.row];
     cell.slideText.text = [slideShow title];
     cell.slideImage.image = [[UIImage alloc] initWithData:[slideShow imageData]];
+    cell.accessoryView = [[ UIImageView alloc ]
+                          initWithImage:[UIImage imageNamed:@"HealthCentral-asset-row-arrow.png" ]];
     return cell;
 }
 

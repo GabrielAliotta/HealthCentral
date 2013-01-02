@@ -62,6 +62,7 @@
 		003C6DC016948F2800E1BB44 /* HealthCentral-asset-slideshow-gym@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB416948F2800E1BB44 /* HealthCentral-asset-slideshow-gym@2x.png */; };
 		003C6DC116948F2800E1BB44 /* HealthCentral-asset-slideshow-square.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB516948F2800E1BB44 /* HealthCentral-asset-slideshow-square.png */; };
 		003C6DC216948F2800E1BB44 /* HealthCentral-asset-slideshow-square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB616948F2800E1BB44 /* HealthCentral-asset-slideshow-square@2x.png */; };
+		003C6DC51694B0D400E1BB44 /* QuestionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 003C6DC41694B0D200E1BB44 /* QuestionCellView.m */; };
 		005E27E41680EBE800119388 /* hc_logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E01680EBE800119388 /* hc_logo_title.png */; };
 		005E27E51680EBE800119388 /* hc_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E11680EBE800119388 /* hc_logo.jpg */; };
 		005E27E61680EBE800119388 /* quizzes_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E21680EBE800119388 /* quizzes_icon.png */; };
@@ -174,6 +175,8 @@
 		003C6DB416948F2800E1BB44 /* HealthCentral-asset-slideshow-gym@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-gym@2x.png"; sourceTree = "<group>"; };
 		003C6DB516948F2800E1BB44 /* HealthCentral-asset-slideshow-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-square.png"; sourceTree = "<group>"; };
 		003C6DB616948F2800E1BB44 /* HealthCentral-asset-slideshow-square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-square@2x.png"; sourceTree = "<group>"; };
+		003C6DC31694B0D100E1BB44 /* QuestionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionCellView.h; sourceTree = "<group>"; };
+		003C6DC41694B0D200E1BB44 /* QuestionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionCellView.m; sourceTree = "<group>"; };
 		005E27E01680EBE800119388 /* hc_logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hc_logo_title.png; sourceTree = "<group>"; };
 		005E27E11680EBE800119388 /* hc_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hc_logo.jpg; sourceTree = "<group>"; };
 		005E27E21680EBE800119388 /* quizzes_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quizzes_icon.png; sourceTree = "<group>"; };
@@ -462,6 +465,8 @@
 				001D4EA6167E571A0036B8F0 /* QuizResultCellView.h */,
 				001D4EA7167E571A0036B8F0 /* QuizResultCellView.m */,
 				001D4EA9167E57270036B8F0 /* QuizResultCellView.xib */,
+				003C6DC31694B0D100E1BB44 /* QuestionCellView.h */,
+				003C6DC41694B0D200E1BB44 /* QuestionCellView.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -682,6 +687,7 @@
 				001D4EA3167E552C0036B8F0 /* QuizResultsViewController.m in Sources */,
 				001D4EA8167E571A0036B8F0 /* QuizResultCellView.m in Sources */,
 				005E27EA1683869100119388 /* NSString+StripHTMLTags.m in Sources */,
+				003C6DC51694B0D400E1BB44 /* QuestionCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

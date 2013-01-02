@@ -37,12 +37,14 @@
     questionText.text = question.title;
     [questionOptions reloadData];
     
+    
+    /*
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageWithData:question.imageData]];
     tempImageView.alpha = 0.5;
     
     [tempImageView setFrame:self.questionOptions.frame];
     
-    self.questionOptions.backgroundView = tempImageView;
+    self.questionOptions.backgroundView = tempImageView;*/
 }
 
 #pragma mark - Table view data source

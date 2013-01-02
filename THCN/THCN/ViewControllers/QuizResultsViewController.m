@@ -109,6 +109,8 @@
     cell.questionExplanation.text = question.text;
     cell.correctQuestionText.text =  [NSString stringWithFormat:@"Correct Answer: %@",question.title];
     
+    cell.isCorrect = ((QuizAnswer*)[listOfAnswers objectAtIndex:indexPath.row]).isValid;
+    
     return cell;
     
 }

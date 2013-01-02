@@ -125,9 +125,10 @@
     selectionColor.backgroundColor = [UIColor colorWithRed:(140/255.0) green:(198/255.0) blue:(1/255.0) alpha:1];
     cell.selectedBackgroundView = selectionColor;
     cell.textLabel.text = [(Vertical*)[datasource objectAtIndex:indexPath.row] name];
-    cell.textLabel.textColor = [UIColor colorWithRed:(0/255.0) green:(136/255.0) blue:(189/255.0) alpha:1];
+    cell.textLabel.textColor = [UIColor colorWithRed:(0/255.0) green:(109/255.0) blue:(152/255.0) alpha:1];
     
-    
+    cell.accessoryView = [[ UIImageView alloc ]
+                          initWithImage:[UIImage imageNamed:@"HealthCentral-asset-row-arrow.png" ]];
     return cell;
 }
 

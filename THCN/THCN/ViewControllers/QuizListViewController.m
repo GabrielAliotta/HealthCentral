@@ -131,6 +131,8 @@
     Quizz * quizz = [datasource objectAtIndex:indexPath.row];
     cell.quizzText.text = [quizz title];
     cell.quizzImage.image = [[UIImage alloc] initWithData:[quizz imageData]];
+    cell.accessoryView = [[ UIImageView alloc ]
+                          initWithImage:[UIImage imageNamed:@"HealthCentral-asset-row-arrow.png" ]];
     return cell;
 
 }

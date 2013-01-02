@@ -10,11 +10,16 @@
 
 @implementation QuizResultCellView
 
+@synthesize questionIcon, isCorrect;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        
+        
+        
     }
     return self;
 }
@@ -25,5 +30,15 @@
 
     // Configure the view for the selected state
 }
+
+-(void)drawRect:(CGRect)rect{
+    
+    if (isCorrect)
+        questionIcon.image = [UIImage imageNamed:@"Healthcentral-checkmark.png"];
+    else
+        questionIcon.image = [UIImage imageNamed:@"HealthCentral-redX.png"];
+    
+}
+
 
 @end
