@@ -22,6 +22,46 @@
 		001D4EA4167E552C0036B8F0 /* QuizResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001D4EA2167E552C0036B8F0 /* QuizResultsViewController.xib */; };
 		001D4EA8167E571A0036B8F0 /* QuizResultCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 001D4EA7167E571A0036B8F0 /* QuizResultCellView.m */; };
 		001D4EAA167E57270036B8F0 /* QuizResultCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 001D4EA9167E57270036B8F0 /* QuizResultCellView.xib */; };
+		003C6D8316948E0800E1BB44 /* HealthCentral-asset-quiz-square.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7116948E0800E1BB44 /* HealthCentral-asset-quiz-square.png */; };
+		003C6D8416948E0800E1BB44 /* HealthCentral-asset-quiz-square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7216948E0800E1BB44 /* HealthCentral-asset-quiz-square@2x.png */; };
+		003C6D8516948E0800E1BB44 /* Healthcentral-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7316948E0800E1BB44 /* Healthcentral-checkmark.png */; };
+		003C6D8616948E0800E1BB44 /* Healthcentral-checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7416948E0800E1BB44 /* Healthcentral-checkmark@2x.png */; };
+		003C6D8716948E0800E1BB44 /* HealthCentral-greenbutton-stretchable.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7516948E0800E1BB44 /* HealthCentral-greenbutton-stretchable.png */; };
+		003C6D8816948E0800E1BB44 /* HealthCentral-greenbutton-stretchable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7616948E0800E1BB44 /* HealthCentral-greenbutton-stretchable@2x.png */; };
+		003C6D8916948E0800E1BB44 /* HealthCentral-greenbutton-stretched@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7716948E0800E1BB44 /* HealthCentral-greenbutton-stretched@2x.png */; };
+		003C6D8A16948E0800E1BB44 /* HealthCentral-greenbutton-stretchedx.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7816948E0800E1BB44 /* HealthCentral-greenbutton-stretchedx.png */; };
+		003C6D8B16948E0800E1BB44 /* HealthCentral-progressbar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7916948E0800E1BB44 /* HealthCentral-progressbar-background.png */; };
+		003C6D8C16948E0800E1BB44 /* HealthCentral-progressbar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7A16948E0800E1BB44 /* HealthCentral-progressbar-background@2x.png */; };
+		003C6D8D16948E0800E1BB44 /* HealthCentral-progressbar-fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7B16948E0800E1BB44 /* HealthCentral-progressbar-fill.png */; };
+		003C6D8E16948E0800E1BB44 /* HealthCentral-progressbar-fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7C16948E0800E1BB44 /* HealthCentral-progressbar-fill@2x.png */; };
+		003C6D8F16948E0800E1BB44 /* HealthCentral-radio-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7D16948E0800E1BB44 /* HealthCentral-radio-checked.png */; };
+		003C6D9016948E0800E1BB44 /* HealthCentral-radio-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7E16948E0800E1BB44 /* HealthCentral-radio-checked@2x.png */; };
+		003C6D9116948E0800E1BB44 /* HealthCentral-radio-unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D7F16948E0800E1BB44 /* HealthCentral-radio-unchecked.png */; };
+		003C6D9216948E0800E1BB44 /* HealthCentral-radio-unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D8016948E0800E1BB44 /* HealthCentral-radio-unchecked@2x.png */; };
+		003C6D9316948E0800E1BB44 /* HealthCentral-redX.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D8116948E0800E1BB44 /* HealthCentral-redX.png */; };
+		003C6D9416948E0800E1BB44 /* HealthCentral-redX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D8216948E0800E1BB44 /* HealthCentral-redX@2x.png */; };
+		003C6DA016948F0900E1BB44 /* HealthCentral-asset-headerbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9616948F0900E1BB44 /* HealthCentral-asset-headerbackground.png */; };
+		003C6DA116948F0900E1BB44 /* HealthCentral-asset-headerbackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9716948F0900E1BB44 /* HealthCentral-asset-headerbackground@2x.png */; };
+		003C6DA216948F0900E1BB44 /* HealthCentral-asset-row-arrow-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9816948F0900E1BB44 /* HealthCentral-asset-row-arrow-white.png */; };
+		003C6DA316948F0900E1BB44 /* HealthCentral-asset-row-arrow-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9916948F0900E1BB44 /* HealthCentral-asset-row-arrow-white@2x.png */; };
+		003C6DA416948F0900E1BB44 /* HealthCentral-asset-row-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9A16948F0900E1BB44 /* HealthCentral-asset-row-arrow.png */; };
+		003C6DA516948F0900E1BB44 /* HealthCentral-asset-row-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9B16948F0900E1BB44 /* HealthCentral-asset-row-arrow@2x.png */; };
+		003C6DA616948F0900E1BB44 /* HealthCentral-asset-topseperator.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9C16948F0900E1BB44 /* HealthCentral-asset-topseperator.png */; };
+		003C6DA716948F0900E1BB44 /* HealthCentral-asset-topseperator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9D16948F0900E1BB44 /* HealthCentral-asset-topseperator@2x.png */; };
+		003C6DA816948F0900E1BB44 /* HealthCentral-subtitle-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9E16948F0900E1BB44 /* HealthCentral-subtitle-bar.png */; };
+		003C6DA916948F0900E1BB44 /* HealthCentral-subtitle-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6D9F16948F0900E1BB44 /* HealthCentral-subtitle-bar@2x.png */; };
+		003C6DB716948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DAB16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue.png */; };
+		003C6DB816948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DAC16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue@2x.png */; };
+		003C6DB916948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DAD16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey.png */; };
+		003C6DBA16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DAE16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey@2x.png */; };
+		003C6DBB16948F2800E1BB44 /* HealthCentral-asset-slideshow-apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DAF16948F2800E1BB44 /* HealthCentral-asset-slideshow-apple.png */; };
+		003C6DBC16948F2800E1BB44 /* HealthCentral-asset-slideshow-apple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB016948F2800E1BB44 /* HealthCentral-asset-slideshow-apple@2x.png */; };
+		003C6DBD16948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB116948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee.png */; };
+		003C6DBE16948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB216948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee@2x.png */; };
+		003C6DBF16948F2800E1BB44 /* HealthCentral-asset-slideshow-gym.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB316948F2800E1BB44 /* HealthCentral-asset-slideshow-gym.png */; };
+		003C6DC016948F2800E1BB44 /* HealthCentral-asset-slideshow-gym@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB416948F2800E1BB44 /* HealthCentral-asset-slideshow-gym@2x.png */; };
+		003C6DC116948F2800E1BB44 /* HealthCentral-asset-slideshow-square.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB516948F2800E1BB44 /* HealthCentral-asset-slideshow-square.png */; };
+		003C6DC216948F2800E1BB44 /* HealthCentral-asset-slideshow-square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 003C6DB616948F2800E1BB44 /* HealthCentral-asset-slideshow-square@2x.png */; };
 		005E27E41680EBE800119388 /* hc_logo_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E01680EBE800119388 /* hc_logo_title.png */; };
 		005E27E51680EBE800119388 /* hc_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E11680EBE800119388 /* hc_logo.jpg */; };
 		005E27E61680EBE800119388 /* quizzes_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E27E21680EBE800119388 /* quizzes_icon.png */; };
@@ -94,6 +134,46 @@
 		001D4EA6167E571A0036B8F0 /* QuizResultCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuizResultCellView.h; sourceTree = "<group>"; };
 		001D4EA7167E571A0036B8F0 /* QuizResultCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuizResultCellView.m; sourceTree = "<group>"; };
 		001D4EA9167E57270036B8F0 /* QuizResultCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizResultCellView.xib; sourceTree = "<group>"; };
+		003C6D7116948E0800E1BB44 /* HealthCentral-asset-quiz-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-quiz-square.png"; sourceTree = "<group>"; };
+		003C6D7216948E0800E1BB44 /* HealthCentral-asset-quiz-square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-quiz-square@2x.png"; sourceTree = "<group>"; };
+		003C6D7316948E0800E1BB44 /* Healthcentral-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Healthcentral-checkmark.png"; sourceTree = "<group>"; };
+		003C6D7416948E0800E1BB44 /* Healthcentral-checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Healthcentral-checkmark@2x.png"; sourceTree = "<group>"; };
+		003C6D7516948E0800E1BB44 /* HealthCentral-greenbutton-stretchable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-greenbutton-stretchable.png"; sourceTree = "<group>"; };
+		003C6D7616948E0800E1BB44 /* HealthCentral-greenbutton-stretchable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-greenbutton-stretchable@2x.png"; sourceTree = "<group>"; };
+		003C6D7716948E0800E1BB44 /* HealthCentral-greenbutton-stretched@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-greenbutton-stretched@2x.png"; sourceTree = "<group>"; };
+		003C6D7816948E0800E1BB44 /* HealthCentral-greenbutton-stretchedx.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-greenbutton-stretchedx.png"; sourceTree = "<group>"; };
+		003C6D7916948E0800E1BB44 /* HealthCentral-progressbar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-progressbar-background.png"; sourceTree = "<group>"; };
+		003C6D7A16948E0800E1BB44 /* HealthCentral-progressbar-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-progressbar-background@2x.png"; sourceTree = "<group>"; };
+		003C6D7B16948E0800E1BB44 /* HealthCentral-progressbar-fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-progressbar-fill.png"; sourceTree = "<group>"; };
+		003C6D7C16948E0800E1BB44 /* HealthCentral-progressbar-fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-progressbar-fill@2x.png"; sourceTree = "<group>"; };
+		003C6D7D16948E0800E1BB44 /* HealthCentral-radio-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-radio-checked.png"; sourceTree = "<group>"; };
+		003C6D7E16948E0800E1BB44 /* HealthCentral-radio-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-radio-checked@2x.png"; sourceTree = "<group>"; };
+		003C6D7F16948E0800E1BB44 /* HealthCentral-radio-unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-radio-unchecked.png"; sourceTree = "<group>"; };
+		003C6D8016948E0800E1BB44 /* HealthCentral-radio-unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-radio-unchecked@2x.png"; sourceTree = "<group>"; };
+		003C6D8116948E0800E1BB44 /* HealthCentral-redX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-redX.png"; sourceTree = "<group>"; };
+		003C6D8216948E0800E1BB44 /* HealthCentral-redX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-redX@2x.png"; sourceTree = "<group>"; };
+		003C6D9616948F0900E1BB44 /* HealthCentral-asset-headerbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-headerbackground.png"; sourceTree = "<group>"; };
+		003C6D9716948F0900E1BB44 /* HealthCentral-asset-headerbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-headerbackground@2x.png"; sourceTree = "<group>"; };
+		003C6D9816948F0900E1BB44 /* HealthCentral-asset-row-arrow-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-row-arrow-white.png"; sourceTree = "<group>"; };
+		003C6D9916948F0900E1BB44 /* HealthCentral-asset-row-arrow-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-row-arrow-white@2x.png"; sourceTree = "<group>"; };
+		003C6D9A16948F0900E1BB44 /* HealthCentral-asset-row-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-row-arrow.png"; sourceTree = "<group>"; };
+		003C6D9B16948F0900E1BB44 /* HealthCentral-asset-row-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-row-arrow@2x.png"; sourceTree = "<group>"; };
+		003C6D9C16948F0900E1BB44 /* HealthCentral-asset-topseperator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-topseperator.png"; sourceTree = "<group>"; };
+		003C6D9D16948F0900E1BB44 /* HealthCentral-asset-topseperator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-topseperator@2x.png"; sourceTree = "<group>"; };
+		003C6D9E16948F0900E1BB44 /* HealthCentral-subtitle-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-subtitle-bar.png"; sourceTree = "<group>"; };
+		003C6D9F16948F0900E1BB44 /* HealthCentral-subtitle-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-subtitle-bar@2x.png"; sourceTree = "<group>"; };
+		003C6DAB16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slide-indicator-blue.png"; sourceTree = "<group>"; };
+		003C6DAC16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slide-indicator-blue@2x.png"; sourceTree = "<group>"; };
+		003C6DAD16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slide-indicator-grey.png"; sourceTree = "<group>"; };
+		003C6DAE16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slide-indicator-grey@2x.png"; sourceTree = "<group>"; };
+		003C6DAF16948F2800E1BB44 /* HealthCentral-asset-slideshow-apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-apple.png"; sourceTree = "<group>"; };
+		003C6DB016948F2800E1BB44 /* HealthCentral-asset-slideshow-apple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-apple@2x.png"; sourceTree = "<group>"; };
+		003C6DB116948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-coffee.png"; sourceTree = "<group>"; };
+		003C6DB216948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-coffee@2x.png"; sourceTree = "<group>"; };
+		003C6DB316948F2800E1BB44 /* HealthCentral-asset-slideshow-gym.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-gym.png"; sourceTree = "<group>"; };
+		003C6DB416948F2800E1BB44 /* HealthCentral-asset-slideshow-gym@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-gym@2x.png"; sourceTree = "<group>"; };
+		003C6DB516948F2800E1BB44 /* HealthCentral-asset-slideshow-square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-square.png"; sourceTree = "<group>"; };
+		003C6DB616948F2800E1BB44 /* HealthCentral-asset-slideshow-square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HealthCentral-asset-slideshow-square@2x.png"; sourceTree = "<group>"; };
 		005E27E01680EBE800119388 /* hc_logo_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hc_logo_title.png; sourceTree = "<group>"; };
 		005E27E11680EBE800119388 /* hc_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hc_logo.jpg; sourceTree = "<group>"; };
 		005E27E21680EBE800119388 /* quizzes_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quizzes_icon.png; sourceTree = "<group>"; };
@@ -189,9 +269,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		003C6D6F16948D8600E1BB44 /* Quizzes */ = {
+			isa = PBXGroup;
+			children = (
+				003C6D7116948E0800E1BB44 /* HealthCentral-asset-quiz-square.png */,
+				003C6D7216948E0800E1BB44 /* HealthCentral-asset-quiz-square@2x.png */,
+				003C6D7316948E0800E1BB44 /* Healthcentral-checkmark.png */,
+				003C6D7416948E0800E1BB44 /* Healthcentral-checkmark@2x.png */,
+				003C6D7516948E0800E1BB44 /* HealthCentral-greenbutton-stretchable.png */,
+				003C6D7616948E0800E1BB44 /* HealthCentral-greenbutton-stretchable@2x.png */,
+				003C6D7716948E0800E1BB44 /* HealthCentral-greenbutton-stretched@2x.png */,
+				003C6D7816948E0800E1BB44 /* HealthCentral-greenbutton-stretchedx.png */,
+				003C6D7916948E0800E1BB44 /* HealthCentral-progressbar-background.png */,
+				003C6D7A16948E0800E1BB44 /* HealthCentral-progressbar-background@2x.png */,
+				003C6D7B16948E0800E1BB44 /* HealthCentral-progressbar-fill.png */,
+				003C6D7C16948E0800E1BB44 /* HealthCentral-progressbar-fill@2x.png */,
+				003C6D7D16948E0800E1BB44 /* HealthCentral-radio-checked.png */,
+				003C6D7E16948E0800E1BB44 /* HealthCentral-radio-checked@2x.png */,
+				003C6D7F16948E0800E1BB44 /* HealthCentral-radio-unchecked.png */,
+				003C6D8016948E0800E1BB44 /* HealthCentral-radio-unchecked@2x.png */,
+				003C6D8116948E0800E1BB44 /* HealthCentral-redX.png */,
+				003C6D8216948E0800E1BB44 /* HealthCentral-redX@2x.png */,
+			);
+			name = Quizzes;
+			sourceTree = "<group>";
+		};
+		003C6D9516948EFF00E1BB44 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				003C6D9616948F0900E1BB44 /* HealthCentral-asset-headerbackground.png */,
+				003C6D9716948F0900E1BB44 /* HealthCentral-asset-headerbackground@2x.png */,
+				003C6D9816948F0900E1BB44 /* HealthCentral-asset-row-arrow-white.png */,
+				003C6D9916948F0900E1BB44 /* HealthCentral-asset-row-arrow-white@2x.png */,
+				003C6D9A16948F0900E1BB44 /* HealthCentral-asset-row-arrow.png */,
+				003C6D9B16948F0900E1BB44 /* HealthCentral-asset-row-arrow@2x.png */,
+				003C6D9C16948F0900E1BB44 /* HealthCentral-asset-topseperator.png */,
+				003C6D9D16948F0900E1BB44 /* HealthCentral-asset-topseperator@2x.png */,
+				003C6D9E16948F0900E1BB44 /* HealthCentral-subtitle-bar.png */,
+				003C6D9F16948F0900E1BB44 /* HealthCentral-subtitle-bar@2x.png */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+		003C6DAA16948F1300E1BB44 /* Slideshows */ = {
+			isa = PBXGroup;
+			children = (
+				003C6DAB16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue.png */,
+				003C6DAC16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue@2x.png */,
+				003C6DAD16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey.png */,
+				003C6DAE16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey@2x.png */,
+				003C6DAF16948F2800E1BB44 /* HealthCentral-asset-slideshow-apple.png */,
+				003C6DB016948F2800E1BB44 /* HealthCentral-asset-slideshow-apple@2x.png */,
+				003C6DB116948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee.png */,
+				003C6DB216948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee@2x.png */,
+				003C6DB316948F2800E1BB44 /* HealthCentral-asset-slideshow-gym.png */,
+				003C6DB416948F2800E1BB44 /* HealthCentral-asset-slideshow-gym@2x.png */,
+				003C6DB516948F2800E1BB44 /* HealthCentral-asset-slideshow-square.png */,
+				003C6DB616948F2800E1BB44 /* HealthCentral-asset-slideshow-square@2x.png */,
+			);
+			name = Slideshows;
+			sourceTree = "<group>";
+		};
 		005E27DF1680EBCD00119388 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				003C6DAA16948F1300E1BB44 /* Slideshows */,
+				003C6D9516948EFF00E1BB44 /* General */,
+				003C6D6F16948D8600E1BB44 /* Quizzes */,
 				005E27E01680EBE800119388 /* hc_logo_title.png */,
 				005E27E11680EBE800119388 /* hc_logo.jpg */,
 				005E27E21680EBE800119388 /* quizzes_icon.png */,
@@ -453,6 +597,46 @@
 				005E27E51680EBE800119388 /* hc_logo.jpg in Resources */,
 				005E27E61680EBE800119388 /* quizzes_icon.png in Resources */,
 				005E27E71680EBE800119388 /* slideshow_icon.png in Resources */,
+				003C6D8316948E0800E1BB44 /* HealthCentral-asset-quiz-square.png in Resources */,
+				003C6D8416948E0800E1BB44 /* HealthCentral-asset-quiz-square@2x.png in Resources */,
+				003C6D8516948E0800E1BB44 /* Healthcentral-checkmark.png in Resources */,
+				003C6D8616948E0800E1BB44 /* Healthcentral-checkmark@2x.png in Resources */,
+				003C6D8716948E0800E1BB44 /* HealthCentral-greenbutton-stretchable.png in Resources */,
+				003C6D8816948E0800E1BB44 /* HealthCentral-greenbutton-stretchable@2x.png in Resources */,
+				003C6D8916948E0800E1BB44 /* HealthCentral-greenbutton-stretched@2x.png in Resources */,
+				003C6D8A16948E0800E1BB44 /* HealthCentral-greenbutton-stretchedx.png in Resources */,
+				003C6D8B16948E0800E1BB44 /* HealthCentral-progressbar-background.png in Resources */,
+				003C6D8C16948E0800E1BB44 /* HealthCentral-progressbar-background@2x.png in Resources */,
+				003C6D8D16948E0800E1BB44 /* HealthCentral-progressbar-fill.png in Resources */,
+				003C6D8E16948E0800E1BB44 /* HealthCentral-progressbar-fill@2x.png in Resources */,
+				003C6D8F16948E0800E1BB44 /* HealthCentral-radio-checked.png in Resources */,
+				003C6D9016948E0800E1BB44 /* HealthCentral-radio-checked@2x.png in Resources */,
+				003C6D9116948E0800E1BB44 /* HealthCentral-radio-unchecked.png in Resources */,
+				003C6D9216948E0800E1BB44 /* HealthCentral-radio-unchecked@2x.png in Resources */,
+				003C6D9316948E0800E1BB44 /* HealthCentral-redX.png in Resources */,
+				003C6D9416948E0800E1BB44 /* HealthCentral-redX@2x.png in Resources */,
+				003C6DA016948F0900E1BB44 /* HealthCentral-asset-headerbackground.png in Resources */,
+				003C6DA116948F0900E1BB44 /* HealthCentral-asset-headerbackground@2x.png in Resources */,
+				003C6DA216948F0900E1BB44 /* HealthCentral-asset-row-arrow-white.png in Resources */,
+				003C6DA316948F0900E1BB44 /* HealthCentral-asset-row-arrow-white@2x.png in Resources */,
+				003C6DA416948F0900E1BB44 /* HealthCentral-asset-row-arrow.png in Resources */,
+				003C6DA516948F0900E1BB44 /* HealthCentral-asset-row-arrow@2x.png in Resources */,
+				003C6DA616948F0900E1BB44 /* HealthCentral-asset-topseperator.png in Resources */,
+				003C6DA716948F0900E1BB44 /* HealthCentral-asset-topseperator@2x.png in Resources */,
+				003C6DA816948F0900E1BB44 /* HealthCentral-subtitle-bar.png in Resources */,
+				003C6DA916948F0900E1BB44 /* HealthCentral-subtitle-bar@2x.png in Resources */,
+				003C6DB716948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue.png in Resources */,
+				003C6DB816948F2800E1BB44 /* HealthCentral-asset-slide-indicator-blue@2x.png in Resources */,
+				003C6DB916948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey.png in Resources */,
+				003C6DBA16948F2800E1BB44 /* HealthCentral-asset-slide-indicator-grey@2x.png in Resources */,
+				003C6DBB16948F2800E1BB44 /* HealthCentral-asset-slideshow-apple.png in Resources */,
+				003C6DBC16948F2800E1BB44 /* HealthCentral-asset-slideshow-apple@2x.png in Resources */,
+				003C6DBD16948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee.png in Resources */,
+				003C6DBE16948F2800E1BB44 /* HealthCentral-asset-slideshow-coffee@2x.png in Resources */,
+				003C6DBF16948F2800E1BB44 /* HealthCentral-asset-slideshow-gym.png in Resources */,
+				003C6DC016948F2800E1BB44 /* HealthCentral-asset-slideshow-gym@2x.png in Resources */,
+				003C6DC116948F2800E1BB44 /* HealthCentral-asset-slideshow-square.png in Resources */,
+				003C6DC216948F2800E1BB44 /* HealthCentral-asset-slideshow-square@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
