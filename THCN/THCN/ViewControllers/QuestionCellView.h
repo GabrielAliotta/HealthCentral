@@ -10,6 +10,7 @@
 
 @interface QuestionCellView : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UILabel *questionText;
+@property (weak, nonatomic) IBOutlet UILabel *questionText;
+@property (weak, nonatomic) IBOutlet UIImageView *selectedImage;
 
 @end

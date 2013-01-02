@@ -8,6 +8,7 @@
 
 #import "QuestionView.h"
 #import "QuizAnswer.h"
+#import "QuestionCellView.h"
 
 @implementation QuestionView
 
@@ -63,25 +64,38 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] ;
+    QuestionCellView  *cell = nil;
+    
+    cell = (QuestionCellView *) [self.questionOptions dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(!cell)
+    {
+        
+        NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"QuestionCellView" owner:nil options:nil];
+        
+        for(id currentObject in topLevelObjects)
+        {
+            if([currentObject isKindOfClass:[QuestionCellView class]])
+            {
+                cell = (QuestionCellView *)currentObject;
+                break;
+            }
+        }
     }
     
-    cell.textLabel.text = [(QuizAnswer*)[question.answers objectAtIndex:indexPath.row] title];
-    cell.textLabel.numberOfLines = 2;
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Neue" size:15];
+    cell.questionText.text = [(QuizAnswer*)[question.answers objectAtIndex:indexPath.row] title];
+    cell.selected = FALSE;
     
     return cell;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self clearQuestionSelection];
-    
-    [tableView cellForRowAtIndexPath:indexPath].accessoryType=UITableViewCellAccessoryCheckmark;
+{    
+    ((QuestionCellView*)[tableView cellForRowAtIndexPath:indexPath]).selected = TRUE;
     
     selectedAnswer = (QuizAnswer*)[question.answers objectAtIndex:indexPath.row];
 }
@@ -91,7 +105,7 @@
 
     for (int i = 0; i < question.answers.count; i++)
     {
-        [questionOptions cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].accessoryType = UITableViewCellAccessoryNone;
+        [questionOptions cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].selected = FALSE;
     }
 }
 

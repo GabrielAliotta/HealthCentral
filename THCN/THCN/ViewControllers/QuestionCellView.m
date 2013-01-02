@@ -10,6 +10,8 @@
 
 @implementation QuestionCellView
 
+@synthesize imageView, selectedImage;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -24,6 +26,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    if (selected == TRUE)
+        self.selectedImage.image = [UIImage imageNamed:@"HealthCentral-radio-checked.png"];
+    else
+        self.selectedImage.image = [UIImage imageNamed:@"HealthCentral-radio-unchecked.png"];
+    
 }
 
 @end
