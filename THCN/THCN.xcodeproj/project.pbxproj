@@ -110,6 +110,7 @@
 		0070FFFD166E551B00135550 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0070FFFB166E551B00135550 /* InfoPlist.strings */; };
 		0070FFFF166E551C00135550 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0070FFFE166E551C00135550 /* main.m */; };
 		0077D8E51694CCEB00BB7F45 /* QuestionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0077D8E41694CCEB00BB7F45 /* QuestionCellView.xib */; };
+		00AE796C1695E5FB00A7C05B /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 00AE795E1695D20100A7C05B /* SMPageControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -255,6 +256,8 @@
 		0070FFFC166E551B00135550 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0070FFFE166E551C00135550 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0077D8E41694CCEB00BB7F45 /* QuestionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuestionCellView.xib; sourceTree = "<group>"; };
+		00AE795D1695D20100A7C05B /* SMPageControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
+		00AE795E1695D20100A7C05B /* SMPageControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -508,6 +511,7 @@
 		0070FFF8166E551B00135550 /* THCN */ = {
 			isa = PBXGroup;
 			children = (
+				0077D8E71694D8DA00BB7F45 /* Library */,
 				00700131166FD2CD00135550 /* ViewControllers */,
 				00700126166FB29F00135550 /* NetworkAccess */,
 				0070011E166FA45300135550 /* BussinesObjects */,
@@ -532,6 +536,15 @@
 				00700008166E551C00135550 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0077D8E71694D8DA00BB7F45 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				00AE795D1695D20100A7C05B /* SMPageControl.h */,
+				00AE795E1695D20100A7C05B /* SMPageControl.m */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -692,6 +705,7 @@
 				001D4EA8167E571A0036B8F0 /* QuizResultCellView.m in Sources */,
 				005E27EA1683869100119388 /* NSString+StripHTMLTags.m in Sources */,
 				003C6DC51694B0D400E1BB44 /* QuestionCellView.m in Sources */,
+				00AE796C1695E5FB00A7C05B /* SMPageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

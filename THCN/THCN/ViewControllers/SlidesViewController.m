@@ -16,7 +16,7 @@
 
 @implementation SlidesViewController
 
-@synthesize slideScrollView, selectedVertical, slidePageControl, selectedSlideShow, slideShowTitle;
+@synthesize slideScrollView, selectedVertical, selectedSlideShow, slideShowTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,13 +39,17 @@
 
     int numOfPages = [[selectedSlideShow slides] count];
     
+    
     slideScrollView.delegate=self;
     slideScrollView.contentSize=CGSizeMake(slideScrollView.frame.size.width*numOfPages, 1);
     slideScrollView.pagingEnabled=YES;    
-    slidePageControl.numberOfPages=numOfPages;
-    slidePageControl.currentPage=0;
-    slidePageControl.backgroundColor = [UIColor lightGrayColor];
-    slidePageControl.hidden = FALSE;
+        
+    self.slidePageControl.pageIndicatorImage = [UIImage imageNamed:@"HealthCentral-asset-slide-indicator-grey.png"];
+    self.slidePageControl.currentPageIndicatorImage = [UIImage imageNamed:@"HealthCentral-asset-slide-indicator-blue.png"];
+
+    self.slidePageControl.currentPage=0;
+    self.slidePageControl.numberOfPages=numOfPages;
+
     int i = 0;
     for (Slide *slide in [selectedSlideShow slides])
     {
@@ -90,7 +94,7 @@
     // Switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = slideScrollView.frame.size.width;
     int page = floor((slideScrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    slidePageControl.currentPage = page;
+        self.slidePageControl.currentPage = page;
     
         
     // A possible optimization would be to unload the views+controllers which are no longer visible
@@ -99,7 +103,7 @@
 
 - (IBAction)changePage:(id)sender {
     
-    int page=slidePageControl.currentPage;
+    int page=    self.slidePageControl.currentPage;
     CGRect frame=slideScrollView.frame;
     frame.origin.x=frame.size.width*page;
     frame.origin.y=0;

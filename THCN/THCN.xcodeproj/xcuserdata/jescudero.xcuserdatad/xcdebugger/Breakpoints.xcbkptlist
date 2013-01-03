@@ -307,66 +307,66 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "227"
-         endingLineNumber = "227">
+         startingLineNumber = "231"
+         endingLineNumber = "231">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "228"
-         endingLineNumber = "228">
+         startingLineNumber = "232"
+         endingLineNumber = "232">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "222"
-         endingLineNumber = "222">
+         startingLineNumber = "226"
+         endingLineNumber = "226">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "220"
+         endingLineNumber = "220">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "THCN/ViewControllers/SlidesViewController.m"
+         timestampString = "378929165.995366"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "271"
+         endingLineNumber = "271">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "THCN/ViewControllers/SlidesViewController.m"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "216"
          endingLineNumber = "216">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "212"
-         endingLineNumber = "212">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -386,33 +386,33 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "235"
-         endingLineNumber = "235">
+         startingLineNumber = "239"
+         endingLineNumber = "239">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "256"
-         endingLineNumber = "256">
+         startingLineNumber = "260"
+         endingLineNumber = "260">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "261"
-         endingLineNumber = "261">
+         startingLineNumber = "265"
+         endingLineNumber = "265">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -432,18 +432,29 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "274"
-         endingLineNumber = "274">
+         startingLineNumber = "278"
+         endingLineNumber = "278">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "299"
+         endingLineNumber = "299">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "THCN/ViewControllers/SlidesViewController.m"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "295"
@@ -454,22 +465,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "291"
-         endingLineNumber = "291">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "292"
-         endingLineNumber = "292">
+         startingLineNumber = "296"
+         endingLineNumber = "296">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -515,22 +515,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "165"
-         endingLineNumber = "165">
+         startingLineNumber = "169"
+         endingLineNumber = "169">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "190"
-         endingLineNumber = "190">
+         startingLineNumber = "194"
+         endingLineNumber = "194">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -550,44 +550,44 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127">
+         startingLineNumber = "131"
+         endingLineNumber = "131">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "166"
-         endingLineNumber = "166">
+         startingLineNumber = "170"
+         endingLineNumber = "170">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "176"
-         endingLineNumber = "176">
+         startingLineNumber = "180"
+         endingLineNumber = "180">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "151"
-         endingLineNumber = "151">
+         startingLineNumber = "155"
+         endingLineNumber = "155">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -620,11 +620,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "78"
-         endingLineNumber = "78"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
          landmarkName = "-didReceiveMemoryWarning"
          landmarkType = "5">
       </FileBreakpoint>
@@ -685,11 +685,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "68"
-         endingLineNumber = "68"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -698,11 +698,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
+         startingLineNumber = "79"
+         endingLineNumber = "79"
          landmarkName = "@implementation SlidesViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -711,11 +711,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
          landmarkName = "-changePage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -724,11 +724,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "74"
-         endingLineNumber = "74"
+         startingLineNumber = "78"
+         endingLineNumber = "78"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -737,11 +737,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "106"
-         endingLineNumber = "106"
+         startingLineNumber = "110"
+         endingLineNumber = "110"
          landmarkName = "-changePage:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1218,11 +1218,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "65"
-         endingLineNumber = "65"
+         startingLineNumber = "69"
+         endingLineNumber = "69"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1231,11 +1231,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377710154.555593"
+         timestampString = "378854032.848802"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "44"
-         endingLineNumber = "44"
+         startingLineNumber = "45"
+         endingLineNumber = "45"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1244,11 +1244,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "THCN/ViewControllers/SlidesViewController.m"
-         timestampString = "377808199.076693"
+         timestampString = "378929165.995366"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "71"
-         endingLineNumber = "71"
+         startingLineNumber = "75"
+         endingLineNumber = "75"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1289,6 +1289,32 @@
          startingLineNumber = "29"
          endingLineNumber = "29"
          landmarkName = "-setSelected:animated:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "THCN/Library/CustomPageControl.m"
+         timestampString = "378855701.302305"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "37"
+         endingLineNumber = "37"
+         landmarkName = "-initWithFrame:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "THCN/ViewControllers/SlidesViewController.m"
+         timestampString = "378920293.220412"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
