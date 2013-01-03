@@ -10,4 +10,5 @@
     android:padding="20px"
     android:textColor="#ff007fb2"
     android:textSize="24px"
+    android:onClick="enableButton"
 />

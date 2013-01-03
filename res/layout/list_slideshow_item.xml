@@ -13,9 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/slideshowImage"
+        android:layout_toLeftOf="@+id/imageView"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:paddingLeft="6dip"
         android:textSize="25.0px" />
+    
+    <ImageView 
+        android:id="@id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/asset_row_arrow"
+        android:paddingRight="5.0px"
+        android:layout_centerVertical="true"/>
 
 </RelativeLayout>

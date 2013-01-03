@@ -52,7 +52,7 @@ public class SlideshowPagerActivity extends Activity {
 		verticalName = getIntent().getExtras().getString("verticalName");
 		slideshow = databaseController.getSlideshowById(slideshowId);
 		
-		slideshowIsLoaded = databaseController.slideshowLoaded(String.valueOf(slideshowIds[++slideshowIndex]));
+		slideshowIsLoaded = databaseController.slideshowLoaded(String.valueOf(slideshowIds[slideshowIndex + 1]));
         
 		updateList();
     }

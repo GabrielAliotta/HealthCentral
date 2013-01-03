@@ -13,35 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/slideshowImage"
+        android:layout_toLeftOf="@+id/imageView"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeight"
         android:paddingLeft="6dip"
         android:textSize="25.0px" />
 
-    <!--
-        <TwoLineListItem
+	<ImageView 
+	    android:id="@id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/slideshowImage"
-        android:minHeight="?android:attr/listPreferredItemHeight"
-        android:mode="twoLine"
-        android:paddingBottom="2dip"
-        android:paddingTop="2dip" >
-
-        <TextView
-            android:id="@android:id/text1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6dip"
-            android:layout_marginTop="6dip"
-            android:textSize="25.0px" />
-
-        <TextView
-            android:id="@android:id/text2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@android:id/text1"
-            android:layout_below="@android:id/text1"
-            android:textSize="20.0px" />-->
-
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/asset_row_arrow"
+        android:paddingRight="5.0px"
+        android:layout_centerVertical="true"/>
+	
 </RelativeLayout>

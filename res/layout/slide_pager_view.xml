@@ -30,6 +30,7 @@
 			    android:layout_below="@id/slideshowImage"
 			    android:textStyle="bold"
 			    android:textSize="30.0px"
+			    android:textColor="#006d98"
 			    android:padding="10.0px" />
 			
             <WebView
@@ -50,7 +51,7 @@
         android:layout_alignParentBottom="true"
         android:padding="5.0px"
         android:textSize="20.0px"
-        android:text="TEST"
+        android:textColor="#006d98"
         android:textStyle="bold" />
 
 </RelativeLayout>

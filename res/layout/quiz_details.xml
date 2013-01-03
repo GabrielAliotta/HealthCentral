@@ -75,6 +75,7 @@
                     android:padding="15.0px"
                     android:textColor="#ff007fb2"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:visibility="gone" />
 
                 <TextView
@@ -84,6 +85,7 @@
                     android:layout_below="@id/youAnswered"
                     android:padding="15.0px"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:textColor="#ff007fb2"
                     android:visibility="gone" />
 
@@ -107,7 +109,8 @@
         android:layout_marginLeft="20.0px"
         android:layout_marginRight="20.0px"
         android:layout_marginBottom="10.0px"
-        android:background="#FF9BCA5D"
+        android:background="@drawable/button_selector"
+        android:enabled="false"
         android:onClick="buttonPressed"
         android:text="Submit"
         android:textColor="@android:color/white"

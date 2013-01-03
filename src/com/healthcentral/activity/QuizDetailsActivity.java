@@ -18,10 +18,11 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -29,7 +30,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.heathcentral.model.QuizAnswered;
 import com.heathcentral.model.QuizQuestion;
@@ -37,7 +37,7 @@ import com.heathcentral.model.QuizQuestionAnswer;
 import com.heathcentral.service.DatabaseController;
 
 
-public class QuizDetailsActivity extends Activity{
+public class QuizDetailsActivity extends Activity implements OnItemClickListener{
 	
 	private DatabaseController databaseController;
 	private List<QuizQuestion> questions = new ArrayList<QuizQuestion>();
@@ -69,7 +69,6 @@ public class QuizDetailsActivity extends Activity{
 	int answeredValid = 0;
 	int answeredInvalid = 0;
 	
-	final StyleSpan bss = new StyleSpan(android.graphics.Typeface.BOLD); 
 	final ForegroundColorSpan fcs = new ForegroundColorSpan(Color.parseColor("#CC4848"));	
 	final ForegroundColorSpan fcsCorrectAnswer = new ForegroundColorSpan(Color.parseColor("#8dc73f"));
 	
@@ -116,6 +115,7 @@ public class QuizDetailsActivity extends Activity{
 		adapter = new ArrayAdapter<String>(this, R.layout.list_answer_item,answersString);
 		 
 		questionAnswers.setAdapter(adapter);
+		questionAnswers.setOnItemClickListener(this);
 		quizTitle.setText(questions.get(questionCounter).getQuizTitle());
 		
 		verticalTitleTextView.setText(verticalTitle);
@@ -124,11 +124,6 @@ public class QuizDetailsActivity extends Activity{
 	} 
 	
 	public void buttonPressed (View view){	
-		
-		if(questionAnswers.getCheckedItemPosition() == -1){
-			Toast.makeText(this, "You must answer the question", Toast.LENGTH_SHORT).show();
-			return;
-		}
 		
 		if (resultMode){
 			SubmitButtonPressed();
@@ -194,7 +189,6 @@ public class QuizDetailsActivity extends Activity{
 				}
 			}
 			SpannableStringBuilder correctString = new SpannableStringBuilder("Correct!");
-			correctString.setSpan(bss, 0, 8, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			correctString.setSpan(fcsCorrectAnswer, 0, 8, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			quizScore.setVisibility(View.VISIBLE);
 			correctAnswer.setVisibility(View.VISIBLE);
@@ -215,10 +209,8 @@ public class QuizDetailsActivity extends Activity{
 				}
 			}
 			SpannableStringBuilder youAnsweredString = new SpannableStringBuilder("You answered: " + answers.get(answerChecked).getTitle());				
-			youAnsweredString.setSpan(bss, 0, 12, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			youAnsweredString.setSpan(fcs, 13, youAnsweredString.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			SpannableStringBuilder correctAnswerString = new SpannableStringBuilder("The correct answer is: " + answers.get(validAnswer).getTitle());			
-			correctAnswerString.setSpan(bss, 0, 21, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			correctAnswerString.setSpan(fcsCorrectAnswer, 22, correctAnswerString.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
 			quizScore.setVisibility(View.VISIBLE);
 			youAnswered.setVisibility(View.VISIBLE);
@@ -236,6 +228,7 @@ public class QuizDetailsActivity extends Activity{
 	
 	private void nextButtonPressed(){
 		
+		submitBtn.setEnabled(false);
 		questionCounter ++;
 		if(questionCounter >= questions.size()){
 			
@@ -262,5 +255,9 @@ public class QuizDetailsActivity extends Activity{
 		resultMode = true;
 		updateQuestion();
 	}
-	
+
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		submitBtn.setEnabled(true);
+	}
+
 }

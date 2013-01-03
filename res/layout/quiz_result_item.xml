@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/question"
-        android:layout_toRightOf="@id/quiz_result_image"
+        android:layout_alignLeft="@id/question"
         android:textStyle="bold"
         android:textColor="#8B8B8B"
         android:textSize="25.0px" />
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/answer"
-        android:layout_toRightOf="@id/quiz_result_image"
+        android:layout_alignLeft="@id/question"
         android:textColor="#8B8B8B"
         android:textSize="25.0px" />
 
