@@ -58,10 +58,15 @@
         slideView.slideTitle.text = [NSString stringWithFormat:@"%d. %@", i+1, slide.title];
         slideView.slideText.text = slide.text;
         
-        slideView.slideImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[slide image]]]];
+        slideView.slideImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[slide image]]]] ;
+                
+        CGRect frameText = slideView.slideText.frame;
+        frameText.size.height = slideView.slideText.contentSize.height;
+        slideView.slideText.frame = frameText;
         
-        slideView.scrollView.contentSize=CGSizeMake(slideScrollView.frame.size.width, slideView.slideText.frame.size.height + slideView.slideTitle.frame.size.height + slideView.slideImage.frame.size.height + 30);
+        slideView.scrollView.contentSize=CGSizeMake(slideScrollView.frame.size.width, slideView.slideText.frame.size.height + slideView.slideTitle.frame.size.height + slideView.slideImage.frame.size.height);
         
+        NSLog(@"%f", slideView.slideText.frame.size.height + slideView.slideTitle.frame.size.height + slideView.slideImage.frame.size.height);
         
         
         CGRect frame = slideScrollView.frame;
