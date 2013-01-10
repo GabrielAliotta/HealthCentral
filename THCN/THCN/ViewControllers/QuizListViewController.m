@@ -53,7 +53,7 @@
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
     
-    QuizNetworkEngine * engine = [[QuizNetworkEngine alloc]initWithHostName:@"thcn-db01.bar.tpg.corp"];
+    QuizNetworkEngine * engine = [[QuizNetworkEngine alloc]initWithHostName:@"190.3.107.106"];
     
     [engine getQuizes:[self.selectedVertical _id] withCompletionHandler:^(NSArray *list) {
         

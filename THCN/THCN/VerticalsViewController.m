@@ -45,7 +45,7 @@
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
 
-    VerticalsNetworkEngine * v = [[VerticalsNetworkEngine alloc]initWithHostName:@"thcn-db01.bar.tpg.corp"];
+    VerticalsNetworkEngine * v = [[VerticalsNetworkEngine alloc]initWithHostName:@"190.3.107.106"];
 
     pvc = [[ProgressViewViewController alloc]initWithNibName:@"ProgressViewViewController" bundle:nil];
 

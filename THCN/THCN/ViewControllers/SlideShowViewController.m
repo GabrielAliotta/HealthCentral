@@ -54,7 +54,7 @@
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
     [headerFields setValue:@"iOS" forKey:@"x-client-identifier"];
     
-    SlidesNetworkEngine * s = [[SlidesNetworkEngine alloc]initWithHostName:@"thcn-db01.bar.tpg.corp"];
+    SlidesNetworkEngine * s = [[SlidesNetworkEngine alloc]initWithHostName:@"190.3.107.106"];
     
     [s getSlides:[self.selectedVertical _id] withCompletionHandler:^(NSArray *list) {
         

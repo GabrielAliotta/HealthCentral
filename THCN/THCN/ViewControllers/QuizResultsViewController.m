@@ -142,7 +142,7 @@
                 if (!selectedQuiz.nextQuiz)
                 {
                 
-                    QuizNetworkEngine * engine = [[QuizNetworkEngine alloc]initWithHostName:@"thcn-db01.bar.tpg.corp"];
+                    QuizNetworkEngine * engine = [[QuizNetworkEngine alloc]initWithHostName:@"190.3.107.106"];
             
                 
                     [engine getQuiz:self.selectedQuiz.nextQuizId withCompletionHandler:^(Quizz *newQuiz) {

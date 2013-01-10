@@ -196,37 +196,37 @@
     QuizQuestion * qq1 = [[QuizQuestion alloc]init];
     qq1.title = @"Does peppermint and peppermint flavored food cause acid reflux?";
     qq1.text = @"<p>Peppermint and peppermint flavored foods can cause acid reflux symptoms in some people.<\/p>";
-    qq1.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/8113\/3339\/1205\/peppermint_300x300_stock.xchng.jpg";
+    qq1.image = @"http:\/\/190.3.107.106\/files\/8113\/3339\/1205\/peppermint_300x300_stock.xchng.jpg";
     qq1.answers = [self getQuizAnswer];
     
     QuizQuestion * qq2 = [[QuizQuestion alloc]init];
     qq2.title = @"Does steak and other lean meat cause heartburn?";
     qq2.text = @"<p>A lean steak will usually not cause acid reflux symptoms.&nbsp; Enjoy!<\/p>";
-    qq2.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/5113\/3339\/0989\/steak_300x300_stock.xchng.jpg";
+    qq2.image = @"http:\/\/190.3.107.106\/files\/5113\/3339\/0989\/steak_300x300_stock.xchng.jpg";
     qq2.answers = [self getQuizAnswer];
     
     QuizQuestion * qq3 = [[QuizQuestion alloc]init];
     qq3.title = @"Does tea and coffee cause heartburn?";
     qq3.text = @"<p>Tea and coffee, both caffeinated and decaffeinated will cause reflux symptoms.<\/p>";
-    qq3.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/8113\/1050\/0182\/caffeine_coffee_chocolate_tea_300x300_istock.jpg";
+    qq3.image = @"http:\/\/190.3.107.106\/files\/8113\/1050\/0182\/caffeine_coffee_chocolate_tea_300x300_istock.jpg";
     qq3.answers = [self getQuizAnswer];
     
     QuizQuestion * qq4 = [[QuizQuestion alloc]init];
     qq4.title = @"Do oranges cause heartburn?";
     qq4.text = @"<p>Citrus fruits such as oranges, grapefruits and lemons will cause reflux symptoms.<\/p>";
-    qq4.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/9213\/1619\/7171\/orange_300x300_istock.jpg";
+    qq4.image = @"http:\/\/190.3.107.106\/files\/9213\/1619\/7171\/orange_300x300_istock.jpg";
     qq4.answers = [self getQuizAnswer];
     
     QuizQuestion * qq5 = [[QuizQuestion alloc]init];
     qq5.title = @"Does wine or beer cause heartburn?";
     qq5.text = @"<p>Wine and any alcoholic drink will aggravate reflux symptoms.<\/p>";
-    qq5.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/4613\/0711\/9628\/wineglasses.jpg";
+    qq5.image = @"http:\/\/190.3.107.106\/files\/4613\/0711\/9628\/wineglasses.jpg";
     qq5.answers = [self getQuizAnswer];
     
     QuizQuestion * qq6 = [[QuizQuestion alloc]init];
     qq6.title = @"Do tomatoes cause heartburn?";
     qq6.text = @"<p>Tomatoes and most tomato-based foods are highly acidic and will cause acid reflux.<\/p>";
-    qq6.image = @"http:\/\/thcn-db01.bar.tpg.corp\/files\/3013\/0989\/0380\/tomatoes_300x300_istock.jpg";
+    qq6.image = @"http:\/\/190.3.107.106\/files\/3013\/0989\/0380\/tomatoes_300x300_istock.jpg";
     qq6.answers = [self getQuizAnswer];
     
     NSArray * list = [NSArray arrayWithObjects:qq1, qq2, qq3, qq4, qq5, qq6, nil];
