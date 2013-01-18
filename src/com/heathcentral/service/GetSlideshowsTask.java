@@ -6,6 +6,8 @@ import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 
 import com.healthcentral.activity.SiteSlideshowsActivity;
@@ -16,10 +18,12 @@ import com.heathcentral.model.Slideshow;
 
 public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 
-	private static final String C5_HKE_TOOL_URL = "http://thcn-db01.bar.tpg.corp/index.php/tools/mobile";
+	private static final String C5_HKE_TOOL_URL = "http://190.3.107.106/index.php/tools/mobile";
 	private DatabaseController databaseController;
 	private ProgressDialog dialog;
 	private Context context;
+	boolean hasConnection;
+	boolean webServiceActive = true;
 	private String verticalId;
 
 	public GetSlideshowsTask(Context context, DatabaseController databaseController, String verticalId) {
@@ -33,19 +37,36 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 	protected void onPreExecute() {
 		this.dialog.setMessage("Loading Slideshows");
 		this.dialog.show();
+		hasConnection = isOnline();
 	}
 
 	@Override
 	protected void onPostExecute(final Boolean success) {
-		((SiteSlideshowsActivity) context).updateList();
+		if(hasConnection && webServiceActive){
+			((SiteSlideshowsActivity) context).updateList();
+		} else if (!hasConnection && webServiceActive){
+			((SiteSlideshowsActivity) context).noConnection();
+		} else if(!webServiceActive){
+			((SiteSlideshowsActivity) context).webServiceConnectionProblem();
+		}
+		
 		if (dialog.isShowing())
 			dialog.dismiss();
 	}
 
 	protected Boolean doInBackground(final String... args) {
+		
+		if(!hasConnection){
+			return true;
+		}
 		JSONArray slideshows, slides = null;
 		JSONParser jsonParser = new JSONParser(C5_HKE_TOOL_URL + "?vertical="+this.verticalId + "&contentType=slideshow", this.context, "slideshows-"+ verticalId + ".txt");
 		JSONObject json = jsonParser.getJSON();
+		
+		if(json == null){
+			webServiceActive = false;
+			return true;
+		}
 
 		try {
 			slideshows = json.getJSONArray("items");
@@ -92,5 +113,14 @@ public class GetSlideshowsTask extends AsyncTask<String, Void, Boolean> {
 		}
 
 		return true;
+	}
+	
+	public boolean isOnline() {
+	    ConnectivityManager cm = (ConnectivityManager)  context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo netInfo = cm.getActiveNetworkInfo();
+	    if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+	        return true;
+	    }
+	    return false;
 	}
 }

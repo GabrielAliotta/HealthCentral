@@ -6,6 +6,8 @@ import java.util.List;
 import org.kroz.activerecord.ActiveRecordException;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -70,4 +72,35 @@ public class HealthCentralActivity extends Activity implements
 		this.verticalsListView.setAdapter(localCustomAdapter);
 		//((TextView) findViewById(R.id.action_activity)).setVisibility(View.VISIBLE);
 	}
+	
+	public void noConnection() {
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+	    alertDialog.setTitle("Info");
+	    alertDialog.setMessage("Internet not available, Check your internet connectivity and try again");
+	    alertDialog.setIcon(android.R.drawable.presence_offline);
+	    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+	       public void onClick(DialogInterface dialog, int which) {
+	    	   finish();
+	       }
+	    });
+
+	    alertDialog.show();
+	}
+	
+	public void webServiceConnectionProblem() {
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+
+	    alertDialog.setTitle("Error");
+	    alertDialog.setMessage("Web service is not available, try again later");
+	    alertDialog.setIcon(android.R.drawable.presence_offline);
+	    alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+	       public void onClick(DialogInterface dialog, int which) {
+	    	   finish();
+	       }
+	    });
+
+	    alertDialog.show();
+	}
+	
 }

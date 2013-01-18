@@ -8,6 +8,8 @@ import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Message;
 
@@ -25,6 +27,8 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 	private ProgressDialog dialog;
 	List<Message> titles;
 	private Context context;
+	boolean hasConnection;
+	boolean webServiceActive = true;
 	private String vertical;
 
 	public GetQuizzesTask(Context context,
@@ -39,27 +43,42 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 	protected void onPreExecute() {
 		this.dialog.setMessage("Loading Quizzes");
 		this.dialog.show();
+		hasConnection = isOnline();
 	}
 
 	@Override
 	protected void onPostExecute(final Boolean success) {
 
-		((SiteQuizzesActivity) context).updateList();
-
+		if(hasConnection && webServiceActive){
+			((SiteQuizzesActivity) context).updateList();
+		} else if (!hasConnection && webServiceActive){
+			((SiteQuizzesActivity) context).noConnection();
+		} else if(!webServiceActive){
+			((SiteQuizzesActivity) context).webServiceConnectionProblem();
+		}
 		if (dialog.isShowing())
 			dialog.dismiss();
 	}
 
 	protected Boolean doInBackground(final String... args) {
+		
+		if(!hasConnection){
+			return true;
+		}
  
 		JSONArray quizzes, questions, answers, textResults, learnMoreLinks = null;
 		
 		// url to make request
-		String url = "http://thcn-db01.bar.tpg.corp/index.php/tools/mobile?contentType=quiz&vertical="
+		String url = "http://190.3.107.106/index.php/tools/mobile?contentType=quiz&vertical="
 				+ vertical + "&json=true";
 
 		JSONParser jParser = new JSONParser(url, context, "quizzes-" + vertical + ".txt");
 		JSONObject json = jParser.getJSON();
+		
+		if(json == null){
+			webServiceActive = false;
+			return true;
+		}
 		
 		try {
 			quizzes = json.getJSONArray("items");
@@ -138,6 +157,15 @@ public class GetQuizzesTask extends AsyncTask<String, Void, Boolean> {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	
+	public boolean isOnline() {
+	    ConnectivityManager cm = (ConnectivityManager)  context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	    NetworkInfo netInfo = cm.getActiveNetworkInfo();
+	    if (netInfo != null && netInfo.isConnectedOrConnecting()) {
+	        return true;
+	    }
+	    return false;
 	}
 
 }
